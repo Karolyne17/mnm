@@ -10,12 +10,13 @@ const pass = process.env.SQL_PASS;
 const cluster = process.env.SQL_URL;
 const db = process.env.SQL_DB;
 const origin = process.env.ORIGIN;
+const dialect = process.env.SQL_DIALECT;
 
 
 
 const sequelize  = new Sequelize(db,user,pass,{
     host: cluster,
-    dialect: mysql
+    dialect: dialect
 });
 
 // const usersRoutes = require('./routes/users');
