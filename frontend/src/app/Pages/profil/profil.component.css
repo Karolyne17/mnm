@@ -1,0 +1,134 @@
+@media screen and (min-width: 600px){
+  .box{
+    margin: 0 100px;
+  }
+
+  .box-entete{
+    display: flex;
+  }
+  .photoProfil
+  {
+    height: 200px;
+    width: 200px;
+    background: violet;
+  }
+  .identite{
+    padding-left: 50px;
+    padding-top: 120px;
+  }
+  .divBtn{
+    position: absolute;
+    right: 150px;
+  }
+  .divRow div{
+    width : 150px;
+   }
+}
+
+@media screen and (max-width: 600px){
+  .box{
+    margin: 0 auto;
+    width: 75%;
+  }
+
+  .photoProfil
+  {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  img{
+    width: 100%;
+  }
+  .divBtn{
+    position: absolute;
+    right: 70px;
+  }
+  .divRow div{
+    width : 25%;
+   }
+}
+
+@media screen and (max-width: 600px){
+  .box-entete{
+    flex-direction: column;
+  }
+}
+
+
+
+.imgProfil
+{
+  width: 100%;
+}
+.imgTroisPoint
+{
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+.troisPoint{
+  text-align: right;
+}
+.rating a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1.5em;
+  transition: color .4s;
+}
+/* .rating a:hover,
+.rating a:focus {
+  color: orange;
+  cursor: pointer;
+}
+
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+   color: orange;
+}
+ */
+.btn
+{
+  color: orange;
+  border-radius: 15px;
+  border: 1px solid orange;
+  padding: 5px 5px;
+}
+
+.orange{
+  background: orange;
+  color: white;
+}
+
+.gray{
+  color: gray;
+}
+
+.mt1{
+  margin-top: 10px;
+}
+
+.pl1{
+  padding-top: 10px;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.divRow{
+  display: flex;
+  align-items: center;
+  background: #C3C4C5;
+  padding-left: 10px;
+  height: 40px;
+  text-transform: capitalize;
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
+.lowercase{
+  text-transform: lowercase;
+}

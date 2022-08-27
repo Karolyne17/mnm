@@ -1,0 +1,15 @@
+export interface User {
+    id?: number,
+    password?: string,
+    userName?: string,
+    lastName?: string,
+    firstName?: string,
+    phoneNumber?: number,
+    email?: string,
+    photo?: string,
+    searchingZone?: string,
+    createdAt?: Date,
+    updatedAt?: Date,
+    deletedAt?: Date,
+    idAddress?: number,
+}
