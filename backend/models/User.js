@@ -7,15 +7,15 @@ module.exports = (sequelize, Sequelize) => {
     },
     userName: {
       type: Sequelize.DataTypes.STRING,
-      allowNull: false,
+
     },
     firstName: {
       type: Sequelize.DataTypes.STRING,
-      allowNull: false,
+
     },
     lastName: {
       type: Sequelize.DataTypes.STRING,
-      allowNull: false,
+
     },
     phoneNumber: {
       type: Sequelize.DataTypes.STRING,
@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     photo: {
       type: Sequelize.DataTypes.STRING,
-      allowNull: false,
+
     },
     searchingZone: {
       type: Sequelize.DataTypes.INTEGER,
