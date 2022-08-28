@@ -92,7 +92,7 @@ prenom="";
         that.idAcharger = parseInt(val["id"])
       }
     });
-    
+
     this.userService.updateAccount(that.idAcharger, dataUpdate).
     subscribe(retour => {
       let that = this;
@@ -120,14 +120,14 @@ prenom="";
         for(let use of Object.keys(ret)){
           data = ret[use];
         }
-        that.user = data;
-        that.updateAccount.setValue({
-          nom:that.user.nom,
-          prenom:that.user.prenom,
-          email:that.user.email,
-          motPasse:that.user.motPasse,
-          photo:that.user.photo
-        })
+        // that.user = data;
+        // that.updateAccount.setValue({
+        //   nom:that.user.nom,
+        //   prenom:that.user.prenom,
+        //   email:that.user.email,
+        //   motPasse:that.user.motPasse,
+        //   photo:that.user.photo
+        // })
       },
       error(err){
         console.log(err);
