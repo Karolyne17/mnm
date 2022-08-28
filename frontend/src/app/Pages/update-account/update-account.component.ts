@@ -74,78 +74,78 @@ prenom="";
 
 
 
-  validForm() {
-    let dataUpdate: Users = {
-      id: this.idAcharger,
-      userName: this.updateAccount.value.userName,
-      lastName: this.updateAccount.value.lastName,
-      firstName: this.updateAccount.value.firstName,
-      phoneNumber: this.updateAccount.value.phoneNumber,
-      email: this.updateAccount.value.email,
-      photo: this.updateAccount.value.photo,
-      searchingZone: this.updateAccount.value.searchingZone,
-    };
+  // validForm() {
+  //   let dataUpdate: Users = {
+  //     id: this.idAcharger,
+  //     userName: this.updateAccount.value.userName,
+  //     lastName: this.updateAccount.value.lastName,
+  //     firstName: this.updateAccount.value.firstName,
+  //     phoneNumber: this.updateAccount.value.phoneNumber,
+  //     email: this.updateAccount.value.email,
+  //     photo: this.updateAccount.value.photo,
+  //     searchingZone: this.updateAccount.value.searchingZone,
+  //   };
 
-    let that = this;
-    this.route.params.subscribe({
-      next(val) {
-        that.idAcharger = parseInt(val["id"])
-      }
-    });
-    
-    this.userService.updateAccount(that.idAcharger, dataUpdate).
-    subscribe(retour => {
-      let that = this;
-      that.route.params.subscribe({
-        next(val) {
-          that.idAcharger = parseInt(val["id"])
-          that.router.navigate([`/user/${that.idAcharger}`]);
-        }
-      });
-    });
-  }
+  //   let that = this;
+  //   this.route.params.subscribe({
+  //     next(val) {
+  //       that.idAcharger = parseInt(val["id"])
+  //     }
+  //   });
+
+  //   this.userService.updateAccount(that.idAcharger, dataUpdate).
+  //   subscribe(retour => {
+  //     let that = this;
+  //     that.route.params.subscribe({
+  //       next(val) {
+  //         that.idAcharger = parseInt(val["id"])
+  //         that.router.navigate([`/user/${that.idAcharger}`]);
+  //       }
+  //     });
+  //   });
+  // }
 
   ngOnInit(): void {
-    let that = this;
-    this.route.params.subscribe({
-      next(val) {
-        that.idAcharger = parseInt(val["id"])
-      }
-    });
-    this.userService.getUser(this.idAcharger).subscribe({
-      next(ret) {
-        console.log(ret);
-        let data="";
-        let that=this;
-        for(let use of Object.keys(ret)){
-          data = ret[use];
-        }
-        that.user = data;
-        that.updateAccount.setValue({
-          nom:that.user.nom,
-          prenom:that.user.prenom,
-          email:that.user.email,
-          motPasse:that.user.motPasse,
-          photo:that.user.photo
-        })
-      },
-      error(err){
-        console.log(err);
-      }
-    });
+    // let that = this;
+    // this.route.params.subscribe({
+    //   next(val) {
+    //     that.idAcharger = parseInt(val["id"])
+    //   }
+    // });
+    // this.userService.getUser(this.idAcharger).subscribe({
+    //   next(ret) {
+    //     console.log(ret);
+    //     let data="";
+    //     let that=this;
+    //     for(let use of Object.keys(ret)){
+    //       data = ret[use];
+    //     }
+    //     that.user = data;
+    //     that.updateAccount.setValue({
+    //       nom:that.user.nom,
+    //       prenom:that.user.prenom,
+    //       email:that.user.email,
+    //       motPasse:that.user.motPasse,
+    //       photo:that.user.photo
+    //     })
+    //   },
+    //   error(err){
+    //     console.log(err);
+    //   }
+    // });
   }
 
-  retourCompte(){
-    let that = this;
-    let idPage = 0;
-    this.route.params.subscribe({
-      next(val) {
-        that.idAcharger = parseInt(val["id"])
-        idPage = that.idAcharger;
-      }
-    });
-    this.router.navigate([`/user/${idPage}`])
-  }
+  // retourCompte(){
+  //   let that = this;
+  //   let idPage = 0;
+  //   this.route.params.subscribe({
+  //     next(val) {
+  //       that.idAcharger = parseInt(val["id"])
+  //       idPage = that.idAcharger;
+  //     }
+  //   });
+  //   this.router.navigate([`/user/${idPage}`])
+  // }
 
 
 }

@@ -6,7 +6,7 @@ const passService = require('../services/password');
 const tokenService = require('../services/token');
 
 exports.signup = async (req, res) => {
-    console.log('tentative d in scription');
+    console.log('tentative d inscription');
     const password = req.body.password;
     const hashedPassword = await passService.hashPassword(password);
     const email = req.body.email;

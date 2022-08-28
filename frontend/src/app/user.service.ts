@@ -152,7 +152,7 @@ export class UserService {
 
   getUser(id:number):Observable<any>{
   // console.log('FONCTION GETUSER : ' + id);
-    return this.http.get(this.urlBase + "/membre/"+id);
+    return this.http.get(this.urlBase + "/user/"+id);
   }
 
 
