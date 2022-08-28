@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccueilComponent } from './Pages/accueil/accueil.component';
+import { AuthGuard } from './Guard/auth.guard';
 import { ConnectionComponent } from './Pages/connection/connection.component';
 import { InscriptionComponent } from './Pages/inscription/inscription.component';
 import { ProfilComponent } from './Pages/profil/profil.component';
+import { UpdateAccountComponent } from './Pages/update-account/update-account.component';
 
 const routes: Routes = [
   { path: "", component: InscriptionComponent },
-  { path: "profile", component: ProfilComponent },
   { path: "inscription", component: InscriptionComponent },
   { path: "connection", component: ConnectionComponent },
-  // { path: "user/:id", component: UserComponent, canActivate:[AuthentificationGuard]},
-  // { path: "user/updateAccount/:id", component: UpdateAccountComponent, canActivate:[AuthentificationGuard]},
+  //{ path: "profile", component: ProfilComponent },
+  { path: "user/:id", component: ProfilComponent, canActivate:[AuthGuard]},
+  { path: "user/updateAccount/:id", component: UpdateAccountComponent, canActivate:[AuthGuard]},
   // { path: "user/addPost/:id", component: AddPostComponent, canActivate:[AuthentificationGuard]},
   // { path: "user/:id/:id", component: AddPostComponent, canActivate:[AuthentificationGuard]},
   { path: "accueil", component: AccueilComponent },

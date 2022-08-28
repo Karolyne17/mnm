@@ -27,11 +27,6 @@ export class InscriptionComponent implements OnInit {
       email: this.logForm.value.email,
       password: this.logForm.value.password,
     }
-//     userName?: string,
-//     lastName?: string,
-//     firstName?: string,
-//     phoneNumber?: number,
-//     email?: string,
     console.log(data);
 
     let that = this

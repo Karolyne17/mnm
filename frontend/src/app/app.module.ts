@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConnectionComponent } from './Pages/connection/connection.component';
 import { AccueilComponent } from './Pages/accueil/accueil.component';
+import { UpdateAccountComponent } from './Pages/update-account/update-account.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { AccueilComponent } from './Pages/accueil/accueil.component';
     ProfilComponent,
     InscriptionComponent,
     ConnectionComponent,
-    AccueilComponent
+    AccueilComponent,
+
+    UpdateAccountComponent
   ],
   imports: [
     BrowserModule,
