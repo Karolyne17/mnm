@@ -1,0 +1,28 @@
+<div class="section">
+  <img class="img" src="../../assets/img/logo.PNG" alt="">
+
+<div class="section">
+  <img class="img" src="../../assets/img/logo.PNG" alt="">
+
+  <form [formGroup]="updateAccount" (ngSubmit)="validForm()">
+    <div><input type="text" placeholder="Pseudo" formControlName="userName"></div>
+    <div><input type="text" placeholder="Nom" formControlName="lastName"></div>
+    <div><input type="text" placeholder="Prénom" formControlName="firstName"></div>
+    <div><input type="number" placeholder="Téléphone" formControlName="phoneNumber"></div>
+    <div><input type="text" placeholder="Email" formControlName="email"></div>
+    <div><input type="text" placeholder="Photo" formControlName="photo"></div>
+    <div><input type="text" placeholder="Zone de recherche" formControlName="searchingZone"></div>
+    <div>Adresse</div>
+    <div><input type="text" placeholder="N°" formControlName="number"></div>
+    <div><input type="text" placeholder="Rue" formControlName="lineA"></div>
+    <div><input type="text" placeholder="Code Postale" formControlName="zipCode"></div>
+    <div><input type="text" placeholder="Code Postale" formControlName="city"></div>
+
+    <div><input class="submit" type="submit" value="Enregistrer"></div>
+  </form>
+
+
+  <a routerLink="/connection">Vous avez déjà un compte ?</a><br>
+
+
+</div>
