@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:4200" }));
+app.use(cors({ origin: process.env.ORIGIN }));
 
 const db = require("./models");
 
@@ -16,3 +16,9 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
   res.status(200).send("OK ça marche");
 });
+
+const usersRoutes = require('./routes/users');
+
+const apiPath = '/api';
+
+app.use(apiPath, usersRoutes);
