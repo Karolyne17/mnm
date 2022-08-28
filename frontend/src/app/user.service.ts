@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-//import { User } from './Interfaces/user';
 import { catchError, Observable, tap, map, throwError, of, Subject } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { ServiceToken } from './service/service.token';
 import { Users } from './Classes/user';
+//import { User } from './Interfaces/user';
 // import { Post } from './post';
 // import { Posts } from './classes/post';
 // import { Comments } from './classes/comment';
@@ -19,6 +19,7 @@ export class UserService {
   token:string ="";
   // currentUserId:number = -1;
 
+  
   urlBase = "http://localhost:3000/api"
   httpOptions = {
     headers: new HttpHeaders({
