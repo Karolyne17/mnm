@@ -1,9 +1,8 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const { Sequelize } = require('sequelize');
-const express = require('express');
-const cors = require('cors');
-
+const { Sequelize } = require("sequelize");
+const express = require("express");
+const cors = require("cors");
 
 const user = process.env.SQL_USER;
 const pass = process.env.SQL_PASS;
@@ -12,11 +11,9 @@ const db = process.env.SQL_DB;
 const origin = process.env.ORIGIN;
 const dialect = process.env.SQL_DIALECT;
 
-
-
-const sequelize  = new Sequelize(db,user,pass,{
-    host: cluster,
-    dialect: dialect
+const sequelize = new Sequelize(db, user, pass, {
+  host: cluster,
+  dialect: dialect,
 });
 
 // const usersRoutes = require('./routes/users');
@@ -26,12 +23,14 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors({
-    origin: origin
-}));
+app.use(
+  cors({
+    origin: origin,
+  })
+);
 
-app.use('/ping', (req, res)=>{
-    res.status(200).send("CA MARCHE !");
+app.use("/ping", (req, res) => {
+  res.status(200).send("CA MARCHE !");
 });
 
 module.exports = app;
