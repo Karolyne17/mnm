@@ -50,3 +50,81 @@ exports.signin = async (req, res) => {
         return res.status(200).json({message: {txt:'mauvais email', pass:false}});
     }  
 }
+
+exports.profile = async (req, res) => {
+    const userId = req.userId;
+
+    const id = req.params.id;
+
+    const userFound = await db.USER.findOne({where: {id: id}, include: [db.ADDRESS]});
+
+    if (userFound) {
+        let user = {
+            userName: userFound.userName,
+            lastName: userFound.lastName,
+            firstName: userFound.firstName,
+            phoneNumber: userFound.phoneNumber,
+            email: userFound.email,
+            photo: userFound.photo,
+            searchingZone: userFound.searchingZone,
+        }
+
+        if(userFound.address) {
+            user.address = {
+                number: userFound.address.number,
+                lineA: userFound.address.lineA,
+                lineB: userFound.address.lineB,
+                zipCode: userFound.address.zipCode,
+                city: userFound.address.city,
+            }
+        }
+
+        return res.status(200).json({message:{user:user}});
+    }
+    else {
+        return res.status(200).json({message:{txt:"utilisateur pas trouvé"}});
+    }
+}
+
+exports.updateProfile = async(req, res) => {
+    const userId = req.userId;
+
+    const userName= req.body.userName;
+    const lastName= req.body.lastName;
+    const firstName= req.body.firstName;
+    const phoneNumber= req.body.phoneNumber;
+    const email= req.body.email;
+    const photo= req.body.photo;
+    const searchingZone= req.body.searchingZone;
+
+    const number= req.body.number;
+    const lineA= req.body.lineA;
+    const lineB= req.body.lineB;
+    const zipCode= req.body.zipCode;
+    const city= req.body.city;
+
+    const userFound = await db.USER.findOne({where: {user_id: id}, include: [db.ADDRESS]});
+
+    userFound.userName = userName;
+    userFound.lastName = lastName;
+    userFound.firstName = firstName;
+    userFound.phoneNumber = phoneNumber;
+    userFound.email = email;
+    userFound.photo = photo;
+    userFound.searchingZone = searchingZone;
+
+    let address = db.ADDRESS.build({
+        number : number,
+        lineA : lineA,
+        lineB : lineB,
+        zipCode : zipCode,
+        city : city,
+    });
+    await address.save();
+
+    userFound.setAddress(address);
+    await userFound.save();
+
+    return res.status(200).json({message: {txt: 'Utilisateur updaté'}});
+
+}
