@@ -1,0 +1,70 @@
+.accueil-container{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#btn-container a{
+    text-decoration: none;
+}
+.orange-btn{
+    background-color: #FF6C07;
+    padding:15px;
+    border-radius: 30px;
+    color:white;
+    width: 80%;
+    margin:30px auto;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+#travel-list{
+    background-color: #006413;
+}
+#travel-list a{
+    text-decoration: none;
+}
+.travel-list-title{
+    color: white;
+    font-weight: bold;
+    font-size:1.7rem;
+    text-align: center;
+    padding-top:15px;
+}
+.one-travel-container{
+    display: flex;
+}
+.travel-separator{
+    color:white;
+    width: 80%;
+}
+.profil-pic-container{
+margin: auto 10px;
+}
+.profil-pic-container{
+    width: 20%;
+}
+.profil-pic{
+    width: 40px;
+    border-radius:30px;
+}
+.travel-infos{
+    width: 80%;
+}
+.start-arrival{
+    color:white;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.user-name{
+    color:rgb(177, 177, 177);
+    font-style: italic;
+    margin-top: 0;
+}
+.more-info{
+    color:white;
+    font-size: 0.8rem;
+}
+.price{
+    width: 20%;
+    color: white;
+    margin: auto 10px;
+}

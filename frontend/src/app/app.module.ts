@@ -7,13 +7,15 @@ import { InscriptionComponent } from './Pages/inscription/inscription.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConnectionComponent } from './Pages/connection/connection.component';
+import { AccueilComponent } from './Pages/accueil/accueil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfilComponent,
     InscriptionComponent,
-    ConnectionComponent
+    ConnectionComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
