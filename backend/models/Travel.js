@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DataTypes.FLOAT,
       allowNull: false,
     },
-    longStart: {
+    longStart: { 
       type: Sequelize.DataTypes.FLOAT,
       allowNull: false,
     },
