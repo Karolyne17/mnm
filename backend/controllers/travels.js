@@ -31,7 +31,7 @@ exports.getAll = async (req, res) => {
           userName: travel.user.userName,
         },
         car: {
-          mode: travel.car.model,
+          model: travel.car.model,
           placeQuantity: travel.car.placeQuantity,
         },
       };
