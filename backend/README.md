@@ -50,7 +50,50 @@ Renvoie:
             lineB: "",
             zipCode: "57000",
             city: "Metz",
-        }
+        },
+        cars: [
+            {
+                model: "Alpha Romeo",
+                placeQuantity: 3,
+            },
+            {
+                model: "Fiat Multipla",
+                placeQuantity: 20,
+            }
+        ]
+    }
+
+## GET `/api/profile`
+
+_Profil de la personne connectée_
+
+Renvoie:
+
+    user: {
+        userName: "Roro",
+        lastName: "ROger",
+        firstName: "Lopoz",
+        phoneNumber: "0645781265",
+        email: "roger@email.cc",
+        photo: '/machin.jpg",
+        searchingZone: 300,
+        address: {
+            number: "12 bis",
+            lineA: "rue des lilas",
+            lineB: "",
+            zipCode: "57000",
+            city: "Metz",
+        },
+        cars: [
+            {
+                model: "Alpha Romeo",
+                placeQuantity: 3,
+            },
+            {
+                model: "Fiat Multipla",
+                placeQuantity: 20,
+            }
+        ]
     }
 
 ## POST `/api/profile`
@@ -100,6 +143,7 @@ Renvoie:
     ]
 
 ## POST `/api/car`
+
 _Ajout d'un véhicule_
 
 Reçoit:
@@ -110,8 +154,6 @@ Reçoit:
         matriculation: "FAR 92 ZM",
         color: "rouge",
     }
-
-
 
 # /backend/.env
 

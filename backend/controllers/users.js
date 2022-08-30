@@ -66,11 +66,14 @@ exports.signin = async (req, res) => {
 exports.profile = async (req, res) => {
   const userId = req.userId;
 
-  const id = req.params.id;
+  let id = userId;
+  if (req.params.id) {
+    id = req.params.id;
+  }
 
   const userFound = await db.USER.findOne({
-    where: { id: userId },
-    include: [db.ADDRESS],
+    where: { id: id },
+    include: [db.ADDRESS, db.CAR],
   });
 
   if (userFound) {
@@ -92,6 +95,19 @@ exports.profile = async (req, res) => {
         zipCode: userFound.address.zipCode,
         city: userFound.address.city,
       };
+    }
+
+    if (userFound.cars) {
+      user.cars = [];
+      for (let car of userFound.cars) {
+        let usercar = {
+          model: car.model,
+          placeQuantity: car.placeQuantity,
+          matriculation: car.matriculation,
+          color: car.color,
+        };
+        user.cars.push(usercar);
+      }
     }
 
     return res.status(200).json({ message: { user: user } });
