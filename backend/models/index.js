@@ -5,6 +5,7 @@ const pass = process.env.SQL_PASS;
 const cluster = process.env.SQL_URL;
 const dbname = process.env.SQL_DB;
 const dialect = process.env.SQL_DIALECT;
+const port = process.env.SQL_PORT;
 
 const db = {};
 
@@ -13,6 +14,7 @@ mysql
   .createConnection({
     user: user,
     password: pass,
+    port: port,
   })
   .then((connection) => {
     connection.query("CREATE DATABASE IF NOT EXISTS mnm;").then(() => {
@@ -20,6 +22,7 @@ mysql
         host: cluster,
         dialect: dialect,
         logging: false, // ...
+        port: port,
       });
 
       db.Sequelize = Sequelize;
@@ -135,7 +138,7 @@ mysql
           console.log(
             "Connection to database has been established successfully."
           );
-          db.sequelize.sync({ force: true }).then(async () => {
+          db.sequelize.sync({ force: false }).then(async () => {
             console.log("Database ready.");
           });
         })
