@@ -37,6 +37,7 @@
 .menu-bar-img{
     width:40px;
     margin:auto;
+    cursor:pointer;
 }
 .menu-down-container{
     background-color: #006413;
