@@ -88,3 +88,15 @@ Renvoie:
             }
         }
     ]
+
+# /backend/.env
+
+PORT=3000
+SQL_USER=root
+SQL_PASS=
+SQL_URL=127.0.0.1
+SQL_DB=mnm
+SQL_PORT=3306
+ORIGIN=http://localhost:4200
+SQL_DIALECT=mysql
+JWT_SECRET=mnsvroomvroom
