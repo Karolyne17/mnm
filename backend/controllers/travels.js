@@ -6,20 +6,15 @@ const passService = require("../services/password");
 const tokenService = require("../services/token");
 
 exports.getAll = async (req, res) => {
-  //
-
-  const travelsFound = await db.TRAVEL.findAll(
-    // where: { id: id },
-    //
-    { include: [db.USER, db.CAR] }
-  );
-
-  //   console.log(travelsFound);
+  const travelsFound = await db.TRAVEL.findAll({
+    include: [db.USER, db.CAR],
+  });
 
   if (travelsFound) {
     let travels = [];
     for (let travel of travelsFound) {
       let trav = {
+        id: travel.id,
         latStart: travel.latStart,
         longStart: travel.longStart,
         dateStart: travel.dateStart,
@@ -28,78 +23,120 @@ exports.getAll = async (req, res) => {
         smoker: travel.smoker,
         airconditionning: travel.airconditionning,
         user: {
+          id: travel.user.id,
           userName: travel.user.userName,
         },
         car: {
           model: travel.car.model,
           placeQuantity: travel.car.placeQuantity,
         },
+        passengers: [],
       };
+
+      if ((await travel.countUsers()) > 0) {
+        let passengers = await travel.getUsers();
+        for (let passenger of passengers) {
+          let pass = {
+            id: passenger.id,
+            userName: passenger.userName,
+          };
+          trav.passengers.push(pass);
+        }
+      }
 
       travels.push(trav);
     }
 
-    console.log(travels);
-
     return res.status(200).json({ message: { travels: travels } });
   }
+};
 
-  // id: {
-  //   type: Sequelize.DataTypes.INTEGER,
-  //   primaryKey: true,
-  //   autoIncrement: true,
-  // },
-  // latStart: {
-  //   type: Sequelize.DataTypes.FLOAT,
-  //   allowNull: false,
-  // },
-  // longStart: {
-  //   type: Sequelize.DataTypes.FLOAT,
-  //   allowNull: false,
-  // },
-  // dateStart: {
-  //   type: Sequelize.DataTypes.DATE,
-  //   allowNull: false,
-  // },
-  // latArrival: {
-  //   type: Sequelize.DataTypes.FLOAT,
-  //   allowNull: false,
-  // },
-  // longArrival: {
-  //   type: Sequelize.DataTypes.FLOAT,
-  //   allowNull: false,
-  // },
-  // smoker: {
-  //   type: Sequelize.DataTypes.BOOLEAN,
-  //   allowNull: false,
-  // },
-  // airconditionning: {
-  //   type: Sequelize.DataTypes.BOOLEAN,
-  //   allowNull: false,
-  // },
-  //   if (userFound) {
-  //     let user = {
-  //       userName: userFound.userName,
-  //       lastName: userFound.lastName,
-  //       firstName: userFound.firstName,
-  //       phoneNumber: userFound.phoneNumber,
-  //       email: userFound.email,
-  //       photo: userFound.photo,
-  //       searchingZone: userFound.searchingZone,
-  //     };
+exports.getTravel = async (req, res) => {
+  const id = req.params.id;
 
-  //     if (userFound.address) {
-  //       user.address = {
-  //         number: userFound.address.number,
-  //         lineA: userFound.address.lineA,
-  //         lineB: userFound.address.lineB,
-  //         zipCode: userFound.address.zipCode,
-  //         city: userFound.address.city,
-  //       };
-  //     }
+  const travelFound = await db.TRAVEL.findOne({
+    where: { id: id },
+    include: [db.USER, db.CAR],
+  });
 
-  //     return res.status(200).json({ message: { user: user } });
-  //   } else {
-  //     return res.status(200).json({ message: { txt: "utilisateur pas trouvé" } });
-  //   }
+  if (travelFound) {
+    let travel = {
+      latStart: travelFound.latStart,
+      longStart: travelFound.longStart,
+      dateStart: travelFound.dateStart,
+      latArrival: travelFound.latArrival,
+      longArrival: travelFound.longArrival,
+      smoker: travelFound.smoker,
+      airconditionning: travelFound.airconditionning,
+      user: {
+        id: travelFound.user.id,
+        userName: travelFound.user.userName,
+      },
+      car: {
+        model: travelFound.car.model,
+        placeQuantity: travelFound.car.placeQuantity,
+      },
+      passengers: [],
+    };
+
+    if ((await travelFound.countUsers()) > 0) {
+      let passengers = await travelFound.getUsers();
+      for (let passenger of passengers) {
+        let pass = {
+          id: passenger.id,
+          userName: passenger.userName,
+        };
+        travel.passengers.push(pass);
+      }
+    }
+
+    return res.status(200).json({ message: { travel: travel } });
+  } else {
+    return res.status(200).json({ message: { txt: "voyage pas trouvé" } });
+  }
+};
+
+exports.book = async (req, res) => {
+  const travelId = req.params.id;
+  const userId = req.userId;
+
+  const travelFound = await db.TRAVEL.findOne({
+    where: { id: travelId },
+  });
+
+  if (travelFound) {
+    travelFound.addUser(userId);
+    travelFound.save();
+
+    return res.status(200).json({ message: { travel: travelFound } });
+  } else {
+    return res.status(200).json({ message: { txt: "voyage pas trouvé" } });
+  }
+};
+
+exports.addTravel = async (req, res) => {
+  const userId = req.userId;
+  const latStart = req.body.latStart;
+  const longStart = req.body.longStart;
+  const dateStart = req.body.dateStart;
+  const latArrival = req.body.latArrival;
+  const longArrival = req.body.longArrival;
+  const smoker = req.body.smoker;
+  const airconditionning = req.body.airconditionning;
+  const carId = req.body.carId;
+
+  let travel = db.TRAVEL.build({
+    latStart: latStart,
+    longStart: longStart,
+    dateStart: dateStart,
+    latArrival: latArrival,
+    longArrival: longArrival,
+    smoker: smoker,
+    airconditionning: airconditionning,
+    car_id: carId,
+    driver_id: userId,
+  });
+  travel.save();
+
+  return res.status(200).json({ message: { txt: "voyage ajouté" } });
 };
