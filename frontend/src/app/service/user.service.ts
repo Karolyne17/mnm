@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, map, throwError, of, Subject } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
-import { ServiceToken } from './service/service.token';
-import { Users } from './Classes/user';
-import { Adress } from './Classes/adress';
+import { ServiceToken } from './service.token';
+import { Users } from '../Classes/user';
+import { Adress } from '../Classes/adress';
+// import { Users } from './Classes/user';
+// import { Adress } from './Classes/adress';
 //import { User } from './Interfaces/user';
 // import { Post } from './post';
 // import { Posts } from './classes/post';
@@ -139,7 +141,11 @@ export class UserService {
 
   getAdress(id:number):Observable<any>{
   // console.log('FONCTION GETAdress : ' + id);
-    return this.http.get(this.urlBase + "/adress/"+id);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.get(this.urlBase + "/adress/"+id, {headers:headers});
   }
 
   getUsers(): Observable<Array<Users>> {

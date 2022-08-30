@@ -1,32 +1,12 @@
 <div class="section">
 
-  <!--
-  <img class="img" src="../../assets/img/logo.PNG" alt="">
--->
   <form [formGroup]="logForm" (ngSubmit)="validForm()">
     <div>INSCRIPTION</div>
     <div><input type="text" placeholder="email" formControlName="email"></div>
     <div><input type="text" placeholder="password" formControlName="password"></div>
     <div><input class="submit" type="submit" value="S'enregistrer"></div>
   </form>
-<!--
-<div class="section">
-  <img class="img" src="../../assets/img/logo.PNG" alt="">
-
-  <form [formGroup]="logForm" (ngSubmit)="validForm()">
-    <div><input type="text" placeholder="userName" formControlName="userName"></div>
-    <div><input type="text" placeholder="lastName" formControlName="lastName"></div>
-    <div><input type="text" placeholder="firstName" formControlName="firstName"></div>
-    <div><input type="number" placeholder="phoneNumber" formControlName="phoneNumber"></div>
-    <div><input type="text" placeholder="email" formControlName="email"></div>
-    <div><input type="text" placeholder="photo" formControlName="photo"></div>
-    <div><input type="text" placeholder="searchingZone" formControlName="searchingZone"></div>
-    <div><input type="text" placeholder="idAddress" formControlName="idAddress"></div>
-    <div><input class="submit" type="submit" value="S'enregistrer"></div>
-  </form>
--->
 
   <a routerLink="/connection">Vous avez déjà un compte ?</a><br>
-
 
 </div>

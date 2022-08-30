@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/Classes/user';
-import { UserService } from 'src/app/user.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-connect',
