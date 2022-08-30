@@ -17,8 +17,10 @@ app.get("/", (req, res) => {
   res.status(200).send("OK ça marche");
 });
 
-const usersRoutes = require('./routes/users');
+const usersRoutes = require("./routes/users");
+const travelsRoutes = require("./routes/travels");
 
-const apiPath = '/api';
+const apiPath = "/api";
 
 app.use(apiPath, usersRoutes);
+app.use(apiPath, travelsRoutes);
