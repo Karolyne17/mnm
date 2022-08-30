@@ -1,0 +1,26 @@
+<div class="header-container">
+    <div class="header-sub-container">
+        <div class="header-up-container">
+            <div class="mnm-logo-container">
+                <img class="mnm-logo-img" src="./assets/mnm-logo.png" alt="mnm-logo">
+            </div>
+            <div class="menu-title">page</div>
+            <div class="menu-bar-container" (click)="myFunction()">
+                <img class="menu-bar-img" src="./assets/menu-bar.png" alt="menu-bar">
+            </div>
+        </div>
+        <div class="menu-down-container" #menuDownContainer style="display:none;">
+            <hr class="first-hr">
+            <a routerLink="/accueil" (click)="myFunction()"><div>Accueil</div></a>
+            <hr>
+            <a routerLink="/user/:id" (click)="myFunction()"><div>Mon Profil</div></a>
+            <hr>
+            <a href="#" (click)="myFunction()"><div>Mes Trajets</div></a>
+            <hr>
+            <a href="#" (click)="myFunction()"><div>Mes Messages</div></a>
+            <hr>
+            <a routerLink="/connection" (click)="myFunction()"><div>Déconnexion</div></a>
+        </div>
+    </div>
+</div>
+

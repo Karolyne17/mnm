@@ -6,6 +6,7 @@ import { ConnectionComponent } from './Pages/connection/connection.component';
 import { InscriptionComponent } from './Pages/inscription/inscription.component';
 import { ProfilComponent } from './Pages/profil/profil.component';
 import { UpdateAccountComponent } from './Pages/update-account/update-account.component';
+import { HeaderComponent } from './Pages/header/header.component';
 
 const routes: Routes = [
   { path: "", component: InscriptionComponent },

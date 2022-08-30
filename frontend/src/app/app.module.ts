@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConnectionComponent } from './Pages/connection/connection.component';
 import { AccueilComponent } from './Pages/accueil/accueil.component';
 import { UpdateAccountComponent } from './Pages/update-account/update-account.component';
+import { HeaderComponent } from './Pages/header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UpdateAccountComponent } from './Pages/update-account/update-account.co
     ConnectionComponent,
     AccueilComponent,
 
-    UpdateAccountComponent
+    UpdateAccountComponent,
+      HeaderComponent
   ],
   imports: [
     BrowserModule,
