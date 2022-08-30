@@ -12,15 +12,24 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router, private titleService: Title, private activatedRoute: ActivatedRoute,) {}
 
-getTtl(): string{
-  return this.titleService.getTitle();
-}
-
   ngOnInit(): void {}
 
   name = "Angular " + VERSION.major;
+
+  getVisibility(): boolean {
+    let currentTitle:string = this.titleService.getTitle();
+    return !(currentTitle == 'Inscription' || currentTitle == 'Connection')
+  }
+
+  getTtl(): string{
+    let currentTitle:string = this.titleService.getTitle();
+
+    return currentTitle;
+  }
+
   @ViewChild("menuDownContainer")
   menuDownContainer!: ElementRef;
+
   myFunction() {
     if (this.menuDownContainer.nativeElement.style.display === "block") {
       this.menuDownContainer.nativeElement.style.display = "none";
