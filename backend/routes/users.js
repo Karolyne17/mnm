@@ -10,4 +10,6 @@ router.post("/signin", userCtrl.signin);
 router.get("/profile/:id", [authVerif], userCtrl.profile);
 router.post("/profile", [authVerif], userCtrl.updateProfile);
 
+router.post("/car", [authVerif], userCtrl.addCar);
+
 module.exports = router;

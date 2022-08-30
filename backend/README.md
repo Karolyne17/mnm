@@ -99,6 +99,20 @@ Renvoie:
         }
     ]
 
+## POST `/api/car`
+_Ajout d'un véhicule_
+
+Reçoit:
+
+    {
+        model: "Alpha Romeo",
+        placeQuantity: 2,
+        matriculation: "FAR 92 ZM",
+        color: "rouge",
+    }
+
+
+
 # /backend/.env
 
 ```PORT=3000
