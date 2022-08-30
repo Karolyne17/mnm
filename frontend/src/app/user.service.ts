@@ -147,12 +147,16 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
     })
-    return this.http.get<Array<Users>>(this.urlBase + '/multipleMembre', {headers:headers});
+    return this.http.get<Array<Users>>(this.urlBase + '/profile', {headers:headers});
   }
 
   getUser(id:number):Observable<any>{
-  // console.log('FONCTION GETUSER : ' + id);
-    return this.http.get(this.urlBase + "/user/"+id);
+    console.log('FONCTION GETUSER : ' + id);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.get(this.urlBase + "/profile/"+id, {headers:headers});
   }
 
 

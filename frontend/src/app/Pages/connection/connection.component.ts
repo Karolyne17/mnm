@@ -40,6 +40,7 @@ export class ConnectionComponent implements OnInit {
             localStorage.setItem('id', ret.message.id);
             console.log(localStorage);
             that.router.navigate([`/user/${ret.message.id}`]);
+            //that.router.navigate([`/accueil`]);
 
 
           }else if(ret.message.pass == false){
