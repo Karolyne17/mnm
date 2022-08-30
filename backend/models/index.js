@@ -138,7 +138,7 @@ mysql
           console.log(
             "Connection to database has been established successfully."
           );
-          db.sequelize.sync({ force: true }).then(async () => {
+          db.sequelize.sync({ force: false }).then(async () => {
             console.log("Database ready.");
           });
         })

@@ -6,7 +6,7 @@ const passService = require("../services/password");
 const tokenService = require("../services/token");
 
 exports.signup = async (req, res) => {
-  console.log("tentative d inscription");
+  console.log("tentative d in scription");
   const password = req.body.password;
   const hashedPassword = await passService.hashPassword(password);
   const email = req.body.email;
@@ -69,7 +69,7 @@ exports.profile = async (req, res) => {
   const id = req.params.id;
 
   const userFound = await db.USER.findOne({
-    where: { id: id },
+    where: { id: userId },
     include: [db.ADDRESS],
   });
 
@@ -93,7 +93,7 @@ exports.profile = async (req, res) => {
         city: userFound.address.city,
       };
     }
-    console.log("COUCOUUUUUUUUUUU");
+
     return res.status(200).json({ message: { user: user } });
   } else {
     return res.status(200).json({ message: { txt: "utilisateur pas trouvé" } });
@@ -118,7 +118,7 @@ exports.updateProfile = async (req, res) => {
   const city = req.body.city;
 
   const userFound = await db.USER.findOne({
-    where: { user_id: id },
+    where: { id: userId },
     include: [db.ADDRESS],
   });
 
