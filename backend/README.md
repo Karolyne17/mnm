@@ -2,6 +2,8 @@
 
 ## POST `/api/signup`
 
+_Inscription_
+
 Reçoit:
 
     {
@@ -10,6 +12,8 @@ Reçoit:
     }
 
 ## POST `/api/signin`
+
+_Connexion_
 
 Reçoit:
 
@@ -27,6 +31,8 @@ Renvoie:
     }
 
 ## GET `/api/profile/:id`
+
+_Profil d'une personne_
 
 Renvoie:
 
@@ -49,6 +55,8 @@ Renvoie:
 
 ## POST `/api/profile`
 
+_Modification du profil du compte connecté_
+
 Reçoit:
 
     user: {
@@ -67,6 +75,8 @@ Reçoit:
     }
 
 ## GET `/api/travels`
+
+_Tous les voyages_
 
 Renvoie:
 
