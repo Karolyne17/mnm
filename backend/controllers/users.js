@@ -144,3 +144,23 @@ exports.updateProfile = async (req, res) => {
 
   return res.status(200).json({ message: { txt: "Utilisateur updaté" } });
 };
+
+exports.addCar = async (req, res) => {
+  const userId = req.userId;
+
+  const model = req.body.model;
+  const placeQuantity = req.body.placeQuantity;
+  const matriculation = req.body.matriculation;
+  const color = req.body.color;
+
+  let car = db.CAR.build({
+    model: model,
+    placeQuantity: placeQuantity,
+    matriculation: matriculation,
+    color: color,
+    owner_id: userId,
+  });
+  await car.save();
+
+  return res.status(200).json({ message: { txt: "Voiture ajoutée" } });
+};
