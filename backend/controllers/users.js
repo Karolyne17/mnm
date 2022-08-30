@@ -13,14 +13,12 @@ exports.signup = async (req, res) => {
 
   const emailFound = await db.USER.findOne({ where: { email: email } });
   if (emailFound) {
-    return res
-      .status(200)
-      .json({
-        message: {
-          txt: "An account with this email address already exists.",
-          code: "email_already_used",
-        },
-      });
+    return res.status(200).json({
+      message: {
+        txt: "An account with this email address already exists.",
+        code: "email_already_used",
+      },
+    });
   }
 
   let user = db.USER.build({
