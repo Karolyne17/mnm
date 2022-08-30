@@ -125,6 +125,7 @@ Renvoie:
 
     travels: [
         {
+            id: 69,
             latStart: 49.75,
             longStart: 9.28,
             dateStart: "2022-08-31T15:53:29.000Z",
@@ -133,14 +134,69 @@ Renvoie:
             smoker: true,
             airconditionning: false,
             user: {
+                id: 20,
                 userName: "Roger",
             },
             car: {
                 model: "Alpha Romeo",
                 placeQuantity: 3,
-            }
+            },
+            passengers: [
+                {
+                    id: 1,
+                    userName: "Roro"
+                }
+            ]
         }
     ]
+
+## POST `/api/travel`
+
+_Ajoute un voyage_
+
+Reçoit:
+
+    {
+        "latStart" : 7.222,
+        "longStart" : 69.69,
+        "dateStart" : "2022-08-30 15:53:29",
+        "latArrival" : 42.12,
+        "longArrival" : 45.25,
+        "smoker" : false,
+        "airconditionning" : true,
+        "carId":1
+    }
+
+## GET `/api/travel/:id`
+
+_Le voyage correspondant à l'id_
+
+Renvoie:
+
+    travel: {
+        id: 69,
+        latStart: 49.75,
+        longStart: 9.28,
+        dateStart: "2022-08-31T15:53:29.000Z",
+        latArrival: 24.58955,
+        longArrival: 14.2666,
+        smoker: true,
+        airconditionning: false,
+        user: {
+            id: 20,
+            userName: "Roger",
+        },
+        car: {
+            model: "Alpha Romeo",
+            placeQuantity: 3,
+        },
+        passengers: [
+            {
+                id: 1,
+                userName: "Roro"
+            }
+        ]
+    }
 
 ## POST `/api/car`
 
@@ -154,6 +210,10 @@ Reçoit:
         matriculation: "FAR 92 ZM",
         color: "rouge",
     }
+
+## POST `/api/book/:id`
+
+_L'utilisateur connecté réserver une place sur le trajet correspondant à l'id_
 
 # /backend/.env
 
