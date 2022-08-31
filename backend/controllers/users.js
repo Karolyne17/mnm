@@ -76,9 +76,8 @@ exports.profile = async (req, res) => {
     include: [db.ADDRESS, db.CAR, db.TRAVEL],
   });
 
-  let nbPassengers = await userFound.countTravels();
-
   if (userFound) {
+    let nbPassengers = await userFound.countTravels();
     let user = {
       userName: userFound.userName,
       lastName: userFound.lastName,
