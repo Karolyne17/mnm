@@ -54,6 +54,7 @@ exports.getAll = async (req, res) => {
 
 exports.getTravel = async (req, res) => {
   const id = req.params.id;
+  const userId = req.userId;
 
   const travelFound = await db.TRAVEL.findOne({
     where: { id: id },
@@ -80,6 +81,7 @@ exports.getTravel = async (req, res) => {
         placeQuantity: travelFound.car.placeQuantity - nbUsers,
       },
       passengers: [],
+      isAlreadyBooked: false,
     };
 
     // let nbUsers = await travelFound.countUsers();
@@ -90,6 +92,9 @@ exports.getTravel = async (req, res) => {
           id: passenger.id,
           userName: passenger.userName,
         };
+        if (userId == passenger.id) {
+          travel.isAlreadyBooked = true;
+        }
         travel.passengers.push(pass);
       }
     }
