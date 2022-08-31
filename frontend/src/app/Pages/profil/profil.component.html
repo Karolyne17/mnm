@@ -7,8 +7,8 @@
 
       <div class="bold capitalize"><span class="capitalize">{{user.firstName}}</span> <span class="capitalize"> {{user.lastName}}</span></div>
       <div class="bold capitalize">{{user.userName}}</div>
-      <div>{{adress.number}}<span class="lowercase">{{adress.lineA}}</span></div>
-      <div>{{adress.zipCode}}<span class="capitalize">{{adress.city}}</span></div>
+      <div>{{address.number}} <span class="lowercase">{{address.lineA}}</span></div>
+      <div>{{address.zipCode}} <span class="capitalize">{{address.city}}</span></div>
     </div>
   </div>
   <div class="note mt1">
@@ -42,10 +42,10 @@
   <!-- if vehicules -->
   <div class="mesVehicules" style="margin-top: 150px">
     <div class="titre">Mes véhicules</div>
-    <div class="divRow">
-      <div class="">model</div>
-      <div class="">couleur</div>
-      <div class="">4 places</div>
+    <div class="divRow" *ngFor="let car of cars">
+      <div class="">{{car.model}}</div>
+      <div class="">{{car.color}}</div>
+      <div class="">{{car.placeQuantity}}</div>
       <div class="troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>
     </div>
   </div>
@@ -53,9 +53,9 @@
 
   <div class="mesVehicules" style="margin-top: 50px">
     <div class="titre">Réservation</div>
-    <div class="divRow">
-      <div class="model">date</div>
-      <div class="color">heure</div>
+    <div class="divRow" *ngFor="let myTravel of myTravels">
+      <div class="model">{{myTravel.dateStart | date: 'M/d/yy' }}</div>
+      <div class="color">{{myTravel.dateStart | date: 'h:mm a' }}</div>
       <div class="colorplace">Départ -></div>
       <div class="colorplace">Arrivé</div>
       <div class="troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>
@@ -65,9 +65,9 @@
 
   <div class="mesVehicules" style="margin-top: 50px">
     <div class="titre">Mes trajets proposés(conducteur)</div>
-    <div class="divRow">
-      <div class="model">date</div>
-      <div class="color">heure</div>
+    <div class="divRow" *ngFor="let myTravel of myTravels">
+      <div class="model">{{myTravel.dateStart | date: 'M/d/yy' }}</div>
+      <div class="color">{{myTravel.dateStart | date: 'M/d/yy' }}</div>
       <div class="colorplace">Départ -></div>
       <div class="colorplace">Arrivé</div>
       <div class="troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>

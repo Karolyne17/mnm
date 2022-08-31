@@ -4,8 +4,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { ServiceToken } from './service.token';
 import { Users } from '../Classes/user';
 import { Adress } from '../Classes/adress';
-// import { Users } from './Classes/user';
-// import { Adress } from './Classes/adress';
 //import { User } from './Interfaces/user';
 // import { Post } from './post';
 // import { Posts } from './classes/post';
@@ -131,22 +129,22 @@ export class UserService {
   //     return this.http.get(this.urlBase + "/post/"+id, {headers:headers});
   // }
 
-  getAdresses(): Observable<Array<Adress>> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
-    })
-    return this.http.get<Array<Adress>>(this.urlBase + '/multipleAdresses', {headers:headers});
-  }
+  // getAdresses(): Observable<Array<Adress>> {
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+  //   })
+  //   return this.http.get<Array<Adress>>(this.urlBase + '/multipleAdresses', {headers:headers});
+  // }
 
-  getAdress(id:number):Observable<any>{
-  // console.log('FONCTION GETAdress : ' + id);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
-    })
-    return this.http.get(this.urlBase + "/adress/"+id, {headers:headers});
-  }
+  // getAdress(id:number):Observable<any>{
+  // // console.log('FONCTION GETAdress : ' + id);
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+  //   })
+  //   return this.http.get(this.urlBase + "/adress/"+id, {headers:headers});
+  // }
 
   getUsers(): Observable<Array<Users>> {
     const headers = new HttpHeaders({
