@@ -7,8 +7,8 @@
 
       <div class="bold capitalize"><span class="capitalize">{{user.firstName}}</span> <span class="capitalize"> {{user.lastName}}</span></div>
       <div class="bold capitalize">{{user.userName}}</div>
-      <div>30 <span class="lowercase">Rue De Lorem Ipsum</span></div>
-      <div>52 000<span class="capitalize"> Sitamet</span></div>
+      <div>{{adress.number}}<span class="lowercase">{{adress.lineA}}</span></div>
+      <div>{{adress.zipCode}}<span class="capitalize">{{adress.city}}</span></div>
     </div>
   </div>
   <div class="note mt1">
@@ -30,8 +30,9 @@
     </div>
   </div>
   <div class="divBtn mt1">
-    <div class="btn"><a routerLink="user/updateAccount/:id">Modifier mon profile</a></div>
+    <div class="btn" (click)="goToUpdate()">Modifier mon profile</div>
     <div class="btn mt1 orange"><a routerLink="/addCar">Ajouter un véhicule</a></div>
+    <div class="cursor" (click)="delete()">Supprimer mon compte</div>
     <!-- L’ajout d’un véhicule à son profil permet de renseigner la marque, le modèle, la couleur
     ainsi qu’une photo de celui-ci dans le but de l’identifier plus facilement au point de
     rendez-vous. Le nombre de places disponibles est aussi spécifié. -->

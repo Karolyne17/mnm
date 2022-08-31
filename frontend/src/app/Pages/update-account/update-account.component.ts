@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Adress } from 'src/app/Classes/adress';
 import { Users } from 'src/app/Classes/user';
-import { UserService } from 'src/app/user.service';
+import { User } from 'src/app/Interfaces/user';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-update-account',
@@ -11,28 +12,15 @@ import { UserService } from 'src/app/user.service';
   styleUrls: ['./update-account.component.css']
 })
 export class UpdateAccountComponent implements OnInit {
-prenom="";
-  id = localStorage["id"];
-  idPage:number= 0;
-  idAcharger: number = 0;
-  updateAccount: FormGroup;
-  user: Users = {
-    userName: '',
-    lastName: '',
-    firstName: '',
-    phoneNumber: 0,
-    email: '',
-    photo: '',
-    searchingZone: '',
-    id: -1,
-  };
-  adress: Adress = {
-    number: '',
-    lineA: '',
-    zipCode: '',
-    city: '',
-    id: -1,
-  }
+  nav:any;
+  dataPlaceholder:any;
+  prenom="";
+    id = localStorage["id"];
+    idPage:number= 0;
+    idAcharger: number = 0;
+    updateAccount: FormGroup;
+    user: User = {} as User;
+    adress: Adress = {} as Adress;
 
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) {
@@ -59,11 +47,8 @@ prenom="";
 
     this.userService.getUser(that.idAcharger).subscribe({
       next(ret) {
-        let data;
-        for(let use of Object.keys(ret)){
-          data = ret[use];
-        }
-        that.user = data;
+        that.user = ret.message.user;
+        that.dataPlaceholder = that.user ? that.user : "";
       },
       error(err){
         console.log(err);
@@ -147,5 +132,7 @@ prenom="";
     this.router.navigate([`/user/${idPage}`])
   }
 
-
+goToProfil(){
+  this.nav = this.router.navigate([`/user/${this.idAcharger}`]);
+}
 }
