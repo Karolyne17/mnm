@@ -25,7 +25,7 @@ idAcharger: number = 0;
 
     this.userService.getUser(that.idAcharger).subscribe({
       next(ret) {
-        //console.log(ret.message.user);
+        console.log(ret.message.user);
         that.user = ret.message.user;
       },
       error(err){
