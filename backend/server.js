@@ -27,7 +27,7 @@ app.use(apiPath, travelsRoutes);
 
 app.get("/bdd", async (req, res) => {
   await db.sequelize.query(
-    "INSERT INTO addresses (id, number, lineA, lineB, zipCode, city) VALUES (NULL, '8 bis', 'rue du poulet', '', '57000', 'Metz'), (NULL, '25', 'avenue de monaco', 'truc', '69069', 'Lyon');"
+    "INSERT INTO addresses (id, number, lineA, lineB, zipCode, city, createdAt, updatedAt, deletedAt) VALUES (NULL, '8 bis', 'rue du poulet', '', '57000', 'Metz', '2022-08-29 13:56:30', '2022-08-29 13:56:30', NULL), (NULL, '25', 'avenue de monaco', 'truc', '69069', 'Lyon', '2022-08-29 13:56:30', '2022-08-29 13:56:30', NULL);"
   );
   await db.sequelize.query(
     "INSERT INTO users (id, userName, firstName, lastName, phoneNumber, email, photo, searchingZone, createdAt, updatedAt, deletedAt, password, address_id) VALUES (NULL, 'Roger', 'TT', 'Man', '0625476812', 'roger@tt.com', NULL, 200, '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '$2b$08$jsWnL3eW0IlMhVbQclXrR.Tiu4/qcDr0mr9661XMhA5nSEC3w9pLO', 1),(NULL, 'Mamy', 'Mamy', 'Mamamia', '074587458965', 'mam@my.com', NULL, 100, '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '$2b$08$vHk8mf8vYw5HcODVSzVJF.SnvQ3H5Pny8rBDgJqhjF8iLEG1lgqby', 2), (NULL, 'Soph', 'Sophie', 'Marsso', '0611475821', 'so@fi.com', NULL, 100, '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '$2b$08$vHk8mf8vYw5HcODVSzVJF.SnvQ3H5Pny8rBDgJqhjF8iLEG1lgqby', NULL);"
