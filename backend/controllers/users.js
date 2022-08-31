@@ -73,7 +73,7 @@ exports.profile = async (req, res) => {
 
   const userFound = await db.USER.findOne({
     where: { id: id },
-    include: [db.ADDRESS, db.CAR],
+    include: [db.ADDRESS, db.CAR, db.TRAVEL],
   });
 
   if (userFound) {
@@ -107,6 +107,43 @@ exports.profile = async (req, res) => {
           color: car.color,
         };
         user.cars.push(usercar);
+      }
+    }
+
+    if ((await userFound.countTravels()) > 0) {
+      user.myTravels = [];
+      user.myBookings = [];
+      for (let travel of userFound.travels) {
+        let trav = {
+          latStart: travel.latStart,
+          longStart: travel.longStart,
+          dateStart: travel.dateStart,
+          latArrival: travel.latArrival,
+          longArrival: travel.longArrival,
+          smoker: travel.smoker,
+          airconditionning: travel.airconditionning,
+        };
+
+        // console.log("o", await travel.getUsers());
+        let uz = await travel.getUsers();
+        let zz = await travel.getUser();
+        // console.log("o", uz);
+        // console.log("traj", travel.id);
+        // console.log("driv", travel.driver_id, zz.userName);
+        trav.driver = { id: zz.id, userName: zz.userName };
+        trav.passengers = [];
+        for (let u of uz) {
+          // console.log("uz", u.id, u.userName);
+          trav.passengers.push({ id: u.id, userName: u.userName });
+        }
+
+        if (travel.driver_id == userId) {
+          user.myTravels.push(trav);
+        } else {
+          user.myBookings.push(trav);
+        }
+
+        // console.log(travel.driver_id == userId ? "conducteur" : "passager");
       }
     }
 
