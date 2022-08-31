@@ -7,129 +7,22 @@
         <div>
             <p class="travel-list-title">Derniers trajets</p>
         </div>
-        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
+        <div  *ngFor="let travel of travels; index as i">
+            <hr class="travel-separator">
+            <a href="#">
+                <div class="one-travel-container">
+                    <div class="profil-pic-container">
+                        <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
+                    </div>
+                    <div class="travel-infos">
+                        <p class="start-arrival">{{travel.latStart}}  - MNS</p>
+                        <p class="datetime-start">A {{ travel.dateStart | date:'H:mm' :'fr-FR' }} le {{ travel.dateStart | date:'EEEE d MMMM  y':'+0200' :'fr-FR' }}</p>
+                        <p class="user-name">Proposé par {{travel.user?.userName}}</p>
+                        <p class="more-info">Il reste {{travel.car?.placeQuantity}} place(s)</p>
+                    </div>
+                    <div class="price">3 €</div>
                 </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>
-
-
-        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>        <hr class="travel-separator">
-        <a href="#">
-            <div class="one-travel-container">
-                <div class="profil-pic-container">
-                    <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
-                </div>
-                <div class="travel-infos">
-                    <p class="start-arrival"><!--{{travel.latStart}}--> Sarrebourg - MNS</p>
-                    <p class="user-name">Paolo</p>
-                    <p class="more-info">Reste 3 places</p>
-                </div>
-                <div class="price">3 €</div>
-            </div>
-        </a>
-
-
-
+            </a>
+        </div>
     </div>
 </div>
