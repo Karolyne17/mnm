@@ -10,6 +10,11 @@ import { ConnectionComponent } from './Pages/connection/connection.component';
 import { AccueilComponent } from './Pages/accueil/accueil.component';
 import { UpdateAccountComponent } from './Pages/update-account/update-account.component';
 import { HeaderComponent } from './Pages/header/header.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { LocalizedDatePipe } from './pipe/localized-date.pipe';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -20,7 +25,8 @@ import { HeaderComponent } from './Pages/header/header.component';
     AccueilComponent,
 
     UpdateAccountComponent,
-      HeaderComponent
+    HeaderComponent,
+    LocalizedDatePipe,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import { HeaderComponent } from './Pages/header/header.component';
     HttpClientModule,
   ],
   providers: [
-    Title
+    Title,
   ],
   bootstrap: [AppComponent]
 })
