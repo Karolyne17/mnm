@@ -13,6 +13,7 @@ exports.getAll = async (req, res) => {
   if (travelsFound) {
     let travels = [];
     for (let travel of travelsFound) {
+      let nbUsers = await travel.countUsers();
       let trav = {
         id: travel.id,
         latStart: travel.latStart,
@@ -28,12 +29,12 @@ exports.getAll = async (req, res) => {
         },
         car: {
           model: travel.car.model,
-          placeQuantity: travel.car.placeQuantity,
+          placeQuantity: travel.car.placeQuantity - nbUsers,
         },
         passengers: [],
       };
 
-      if ((await travel.countUsers()) > 0) {
+      if (nbUsers > 0) {
         let passengers = await travel.getUsers();
         for (let passenger of passengers) {
           let pass = {
@@ -59,6 +60,8 @@ exports.getTravel = async (req, res) => {
     include: [db.USER, db.CAR],
   });
 
+  let nbUsers = await travelFound.countUsers();
+
   if (travelFound) {
     let travel = {
       latStart: travelFound.latStart,
@@ -74,12 +77,13 @@ exports.getTravel = async (req, res) => {
       },
       car: {
         model: travelFound.car.model,
-        placeQuantity: travelFound.car.placeQuantity,
+        placeQuantity: travelFound.car.placeQuantity - nbUsers,
       },
       passengers: [],
     };
 
-    if ((await travelFound.countUsers()) > 0) {
+    // let nbUsers = await travelFound.countUsers();
+    if (nbUsers > 0) {
       let passengers = await travelFound.getUsers();
       for (let passenger of passengers) {
         let pass = {
@@ -99,16 +103,35 @@ exports.getTravel = async (req, res) => {
 exports.book = async (req, res) => {
   const travelId = req.params.id;
   const userId = req.userId;
+  const comment = req.body.comment;
 
   const travelFound = await db.TRAVEL.findOne({
     where: { id: travelId },
   });
 
   if (travelFound) {
-    travelFound.addUser(userId);
+    travelFound.addUser(userId, { through: { comment: comment } });
     travelFound.save();
 
     return res.status(200).json({ message: { travel: travelFound } });
+  } else {
+    return res.status(200).json({ message: { txt: "voyage pas trouvé" } });
+  }
+};
+
+exports.cancelBooking = async (req, res) => {
+  const travelId = req.params.id;
+  const userId = req.userId;
+
+  const travelFound = await db.TRAVEL.findOne({
+    where: { id: travelId },
+  });
+
+  if (travelFound) {
+    travelFound.removeUser(userId);
+    travelFound.save();
+
+    return res.status(200).json({ message: { text: "réservation supprimée" } });
   } else {
     return res.status(200).json({ message: { txt: "voyage pas trouvé" } });
   }

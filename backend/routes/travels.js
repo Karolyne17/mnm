@@ -8,5 +8,6 @@ router.get("/travel/:id", [authVerif], travCtrl.getTravel);
 router.post("/travel", [authVerif], travCtrl.addTravel);
 
 router.post("/book/:id", [authVerif], travCtrl.book);
+router.delete("/book/:id", [authVerif], travCtrl.cancelBooking);
 
 module.exports = router;

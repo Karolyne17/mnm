@@ -1,10 +1,6 @@
 <div class="section">
-  <img class="img" src="../../assets/img/logo.PNG" alt="">
 
 <div class="section">
-  <!--
-  <img class="img" src="../../assets/img/logo.PNG" alt="">
--->
   <form [formGroup]="updateAccount" (ngSubmit)="validForm()">
     <div><input type="text" placeholder="Pseudo" formControlName="userName"></div>
     <div><input type="text" placeholder="Nom" formControlName="lastName"></div>
@@ -23,7 +19,7 @@
   </form>
 
 
-  <a routerLink="/connection">Vous avez déjà un compte ?</a><br>
+  <div class="btn"  (click)="goToProfil()">Retourner sur mon profile</div><br>
 
 
 </div>

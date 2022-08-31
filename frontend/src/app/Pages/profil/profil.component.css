@@ -94,6 +94,7 @@
   border-radius: 15px;
   border: 1px solid orange;
   padding: 5px 5px;
+  cursor: pointer;
 }
 
 .orange{
@@ -131,4 +132,8 @@
 }
 .lowercase{
   text-transform: lowercase;
+}
+
+.cursor{
+  cursor: pointer;
 }
