@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Adress } from 'src/app/Classes/adress';
+import { Bookings } from 'src/app/Classes/bookings';
+import { Cars } from 'src/app/Classes/cars';
+import { Travel } from 'src/app/Classes/travel';
 import { Users } from 'src/app/Classes/user';
 import { User } from 'src/app/Interfaces/user';
 import { ServiceToken } from 'src/app/service/service.token';
@@ -14,29 +17,30 @@ import { UserService } from 'src/app/service/user.service';
 export class ProfilComponent implements OnInit {
 idAcharger: number = 0;
   user: User = {} as User;
-  adress: Adress = {} as Adress;
+  address: Adress = {} as Adress;
+  //cars: Cars = {} as Cars;
+  cars: Array<Cars> = [];
+  myTravels: Array<Travel> = [];
+  myBookings: Array<Bookings> = [];
+  //myTravels: Array<Travel> = [];
   nav:any;
-  //unUser:User;
+
   constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken) {
     let that = this;
-    this.route.params.subscribe({
-      next(val) {
-        that.idAcharger = parseInt(val["id"])
-      }
-    });
-
+    this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
     this.userService.getUser(that.idAcharger).subscribe({
       next(ret) {
+        console.log(ret);
+        let data;
+
         that.user = ret.message.user;
-      },
-      error(err){
-        console.log(err);
-      }
-    });
-    this.userService.getAdress(that.idAcharger).subscribe({
-      next(ret) {
-        that.adress = ret.message.adress;
-        console.log('adress : ' , that.adress)
+        that.address = ret.message.user.address;
+        that.cars = ret.message.user.cars;
+        that.myTravels = ret.message.user.myTravels;
+        that.myBookings = ret.message.user.myBookings;
+
+        console.log(that.cars[0].model);
+        console.log(that.user.userName);
       },
       error(err){
         console.log(err);
