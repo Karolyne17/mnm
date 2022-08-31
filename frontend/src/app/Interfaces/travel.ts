@@ -1,3 +1,6 @@
+import { Car } from "./car";
+import { User } from "./user";
+
 export interface Travel {
     id?: number,
     latStart?: number,
@@ -11,4 +14,6 @@ export interface Travel {
     createdAt?: Date,
     updatedAt?: Date,
     deletedAt?: Date,
+    user?: User,
+    car?: Car,
 }

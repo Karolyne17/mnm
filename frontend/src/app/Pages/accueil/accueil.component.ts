@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Travel } from 'src/app/Interfaces/travel';
 import { User } from 'src/app/Interfaces/user';
+import { TravelService } from 'src/app/service/travel.service';
+import { DatePipe } from '@angular/common';
+import { LocalizedDatePipe } from 'src/app/pipe/localized-date.pipe';
 
 @Component({
   selector: 'app-accueil',
@@ -11,13 +14,22 @@ import { User } from 'src/app/Interfaces/user';
 export class AccueilComponent implements OnInit {
 
   travels: Array<Travel> = [];
-  driver: User = {
-    userName: '',
-    photo: '',
-    id: -1
-  }
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router, private travelService: TravelService) { 
+    let that = this;
+
+    this.travelService.getTravels().subscribe({
+      next(trav) {
+        console.log(trav);
+        that.travels = trav.message.travels;
+      },
+      error(err){
+        console.log("ERREUR ICI :" +err);
+      }
+    });
+  }
+  
 
   ngOnInit(): void {
   }
