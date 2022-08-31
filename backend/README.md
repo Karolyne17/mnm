@@ -281,6 +281,10 @@ Reçoit:
         color: "rouge",
     }
 
+## DELETE `/api/car/:id`
+
+_Supprime un véhicule_
+
 ## POST `/api/book/:id`
 
 _L'utilisateur connecté réserver une place sur le trajet correspondant à l'id_
