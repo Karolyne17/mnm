@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ServiceToken } from './service.token';
-import { Travels } from '../Classes/travel';
+import { Travel } from '../Classes/travel';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class TravelService {
   })
   return this.http.get(this.urlBase + "/travels", {headers:headers});
   }
-  
+
   // getTravel(id:number):Observable<any>{
   //   const headers = new HttpHeaders({
   //   'Content-Type': 'application/json',
