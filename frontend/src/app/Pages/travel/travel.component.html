@@ -1,0 +1,28 @@
+<div class="trajet-container">
+    <h1>Détails du trajet</h1>
+    <div class="info-container">
+        <p class="info-title">Date</p>
+        <p class="info">{{ travel.dateStart | date:'EEEE d MMMM  y':'+0200' :'fr-FR' }}</p>
+        <p class="info-title">Départ</p>
+        <p class="info">{{ travel.dateStart | date:'H:mm' :'fr-FR' }} à {{travel.latStart}}</p>
+        <p class="info-title">Arrivé</p>
+        <p class="info">A {{travel.latArrival}}</p>
+        <p class="info-title">Conducteur</p>
+        <p class="info">{{travel.user?.userName}}</p>
+        <p class="info-title">Véhicule</p>
+        <p class="info">{{travel.car?.model}}</p>
+        <p class="info-title">Place(s) restantes</p>
+        <p class="info">{{place}}</p>
+        <p class="info-title">Informations complémentaires</p>
+        <p class="info">{{clim}} - {{smoker}}</p>
+    </div>
+
+    <form [formGroup]="reservationForm" (ngSubmit)="validForm()" *ngIf="getVisibility()">
+        <textarea class="comment-input" type="text" formControlName="comment" placeholder="Ecrivez au conducteur"></textarea>
+        <input class="orange-btn" type="submit" value="Ecrire et Réserver">
+    </form>
+    <form [formGroup]="reservationForm" (ngSubmit)="validForm()" *ngIf="!getVisibility()">
+        <textarea class="comment-input" type="text" formControlName="comment" placeholder="Ecrivez au conducteur"></textarea>
+        <input class="orange-btn" type="submit" value="Ecrire et Réserver">
+    </form>
+</div>

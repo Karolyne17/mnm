@@ -9,7 +9,7 @@
         </div>
         <div  *ngFor="let travel of travels; index as i">
             <hr class="travel-separator">
-            <a href="#">
+            <a routerLink="/travel/{{travel.id}}">
                 <div class="one-travel-container">
                     <div class="profil-pic-container">
                         <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">

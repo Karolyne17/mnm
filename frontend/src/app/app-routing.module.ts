@@ -7,6 +7,7 @@ import { InscriptionComponent } from './Pages/inscription/inscription.component'
 import { ProfilComponent } from './Pages/profil/profil.component';
 import { UpdateAccountComponent } from './Pages/update-account/update-account.component';
 import { HeaderComponent } from './Pages/header/header.component';
+import { TravelComponent } from './Pages/travel/travel.component';
 
 const routes: Routes = [
   { path: "", component: InscriptionComponent, data: {title: 'Inscription'} },
@@ -18,6 +19,7 @@ const routes: Routes = [
   // { path: "user/addPost/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'Ajouter Trajet'}},
   // { path: "user/:id/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'About'}},
   { path: "accueil", component: AccueilComponent, data: {title: 'Accueil'} },
+  { path: "travel/:id", component: TravelComponent, data: {title: 'Réservation'}},
   { path: '', redirectTo:'/', pathMatch: 'full'}
 
 ];
