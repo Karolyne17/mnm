@@ -93,6 +93,75 @@ Renvoie:
                 model: "Fiat Multipla",
                 placeQuantity: 20,
             }
+        ],
+        myBookings: [
+            {
+                "latStart": 25.222,
+                "longStart": 30.4512,
+                "dateStart": "2022-08-30T15:53:29.000Z",
+                "latArrival": 10.2564,
+                "longArrival": 9.855,
+                "smoker": false,
+                "airconditionning": false,
+                "driver": {
+                    "id": 5,
+                    "userName": "Simone"
+                },
+                passengers: [
+                    {
+                        "id": 1,
+                        "userName": "Marcel"
+                    },
+                    {
+                        "id": 4,
+                        "userName": "Josiane"
+                    }
+                ]
+            },
+            {
+                "latStart": 25.222,
+                "longStart": 30.4512,
+                "dateStart": "2022-08-30T15:53:29.000Z",
+                "latArrival": 10.2564,
+                "longArrival": 9.855,
+                "smoker": false,
+                "airconditionning": false,
+                "driver": {
+                    "id": 5,
+                    "userName": "Simone"
+                },
+                "passengers": [
+                    {
+                        "id": 1,
+                        "userName": "Marcel"
+                    },
+                    {
+                        "id": 4,
+                        "userName": "Josiane"
+                    }
+                ]
+            }
+        ],
+        myTravels: [
+            {
+                "latStart": 25.222,
+                "longStart": 30.4512,
+                "dateStart": "2022-08-30T15:53:29.000Z",
+                "latArrival": 10.2564,
+                "longArrival": 9.855,
+                "smoker": false,
+                "airconditionning": false,
+                "driver": {
+                    "id": 1,
+                    "userName": "Marcel"
+                },
+                passengers: [
+                    {
+                        "id": 8,
+                        "userName": "Anne-Sophie"
+                    }
+                ]
+            }
         ]
     }
 
@@ -214,6 +283,16 @@ Reçoit:
 ## POST `/api/book/:id`
 
 _L'utilisateur connecté réserver une place sur le trajet correspondant à l'id_
+
+Reçoit:
+
+    {
+        "comment": "J'ai 5 chiens"
+    }
+
+## DELETE `/api/book/:id`
+
+_L'utilisateur connecté annule sa réservation sur le trajet correspondant à l'id_
 
 # /backend/.env
 
