@@ -171,7 +171,7 @@ _Modification du profil du compte connecté_
 
 Reçoit:
 
-    user: {
+    {
         userName: "Roro",
         lastName: "ROger",
         firstName: "Lopoz",
