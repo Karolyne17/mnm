@@ -264,7 +264,8 @@ Renvoie:
                 id: 1,
                 userName: "Roro"
             }
-        ]
+        ],
+        isAlreadyBooked: true
     }
 
 ## POST `/api/car`
