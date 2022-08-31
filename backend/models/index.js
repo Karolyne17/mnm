@@ -52,6 +52,7 @@ mysql
       // un trajet a un seul conducteur et une seule voiture
       db.USER.hasMany(db.TRAVEL, {
         foreignKey: "driver_id",
+        as: "drived",
       });
       db.TRAVEL.belongsTo(db.USER, {
         foreignKey: { name: "driver_id", allowNull: false },

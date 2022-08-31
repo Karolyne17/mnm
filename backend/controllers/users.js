@@ -110,9 +110,36 @@ exports.profile = async (req, res) => {
       }
     }
 
+    user.myTravels = [];
+    user.myBookings = [];
+
+    if ((await userFound.countDrived()) > 0) {
+      let travelsDrived = await userFound.getDrived();
+      for (let travel of travelsDrived) {
+        let trav = {
+          latStart: travel.latStart,
+          longStart: travel.longStart,
+          dateStart: travel.dateStart,
+          latArrival: travel.latArrival,
+          longArrival: travel.longArrival,
+          smoker: travel.smoker,
+          airconditionning: travel.airconditionning,
+        };
+
+        let pass = await travel.getUsers();
+        let driv = await travel.getUser();
+
+        trav.driver = { id: driv.id, userName: driv.userName };
+        trav.passengers = [];
+        for (let u of pass) {
+          trav.passengers.push({ id: u.id, userName: u.userName });
+        }
+
+        user.myTravels.push(trav);
+      }
+    }
+
     if ((await userFound.countTravels()) > 0) {
-      user.myTravels = [];
-      user.myBookings = [];
       for (let travel of userFound.travels) {
         let trav = {
           latStart: travel.latStart,
@@ -124,26 +151,15 @@ exports.profile = async (req, res) => {
           airconditionning: travel.airconditionning,
         };
 
-        // console.log("o", await travel.getUsers());
-        let uz = await travel.getUsers();
-        let zz = await travel.getUser();
-        // console.log("o", uz);
-        // console.log("traj", travel.id);
-        // console.log("driv", travel.driver_id, zz.userName);
-        trav.driver = { id: zz.id, userName: zz.userName };
+        let pass = await travel.getUsers();
+        let driv = await travel.getUser();
+        trav.driver = { id: driv.id, userName: driv.userName };
         trav.passengers = [];
-        for (let u of uz) {
-          // console.log("uz", u.id, u.userName);
+        for (let u of pass) {
           trav.passengers.push({ id: u.id, userName: u.userName });
         }
 
-        if (travel.driver_id == userId) {
-          user.myTravels.push(trav);
-        } else {
-          user.myBookings.push(trav);
-        }
-
-        // console.log(travel.driver_id == userId ? "conducteur" : "passager");
+        user.myBookings.push(trav);
       }
     }
 
