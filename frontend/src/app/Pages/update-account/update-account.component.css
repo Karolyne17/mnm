@@ -37,3 +37,13 @@ input {
 .btn {
   cursor: pointer;
 }
+
+.bold
+{
+  font-weight: bold;
+}
+
+form
+{
+  padding-top: 40px;
+}
