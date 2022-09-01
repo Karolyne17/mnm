@@ -31,7 +31,7 @@
   </div>
   <div class="divBtn mt1">
     <div class="btn" (click)="goToUpdate()">Modifier mon profile</div>
-    <div class="btn mt1 orange"><a routerLink="/addCar">Ajouter un véhicule</a></div>
+    <div class="btn mt1 orange" (click)="goToAddCar()">Ajouter un véhicule</div>
     <div class="cursor" (click)="delete()">Supprimer mon compte</div>
     <!-- L’ajout d’un véhicule à son profil permet de renseigner la marque, le modèle, la couleur
     ainsi qu’une photo de celui-ci dans le but de l’identifier plus facilement au point de

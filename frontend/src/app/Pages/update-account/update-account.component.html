@@ -11,9 +11,9 @@
     <div>Téléphone :</div>
     <div><input type="number" value="{{user.phoneNumber}}" placeholder="0631373751" formControlName="phoneNumber"></div>
     <div>Email :</div>
-    <div><input type="text" value="{{user.email}}" placeholder="" formControlName="ginette@gmail.com"></div>
+    <div><input type="text" value="{{user.email}}" placeholder="ginette@gmail.com" formControlName="email"></div>
     <div>Photo :</div>
-    <div><input type="text" value="{{user.photo}}" placeholder="" formControlName="Lien"></div>
+    <div><input type="text" value="{{user.photo}}" placeholder="Lien" formControlName="photo"></div>
     <div>Zone de recherche :</div>
     <div><input type="number" value="{{user.searchingZone}}" placeholder="200" formControlName="searchingZone"></div>
     <div class="bold">Adresse</div>
@@ -30,7 +30,7 @@
   </form>
 
 
-  <div class="btn"  (click)="goToProfil()">Retourner sur mon profile</div><br>
+  <div class="btn" (click)="goToProfil()">Retourner sur mon profile</div><br>
 
 
 </div>

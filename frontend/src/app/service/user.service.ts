@@ -62,7 +62,14 @@ export class UserService {
     })
     return this.http.post(this.urlBase + "/profile", data, {headers:headers});
   }
-
+  addCar(data:any):Observable<any>{
+    console.log('USER-addCar : ', data);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.post(this.urlBase + "/car", data, {headers:headers});
+  }
   // getUsers(): Observable<Array<Users>> {
   //   const headers = new HttpHeaders({
   //     'Content-Type': 'application/json',
@@ -77,7 +84,7 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
     })
-    return this.http.get(this.urlBase + "/profile/"+id, {headers:headers});
+    return this.http.get(this.urlBase + "/profile", {headers:headers});
   }
 
 

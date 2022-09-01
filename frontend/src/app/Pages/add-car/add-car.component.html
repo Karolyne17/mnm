@@ -1,0 +1,22 @@
+<div class="section">
+  <div>
+    <ul>
+      <li *ngFor="let message of ret">
+        <div class="mess">{{message.message.message}}</div>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <form [formGroup]="logForm" (ngSubmit)="validForm()">
+      <div>Ajouter un véhicule</div>
+      <div><input type="text" placeholder="Model" formControlName="model"></div>
+      <div><input type="number" placeholder="Nb de place(s)" formControlName="placeQuantity"></div>
+      <div><input type="text" placeholder="Immatriculation" formControlName="matriculation"></div>
+      <div><input type="text" placeholder="Couleur" formControlName="color"></div>
+      <div><input class="submit" type="submit" value="Envoyer"></div>
+    </form>
+  </div>
+  <div>
+    <div class="cursor" (click)="goToProfil()">Retourner sur mon profil</div>
+  </div>
+</div>

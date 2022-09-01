@@ -54,8 +54,12 @@ export class ProfilComponent implements OnInit {
     });
   }
 
-    goToUpdate(){
+  goToUpdate(){
       this.nav = this.router.navigate([`/user/updateAccount/${this.idAcharger}`]);
+  }
+
+  goToAddCar(){
+      this.nav = this.router.navigate([`/addCar`]);
   }
 
 }
