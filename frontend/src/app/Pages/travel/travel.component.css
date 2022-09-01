@@ -28,8 +28,7 @@ form{
 a{
     text-decoration: none;
 }
-.orange-btn{
-    background-color: #FF6C07;
+.btn{
     padding:15px;
     border-radius: 30px;
     color:white;
@@ -39,4 +38,14 @@ a{
     font-size: 1.5rem;
     font-weight: bold;
     border:none;
+    cursor:pointer;
+}
+.orange{
+    background-color: #FF6C07;
+}
+.grey{
+    background-color: #ab7e5f;
+}
+.red{
+    background-color: #cd3838;
 }

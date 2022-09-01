@@ -17,12 +17,12 @@
         <p class="info">{{clim}} - {{smoker}}</p>
     </div>
 
-    <form [formGroup]="reservationForm" (ngSubmit)="validForm()" *ngIf="getVisibility()">
+    <form [formGroup]="reservationForm" (ngSubmit)="validForm()" *ngIf="canBook()">
         <textarea class="comment-input" type="text" formControlName="comment" placeholder="Ecrivez au conducteur"></textarea>
-        <input class="orange-btn" type="submit" value="Ecrire et Réserver">
+        <input class="btn orange" type="submit" value="Ecrire et Réserver">
     </form>
-    <form [formGroup]="reservationForm" (ngSubmit)="validForm()" *ngIf="!getVisibility()">
-        <textarea class="comment-input" type="text" formControlName="comment" placeholder="Ecrivez au conducteur"></textarea>
-        <input class="orange-btn" type="submit" value="Ecrire et Réserver">
-    </form>
+
+    <div *ngIf="fullBook()" class="btn grey">Trajet Complet</div>
+    <div *ngIf="alreadyBook()" class="btn red" (click)="onDelete()">Annuler la réservation</div>
+
 </div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ServiceToken } from './service.token';
-import { Travels } from '../Classes/travel';
+import { Travel } from '../Classes/travel';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +43,13 @@ export class TravelService {
       'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
     })
     return this.http.post(this.urlBase + "/book/"+NewBooking.travelId, NewBooking, {headers:headers});
+  }
+  deleteBooking(travelId:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.delete(this.urlBase + "/book/"+travelId, {headers:headers});
   }
 
 }

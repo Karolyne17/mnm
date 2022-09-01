@@ -37,7 +37,7 @@ export class TravelComponent implements OnInit {
       next(ret) {
         console.log(ret);
         that.travel = ret.message.travel;
-        that.participate = ret.message.travel
+        that.participate = ret.message.travel.isAlreadyBooked
         if (that.travel.smoker == true){
           that.smoker = "Véhicule fumeur";
         }
@@ -64,8 +64,14 @@ export class TravelComponent implements OnInit {
     });
   }
 
-  getVisibility(): boolean {
-    return !(this.place == 'Complet' || this.travel.smoker)
+  canBook(): boolean {
+    return (this.place !== 'Complet' && !this.participate)
+  }
+  alreadyBook(): boolean {
+    return (this.participate)
+  }
+  fullBook(): boolean {
+    return (this.place == 'Complet' && !this.participate)
   }
 
   validForm() {
@@ -82,6 +88,19 @@ export class TravelComponent implements OnInit {
         });
       }
     });
+  }
+
+  onDelete(){
+    let that = this;
+    that.travelService.deleteBooking(this.idTrajet).subscribe({
+      next(res) {
+        that.router.navigate(['/']).then(() => {
+          that.router.navigate(['/accueil']);
+        });
+      }
+  });
+
+
   }
 
   ngOnInit(): void {
