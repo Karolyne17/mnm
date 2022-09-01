@@ -171,7 +171,7 @@ _Modification du profil du compte connecté_
 
 Reçoit:
 
-    user: {
+    {
         userName: "Roro",
         lastName: "ROger",
         firstName: "Lopoz",
@@ -264,8 +264,13 @@ Renvoie:
                 id: 1,
                 userName: "Roro"
             }
-        ]
+        ],
+        isAlreadyBooked: true
     }
+
+## DELETE `/api/travel/:id`
+
+_Supprime le voyage correspondant à l'id_
 
 ## POST `/api/car`
 
@@ -279,6 +284,10 @@ Reçoit:
         matriculation: "FAR 92 ZM",
         color: "rouge",
     }
+
+## DELETE `/api/car/:id`
+
+_Supprime un véhicule_
 
 ## POST `/api/book/:id`
 

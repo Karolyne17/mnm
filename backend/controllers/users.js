@@ -77,6 +77,7 @@ exports.profile = async (req, res) => {
   });
 
   if (userFound) {
+    let nbPassengers = await userFound.countTravels();
     let user = {
       userName: userFound.userName,
       lastName: userFound.lastName,
@@ -139,7 +140,7 @@ exports.profile = async (req, res) => {
       }
     }
 
-    if ((await userFound.countTravels()) > 0) {
+    if (nbPassengers > 0) {
       for (let travel of userFound.travels) {
         let trav = {
           latStart: travel.latStart,
@@ -208,7 +209,7 @@ exports.updateProfile = async (req, res) => {
   });
   await address.save();
 
-  userFound.setAddress(address);
+  await userFound.setAddress(address);
   await userFound.save();
 
   return res.status(200).json({ message: { txt: "Utilisateur updaté" } });
@@ -232,4 +233,22 @@ exports.addCar = async (req, res) => {
   await car.save();
 
   return res.status(200).json({ message: { txt: "Voiture ajoutée" } });
+};
+
+exports.removeCar = async (req, res) => {
+  const userId = req.userId;
+  const carId = req.params.id;
+
+  const userFound = await db.USER.findOne({
+    where: { id: userId },
+  });
+
+  if (userFound) {
+    await userFound.removeCar(carId);
+    await userFound.save();
+
+    return res.status(200).json({ message: { text: "voiture supprimée" } });
+  } else {
+    return res.status(200).json({ message: { txt: "user pas trouvé" } });
+  }
 };
