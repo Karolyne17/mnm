@@ -18,9 +18,11 @@ exports.getAll = async (req, res) => {
         id: travel.id,
         latStart: travel.latStart,
         longStart: travel.longStart,
+        cityStart: travel.cityStart,
         dateStart: travel.dateStart,
         latArrival: travel.latArrival,
         longArrival: travel.longArrival,
+        cityArrival: travel.cityArrival,
         smoker: travel.smoker,
         airconditionning: travel.airconditionning,
         user: {
@@ -84,9 +86,11 @@ exports.getTravel = async (req, res) => {
     let travel = {
       latStart: travelFound.latStart,
       longStart: travelFound.longStart,
+      cityStart: travelFound.cityStart,
       dateStart: travelFound.dateStart,
       latArrival: travelFound.latArrival,
       longArrival: travelFound.longArrival,
+      cityArrival: travelFound.cityArrival,
       smoker: travelFound.smoker,
       airconditionning: travelFound.airconditionning,
       user: {
@@ -163,9 +167,11 @@ exports.addTravel = async (req, res) => {
   const userId = req.userId;
   const latStart = req.body.latStart;
   const longStart = req.body.longStart;
+  // const cityStart = req.body.cityStart;
   const dateStart = req.body.dateStart;
   const latArrival = req.body.latArrival;
   const longArrival = req.body.longArrival;
+  // const cityArrival = req.body.cityArrival;
   const smoker = req.body.smoker;
   const airconditionning = req.body.airconditionning;
   const carId = req.body.carId;
@@ -173,9 +179,11 @@ exports.addTravel = async (req, res) => {
   let travel = db.TRAVEL.build({
     latStart: latStart,
     longStart: longStart,
+    cityStart: cityStart,
     dateStart: dateStart,
     latArrival: latArrival,
     longArrival: longArrival,
+    cityArrival: cityArrival,
     smoker: smoker,
     airconditionning: airconditionning,
     car_id: carId,
