@@ -15,6 +15,7 @@ import localeFr from '@angular/common/locales/fr';
 import { LocalizedDatePipe } from './pipe/localized-date.pipe';
 import { TravelComponent } from './Pages/travel/travel.component';
 import { AddCarComponent } from './Pages/add-car/add-car.component';
+import { UserService } from './service/user.service';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -30,7 +31,7 @@ registerLocaleData(localeFr, 'fr');
     HeaderComponent,
     LocalizedDatePipe,
     TravelComponent,
-    AddCarComponent,
+    AddCarComponent
   ],
   imports: [
     BrowserModule,

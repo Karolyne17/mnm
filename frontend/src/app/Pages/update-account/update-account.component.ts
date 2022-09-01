@@ -24,7 +24,7 @@ export class UpdateAccountComponent implements OnInit {
 
     let that = this;
     this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
-    this.userService.getUser(that.idAcharger).subscribe({
+    this.userService.getUser().subscribe({
       next(ret) {
         that.user = ret.message.user ? ret.message.user : "";
         that.address = ret.message.address ? ret.message.address : "";
@@ -86,7 +86,7 @@ export class UpdateAccountComponent implements OnInit {
   ngOnInit(): void {
     let that = this;
     this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
-    this.userService.getUser(that.idAcharger).subscribe({
+    this.userService.getUser().subscribe({
       next(ret) {
         console.log("RETOUR ngOninit : " , ret);
         that.data = ret.message.user;

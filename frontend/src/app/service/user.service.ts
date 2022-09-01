@@ -70,7 +70,7 @@ export class UserService {
     })
     return this.http.post(this.urlBase + "/car", data, {headers:headers});
   }
-  
+
   // getUsers(): Observable<Array<Users>> {
   //   const headers = new HttpHeaders({
   //     'Content-Type': 'application/json',
@@ -79,8 +79,8 @@ export class UserService {
   //   return this.http.get<Array<Users>>(this.urlBase + '/profile', {headers:headers});
   // }
 
-  getUser(id:number):Observable<any>{
-    console.log('FONCTION GETUSER : ' + id);
+  getUser():Observable<any>{
+    console.log('FONCTION GETUSER : ' );
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
