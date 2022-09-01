@@ -268,6 +268,10 @@ Renvoie:
         isAlreadyBooked: true
     }
 
+## DELETE `/api/travel/:id`
+
+_Supprime le voyage correspondant à l'id_
+
 ## POST `/api/car`
 
 _Ajout d'un véhicule_
