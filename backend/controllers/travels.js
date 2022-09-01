@@ -52,6 +52,23 @@ exports.getAll = async (req, res) => {
   }
 };
 
+exports.removeTravel = async (req, res) => {
+  const travelId = req.params.id;
+  const userId = req.userId;
+
+  const travelFound = await db.TRAVEL.findOne({
+    where: { id: travelId, driver_id: userId },
+  });
+
+  if (travelFound) {
+    travelFound.destroy();
+
+    return res.status(200).json({ message: { text: "voyage supprimé" } });
+  } else {
+    return res.status(200).json({ message: { txt: "voyage pas trouvé" } });
+  }
+};
+
 exports.getTravel = async (req, res) => {
   const id = req.params.id;
   const userId = req.userId;
