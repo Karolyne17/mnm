@@ -1,0 +1,51 @@
+.trajet-container{
+    width:90%;
+    margin:auto;
+}
+h1{
+    text-align: center;
+}
+.info-container{
+    margin-bottom: 50px;
+}
+.info-title{
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 30px;
+}
+.info{
+    margin-top: 5px;
+}
+form{
+    text-align: center;
+}
+.comment-input{
+    height: 100px;
+    width: 90%;
+    margin:auto;
+}
+a{
+    text-decoration: none;
+}
+.btn{
+    padding:15px;
+    border-radius: 30px;
+    color:white;
+    width: 80%;
+    margin:30px auto;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+}
+.orange{
+    background-color: #FF6C07;
+}
+.grey{
+    background-color: #ab7e5f;
+}
+.red{
+    background-color: #cd3838;
+}

@@ -12,6 +12,8 @@ import { UpdateAccountComponent } from './Pages/update-account/update-account.co
 import { HeaderComponent } from './Pages/header/header.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { LocalizedDatePipe } from './pipe/localized-date.pipe';
+import { TravelComponent } from './Pages/travel/travel.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -25,6 +27,8 @@ registerLocaleData(localeFr, 'fr');
     HeaderComponent,
     UpdateAccountComponent,
     HeaderComponent,
+    LocalizedDatePipe,
+    TravelComponent,
   ],
   imports: [
     BrowserModule,
