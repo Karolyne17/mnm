@@ -51,7 +51,7 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.token}`
     })
-    return this.http.delete(this.urlBase + "/membreDelete/" + id, {headers:headers});
+    return this.http.delete(this.urlBase + "/membreDelete" + id, {headers:headers});
   }
 
   updateAccount(id:any, data:any):Observable<any>{
@@ -70,6 +70,7 @@ export class UserService {
     })
     return this.http.post(this.urlBase + "/car", data, {headers:headers});
   }
+  
   // getUsers(): Observable<Array<Users>> {
   //   const headers = new HttpHeaders({
   //     'Content-Type': 'application/json',
