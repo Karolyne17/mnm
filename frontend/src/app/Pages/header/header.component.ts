@@ -2,6 +2,7 @@ import { Component, OnInit, VERSION, ViewChild, ElementRef, Input } from '@angul
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
+import { ServiceToken } from 'src/app/service/service.token';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { filter, map } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router, private titleService: Title, private activatedRoute: ActivatedRoute,) {}
+  constructor(private router: Router, private titleService: Title, private activatedRoute: ActivatedRoute, public auth: ServiceToken) {}
 
   ngOnInit(): void {}
 
@@ -39,5 +40,7 @@ export class HeaderComponent implements OnInit {
 
   }
 
-
+logout(){
+    this.auth.seDeconnecter();
+  }
 }

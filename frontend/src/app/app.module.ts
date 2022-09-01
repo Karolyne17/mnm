@@ -24,7 +24,7 @@ registerLocaleData(localeFr, 'fr');
     InscriptionComponent,
     ConnectionComponent,
     AccueilComponent,
-
+    HeaderComponent,
     UpdateAccountComponent,
     HeaderComponent,
     LocalizedDatePipe,

@@ -16,7 +16,7 @@ export class AccueilComponent implements OnInit {
   travels: Array<Travel> = [];
 
 
-  constructor(private router: Router, private travelService: TravelService) { 
+  constructor(private router: Router, private travelService: TravelService) {
     let that = this;
 
     this.travelService.getTravels().subscribe({
@@ -30,8 +30,6 @@ export class AccueilComponent implements OnInit {
     });
   }
 
-
-  
 
   ngOnInit(): void {
   }
