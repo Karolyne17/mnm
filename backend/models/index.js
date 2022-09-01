@@ -39,6 +39,8 @@ mysql
       db.TRAVEL = require("./Travel.js")(sequelize, Sequelize);
       db.USER = require("./User.js")(sequelize, Sequelize);
 
+      db.ADMIN = require("./Admin.js")(sequelize, Sequelize);
+
       // un utilisateur possède potentiellement plusieurs véhicules
       // un véhicule a un seul propriétaire
       db.USER.hasMany(db.CAR, {

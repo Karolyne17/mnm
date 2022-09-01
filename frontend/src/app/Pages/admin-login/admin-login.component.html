@@ -1,0 +1,24 @@
+<div class="section">
+  <div>
+    <ul>
+      <li *ngFor="let message of ret">
+        <div class="mess">{{ message.message.message }}</div>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <form [formGroup]="logForm" (ngSubmit)="validForm()">
+      <div>Connexion admin</div>
+      <div>
+        <input type="text" placeholder="Username" formControlName="username" />
+      </div>
+      <div>
+        <input type="text" placeholder="Password" formControlName="password" />
+      </div>
+      <div><input class="submit" type="submit" value="Se connecter" /></div>
+    </form>
+  </div>
+  <div>
+    <a routerLink="/">Retour au site</a>
+  </div>
+</div>

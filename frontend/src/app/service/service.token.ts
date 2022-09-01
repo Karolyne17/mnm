@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServiceToken {
-
-  constructor(private route: Router) { }
+  constructor(private route: Router) {}
 
   public tokenValue() {
     return localStorage.getItem('ACCESS_TOKEN');
@@ -24,5 +23,4 @@ export class ServiceToken {
     localStorage.removeItem('ACCESS_TOKEN');
     this.route.navigate(['/connection']);
   }
-
 }
