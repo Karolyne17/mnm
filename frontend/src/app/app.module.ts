@@ -14,8 +14,13 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LocalizedDatePipe } from './pipe/localized-date.pipe';
 import { TravelComponent } from './Pages/travel/travel.component';
+import { AdminComponent } from './Pages/admin/admin.component';
+import { AdminCarComponent } from './Pages/admin-car/admin-car.component';
+import { AdminTravelComponent } from './Pages/admin-travel/admin-travel.component';
+import { AdminMenuComponent } from './Pages/admin-menu/admin-menu.component';
 import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { UserService } from './service/user.service';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -31,6 +36,10 @@ registerLocaleData(localeFr, 'fr');
     HeaderComponent,
     LocalizedDatePipe,
     TravelComponent,
+    AdminComponent,
+    AdminCarComponent,
+    AdminTravelComponent,
+    AdminMenuComponent,
     AddCarComponent
   ],
   imports: [
@@ -40,9 +49,7 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [
-    Title,
-  ],
-  bootstrap: [AppComponent]
+  providers: [Title],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

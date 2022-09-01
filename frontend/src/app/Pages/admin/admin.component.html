@@ -1,0 +1,27 @@
+<section id="adminfull">
+  <app-admin-menu></app-admin-menu>
+
+  <section id="admincontent">
+    <h1>Utilisateurs</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Mail</th>
+        <th>Pseudo</th>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Telephone</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.userName }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>fake adresse</td>
+        <td>{{ user.phoneNumber }}</td>
+      </tr>
+    </table>
+  </section>
+</section>

@@ -14,4 +14,8 @@ router.post("/profile", [authVerif], userCtrl.updateProfile);
 router.post("/car", [authVerif], userCtrl.addCar);
 router.delete("/car/:id", [authVerif], userCtrl.removeCar);
 
+router.get("/admin/users", userCtrl.getUsers);
+router.get("/admin/cars", userCtrl.getCars);
+router.get("/admin/travels", userCtrl.getTravels);
+
 module.exports = router;
