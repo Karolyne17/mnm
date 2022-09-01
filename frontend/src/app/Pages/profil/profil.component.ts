@@ -25,7 +25,7 @@ export class ProfilComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken) {
     let that = this;
     this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
-    this.userService.getUser(that.idAcharger).subscribe({
+    this.userService.getUser().subscribe({
       next(ret) {
         that.user = ret.message.user;
         that.address = ret.message.user.address;
@@ -54,8 +54,12 @@ export class ProfilComponent implements OnInit {
     });
   }
 
-    goToUpdate(){
+  goToUpdate(){
       this.nav = this.router.navigate([`/user/updateAccount/${this.idAcharger}`]);
+  }
+
+  goToAddCar(){
+      this.nav = this.router.navigate([`/addCar`]);
   }
 
 }

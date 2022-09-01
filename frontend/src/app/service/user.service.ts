@@ -51,7 +51,7 @@ export class UserService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.token}`
     })
-    return this.http.delete(this.urlBase + "/membreDelete/" + id, {headers:headers});
+    return this.http.delete(this.urlBase + "/membreDelete" + id, {headers:headers});
   }
 
   updateAccount(id:any, data:any):Observable<any>{
@@ -62,6 +62,14 @@ export class UserService {
     })
     return this.http.post(this.urlBase + "/profile", data, {headers:headers});
   }
+  addCar(data:any):Observable<any>{
+    console.log('USER-addCar : ', data);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.post(this.urlBase + "/car", data, {headers:headers});
+  }
 
   // getUsers(): Observable<Array<Users>> {
   //   const headers = new HttpHeaders({
@@ -71,13 +79,13 @@ export class UserService {
   //   return this.http.get<Array<Users>>(this.urlBase + '/profile', {headers:headers});
   // }
 
-  getUser(id:number):Observable<any>{
-    console.log('FONCTION GETUSER : ' + id);
+  getUser():Observable<any>{
+    console.log('FONCTION GETUSER : ' );
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
     })
-    return this.http.get(this.urlBase + "/profile/"+id, {headers:headers});
+    return this.http.get(this.urlBase + "/profile", {headers:headers});
   }
 
 

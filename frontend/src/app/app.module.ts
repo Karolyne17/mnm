@@ -18,6 +18,9 @@ import { AdminComponent } from './Pages/admin/admin.component';
 import { AdminCarComponent } from './Pages/admin-car/admin-car.component';
 import { AdminTravelComponent } from './Pages/admin-travel/admin-travel.component';
 import { AdminMenuComponent } from './Pages/admin-menu/admin-menu.component';
+import { AddCarComponent } from './Pages/add-car/add-car.component';
+import { UserService } from './service/user.service';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -37,6 +40,7 @@ registerLocaleData(localeFr, 'fr');
     AdminCarComponent,
     AdminTravelComponent,
     AdminMenuComponent,
+    AddCarComponent
   ],
   imports: [
     BrowserModule,
