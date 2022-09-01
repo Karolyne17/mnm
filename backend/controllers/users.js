@@ -120,9 +120,11 @@ exports.profile = async (req, res) => {
         let trav = {
           latStart: travel.latStart,
           longStart: travel.longStart,
+          cityStart: travel.cityStart,
           dateStart: travel.dateStart,
           latArrival: travel.latArrival,
           longArrival: travel.longArrival,
+          cityArrival: travel.cityArrival,
           smoker: travel.smoker,
           airconditionning: travel.airconditionning,
         };
@@ -145,9 +147,11 @@ exports.profile = async (req, res) => {
         let trav = {
           latStart: travel.latStart,
           longStart: travel.longStart,
+          cityStart: travel.cityStart,
           dateStart: travel.dateStart,
           latArrival: travel.latArrival,
           longArrival: travel.longArrival,
+          cityArrival: travel.cityArrival,
           smoker: travel.smoker,
           airconditionning: travel.airconditionning,
         };
