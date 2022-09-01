@@ -8,6 +8,8 @@ export interface Travel {
     dateStart?: Date,
     latArrival?: number,
     longArrival?: number,
+    cityStart?: string,
+    cityArrival?: string,
     smoker?: boolean,
     airconditionning?: boolean,
     searchingZone?: string,

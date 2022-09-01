@@ -53,11 +53,11 @@
 
   <div class="mesVehicules" style="margin-top: 50px">
     <div class="titre">Réservation</div>
-    <div class="divRow" *ngFor="let myTravel of myTravels">
-      <div class="model">{{myTravel.dateStart | date: 'M/d/yy' }}</div>
-      <div class="color">{{myTravel.dateStart | date: 'h:mm a' }}</div>
-      <div class="colorplace">Départ -></div>
-      <div class="colorplace">Arrivé</div>
+    <div class="divRow" *ngFor="let myBooking of myBookings">
+      <div class="model">{{myBooking.dateStart | date: 'M/d/yy' }}</div>
+      <div class="color">{{myBooking.dateStart | date: 'H:mm a' }}</div>
+      <div class="colorplace">{{myBooking.cityStart}} -></div>
+      <div class="colorplace">{{myBooking.cityArrival}}</div>
       <div class="troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>
     </div>
   </div>
@@ -67,9 +67,9 @@
     <div class="titre">Mes trajets proposés(conducteur)</div>
     <div class="divRow" *ngFor="let myTravel of myTravels">
       <div class="model">{{myTravel.dateStart | date: 'M/d/yy' }}</div>
-      <div class="color">{{myTravel.dateStart | date: 'M/d/yy' }}</div>
-      <div class="colorplace">Départ -></div>
-      <div class="colorplace">Arrivé</div>
+      <div class="color">{{myTravel.dateStart | date: 'H:mm a' }}</div>
+      <div class="colorplace">{{myTravel.cityStart}} -></div>
+      <div class="colorplace">{{myTravel.cityArrival}}</div>
       <div class="troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>
     </div>
   </div>

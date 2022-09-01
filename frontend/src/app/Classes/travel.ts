@@ -6,6 +6,8 @@ export class Travel {
     public dateStart?: Date,
     public latArrival?: number,
     public longArrival?: number,
+    public cityStart?: string,
+    public cityArrival?: string,
     public smoker?: number,
     public airConditionning?: number,
     public createdAt?: Date,

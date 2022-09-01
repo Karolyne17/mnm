@@ -19,7 +19,7 @@ export class ProfilComponent implements OnInit {
   address: Adress = {} as Adress;
   cars: Array<Cars> = [];
   myTravels: Array<Travel> = [];
-  myBookings: Array<Bookings> = [];
+  myBookings: Array<Travel> = [];
   nav:any;
 
   constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken) {
