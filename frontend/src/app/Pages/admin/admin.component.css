@@ -1,0 +1,40 @@
+#adminfull {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+app-admin-menu {
+  flex: 1;
+  background-color: #c4c4c4;
+}
+
+#admincontent {
+  flex: 4;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+table {
+  background-color: #e5e5e5;
+  padding: 20px;
+
+  border-collapse: collapse;
+}
+
+th {
+  font-size: 1.4rem;
+  padding: 10px 30px;
+}
+
+td {
+  padding: 10px 30px;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}

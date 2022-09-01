@@ -1,0 +1,23 @@
+<section id="adminfull">
+  <app-admin-menu></app-admin-menu>
+
+  <section id="admincontent">
+    <h1>Véhicules</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Modèle</th>
+        <th>Places</th>
+        <th>Couleur</th>
+        <th>Immatriculation</th>
+      </tr>
+      <tr *ngFor="let car of cars">
+        <td>{{ car.id }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.placeQuantity }}</td>
+        <td>{{ car.color }}</td>
+        <td>{{ car.matriculation }}</td>
+      </tr>
+    </table>
+  </section>
+</section>

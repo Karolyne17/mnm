@@ -1,0 +1,31 @@
+<section id="adminfull">
+  <app-admin-menu></app-admin-menu>
+
+  <section id="admincontent">
+    <h1>Voyages</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Coordonnées de départ</th>
+        <th>Ville de départ</th>
+        <th>Date de départ</th>
+        <th>Coordonnées d'arrivée</th>
+        <th>Ville d'arrivée</th>
+        <th>Fumeur</th>
+        <th>Climatisation</th>
+      </tr>
+      <tr *ngFor="let travel of travels">
+        <td>{{ travel.id }}</td>
+        <td>({{ travel.latStart }}, {{ travel.longStart }})</td>
+        <td>{{ travel.cityStart }}</td>
+        <td>
+          {{ travel.dateStart | date: "d MMMM  y H:mm":"+0200":"fr-FR" }}
+        </td>
+        <td>({{ travel.latArrival }}, {{ travel.longArrival }})</td>
+        <td>{{ travel.cityArrival }}</td>
+        <td>{{ travel.smoker ? "✔" : "✖" }}</td>
+        <td>{{ travel.airconditionning ? "✔" : "✖" }}</td>
+      </tr>
+    </table>
+  </section>
+</section>

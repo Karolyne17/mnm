@@ -88,6 +88,13 @@ exports.profile = async (req, res) => {
       searchingZone: userFound.searchingZone,
     };
 
+    user.address = {
+      number: "",
+      lineA: "",
+      lineB: "",
+      zipCode: "",
+      city: "",
+    };
     if (userFound.address) {
       user.address = {
         number: userFound.address.number,
@@ -255,4 +262,25 @@ exports.removeCar = async (req, res) => {
   } else {
     return res.status(200).json({ message: { txt: "user pas trouvé" } });
   }
+};
+
+exports.getUsers = async (req, res) => {
+  const users = await db.USER.findAll({
+    attributes: { exclude: ["password"] },
+    include: [db.ADDRESS],
+  });
+
+  return res.status(200).json({ message: { users: users } });
+};
+
+exports.getCars = async (req, res) => {
+  const cars = await db.CAR.findAll({});
+
+  return res.status(200).json({ message: { cars: cars } });
+};
+
+exports.getTravels = async (req, res) => {
+  const travels = await db.TRAVEL.findAll({});
+
+  return res.status(200).json({ message: { travels: travels } });
 };
