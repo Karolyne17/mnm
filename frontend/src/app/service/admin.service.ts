@@ -9,13 +9,22 @@ import { ServiceToken } from './service.token';
 })
 export class AdminService {
   urlBase = 'http://localhost:3000/api';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
-  constructor(private http: HttpClient, private serviceToken: ServiceToken) {}
+  constructor(private http: HttpClient) {}
+
+  getToken(): string {
+    return localStorage.getItem('ADMIN_TOKEN') || '';
+  }
 
   getUsers(): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.serviceToken.tokenValue()}`,
+      Authorization: `Bearer ${this.getToken()}`,
     });
     return this.http.get(this.urlBase + '/admin/users', { headers: headers });
   }
@@ -23,7 +32,7 @@ export class AdminService {
   getCars(): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.serviceToken.tokenValue()}`,
+      Authorization: `Bearer ${this.getToken()}`,
     });
     return this.http.get(this.urlBase + '/admin/cars', { headers: headers });
   }
@@ -31,8 +40,16 @@ export class AdminService {
   getTravels(): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.serviceToken.tokenValue()}`,
+      Authorization: `Bearer ${this.getToken()}`,
     });
     return this.http.get(this.urlBase + '/admin/travels', { headers: headers });
+  }
+
+  connection(adminInfo: any): Observable<any> {
+    return this.http.post(
+      this.urlBase + '/admin/login',
+      adminInfo,
+      this.httpOptions
+    );
   }
 }

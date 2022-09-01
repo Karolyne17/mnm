@@ -167,11 +167,11 @@ exports.addTravel = async (req, res) => {
   const userId = req.userId;
   const latStart = req.body.latStart;
   const longStart = req.body.longStart;
-  // const cityStart = req.body.cityStart;
+  const cityStart = req.body.cityStart;
   const dateStart = req.body.dateStart;
   const latArrival = req.body.latArrival;
   const longArrival = req.body.longArrival;
-  // const cityArrival = req.body.cityArrival;
+  const cityArrival = req.body.cityArrival;
   const smoker = req.body.smoker;
   const airconditionning = req.body.airconditionning;
   const carId = req.body.carId;

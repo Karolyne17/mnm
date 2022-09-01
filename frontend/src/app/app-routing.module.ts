@@ -13,7 +13,7 @@ import { AdminCarComponent } from './Pages/admin-car/admin-car.component';
 import { AdminTravelComponent } from './Pages/admin-travel/admin-travel.component';
 
 import { AddCarComponent } from './Pages/add-car/add-car.component';
-
+import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 
 const routes: Routes = [
   { path: '', component: InscriptionComponent, data: { title: 'Inscription' } },
@@ -28,9 +28,24 @@ const routes: Routes = [
     data: { title: 'Connection' },
   },
   //{ path: "profile", component: ProfilComponent, data: {title: 'Profil'} },
-  { path: "user/:id", component: ProfilComponent, canActivate:[AuthGuard], data: {title: 'Profil'}},
-  { path: "user/updateAccount/:id", component: UpdateAccountComponent, canActivate:[AuthGuard], data: {title: 'Modifier Compte'}},
-  { path: "addCar", component: AddCarComponent, canActivate:[AuthGuard], data: {title: 'Ajouter un véhicule'}},
+  {
+    path: 'user/:id',
+    component: ProfilComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Profil' },
+  },
+  {
+    path: 'user/updateAccount/:id',
+    component: UpdateAccountComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Modifier Compte' },
+  },
+  {
+    path: 'addCar',
+    component: AddCarComponent,
+    canActivate: [AuthGuard],
+    data: { title: 'Ajouter un véhicule' },
+  },
   // { path: "user/addPost/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'Ajouter Trajet'}},
   // { path: "user/:id/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'About'}},
   { path: 'accueil', component: AccueilComponent, data: { title: 'Accueil' } },
@@ -53,6 +68,11 @@ const routes: Routes = [
     path: 'admin/travels',
     component: AdminTravelComponent,
     data: { title: 'Admin : trajets' },
+  },
+  {
+    path: 'admin',
+    component: AdminLoginComponent,
+    data: { title: 'Admin : connexion' },
   },
   { path: '', redirectTo: '/', pathMatch: 'full' },
 ];

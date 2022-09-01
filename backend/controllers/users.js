@@ -284,3 +284,35 @@ exports.getTravels = async (req, res) => {
 
   return res.status(200).json({ message: { travels: travels } });
 };
+
+exports.adminLogin = async (req, res) => {
+  const password = req.body.password;
+  // const hashedPassword = await passService.hashPassword(password);
+  const userName = req.body.username;
+
+  const adminFound = await db.ADMIN.findOne({ where: { userName: userName } });
+
+  if (adminFound) {
+    const isPasswordCorrect = await passService.comparePasswords(
+      password,
+      adminFound.password
+    );
+    if (isPasswordCorrect) {
+      const token = tokenService.createToken({
+        adminid: adminFound.id,
+        isAdmin: true,
+      });
+      return res
+        .status(200)
+        .json({ message: { id: adminFound.id, token: token, pass: true } });
+    } else {
+      return res
+        .status(200)
+        .json({ message: { txt: "mauvais password", pass: false } });
+    }
+  } else {
+    return res
+      .status(200)
+      .json({ message: { txt: "mauvais username", pass: false } });
+  }
+};

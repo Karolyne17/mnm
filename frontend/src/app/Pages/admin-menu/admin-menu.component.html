@@ -1,6 +1,11 @@
 <section id="adminmenu">
   <nav>
     <ul>
+      <li class="back">
+        <a (click)="logout()"
+          ><img src="./assets/admin/home.png" /> Retour au site</a
+        >
+      </li>
       <li>
         <a routerLink="/admin/users"
           ><img src="./assets/admin/docs.png" /> Utilisateurs</a

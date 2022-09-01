@@ -42,5 +42,9 @@ app.get("/bdd", async (req, res) => {
     "INSERT INTO bookings (id, comment, acceptedAt, refusedAt, createdAt, updatedAt, deletedAt, passenger_id, travel_id) VALUES (NULL, 'Je possède 5 chiens', NULL, NULL, '2022-08-29 13:56:02', '2022-08-29 13:56:02', NULL, 3, 1),(NULL, 'Je suis accompagnée de 5 labradors', NULL, NULL, '2022-08-29 13:56:02', '2022-08-29 13:56:02', NULL, 3, 2),(NULL, '', NULL, NULL, '2022-08-29 13:56:02', '2022-08-29 13:56:02', NULL, 1, 2);"
   );
 
+  await db.sequelize.query(
+    "INSERT INTO admins (id, userName, createdAt, updatedAt, deletedAt, password) VALUES (NULL, 'admin', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '$2b$08$DEkljiDZzvTBFW95HfYusu1F/y63QuShBa77OXnOneobFKDk1LUSO');"
+  );
+
   res.status(200).send("bdd remplie");
 });
