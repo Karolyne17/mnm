@@ -1,0 +1,39 @@
+.section {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background: rgb(48, 124, 3);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.img {
+  width: 250px;
+  padding: 70px 0;
+}
+
+form {
+  text-align: center;
+}
+
+input {
+  margin: 10px;
+  width: 180px;
+  height: 30px;
+  border-radius: 20px;
+  border-color: rgb(252, 252, 253);
+  padding-left: 10px;
+}
+
+.submit {
+  background: #3d8cff;
+  height: 35px;
+  width: 180px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cursor{
+  cursor: pointer;
+}
