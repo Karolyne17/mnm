@@ -9,9 +9,12 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DataTypes.FLOAT,
       allowNull: false,
     },
-    longStart: { 
+    longStart: {
       type: Sequelize.DataTypes.FLOAT,
       allowNull: false,
+    },
+    cityStart: {
+      type: Sequelize.DataTypes.STRING,
     },
     dateStart: {
       type: Sequelize.DataTypes.DATE,
@@ -24,6 +27,9 @@ module.exports = (sequelize, Sequelize) => {
     longArrival: {
       type: Sequelize.DataTypes.FLOAT,
       allowNull: false,
+    },
+    cityArrival: {
+      type: Sequelize.DataTypes.STRING,
     },
     smoker: {
       type: Sequelize.DataTypes.BOOLEAN,

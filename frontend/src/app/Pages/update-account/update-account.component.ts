@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Adress } from 'src/app/Classes/adress';
-import { Users } from 'src/app/Classes/user';
 import { User } from 'src/app/Interfaces/user';
 import { UserService } from 'src/app/service/user.service';
 
@@ -13,17 +12,27 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UpdateAccountComponent implements OnInit {
   nav:any;
-  dataPlaceholder:any;
   prenom="";
-    id = localStorage["id"];
-    idPage:number= 0;
-    idAcharger: number = 0;
-    updateAccount: FormGroup;
-    user: User = {} as User;
-    adress: Adress = {} as Adress;
+  idAcharger: number = 0;
+  updateAccount: FormGroup;
+  user: User = {} as User;
+  address: Adress = {} as Adress;
+  data:any;
 
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) {
+
+    let that = this;
+    this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
+    this.userService.getUser(that.idAcharger).subscribe({
+      next(ret) {
+        that.user = ret.message.user ? ret.message.user : "";
+        that.address = ret.message.address ? ret.message.address : "";
+      },
+      error(err){
+        console.log(err);
+      }
+    });
     this.updateAccount = this.formBuilder.group({
       userName: '' as string,
       lastName: '' as string,
@@ -31,36 +40,17 @@ export class UpdateAccountComponent implements OnInit {
       phoneNumber: 0 as number,
       email: '' as string,
       photo: '' as string,
-      searchingZone: '' as string,
+      searchingZone: 0 as number,
       number: '' as string,
       lineA: '' as string,
       zipCode: '' as string,
       city: '' as string,
     });
-
-    let that = this;
-    this.route.params.subscribe({
-      next(val) {
-        that.idAcharger = parseInt(val["id"])
-      }
-    });
-
-    this.userService.getUser(that.idAcharger).subscribe({
-      next(ret) {
-        that.user = ret.message.user;
-        that.dataPlaceholder = that.user ? that.user : "";
-      },
-      error(err){
-        console.log(err);
-      }
-    });
   }
 
-
-
-
   validForm() {
-    let dataUpdate: Users = {
+    let dataUpdate:any = {
+
       id: this.idAcharger,
       userName: this.updateAccount.value.userName,
       lastName: this.updateAccount.value.lastName,
@@ -69,6 +59,10 @@ export class UpdateAccountComponent implements OnInit {
       email: this.updateAccount.value.email,
       photo: this.updateAccount.value.photo,
       searchingZone: this.updateAccount.value.searchingZone,
+      number: this.updateAccount.value.number,
+      lineA: this.updateAccount.value.lineA,
+      zipCode: this.updateAccount.value.zipCode,
+      city: this.updateAccount.value.city,
     };
 
     let that = this;
@@ -83,7 +77,6 @@ export class UpdateAccountComponent implements OnInit {
       let that = this;
       that.route.params.subscribe({
         next(val) {
-          that.idAcharger = parseInt(val["id"])
           that.router.navigate([`/user/${that.idAcharger}`]);
         }
       });
@@ -92,47 +85,34 @@ export class UpdateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     let that = this;
-    this.route.params.subscribe({
-      next(val) {
-        that.idAcharger = parseInt(val["id"])
-      }
-    });
-    this.userService.getUser(this.idAcharger).subscribe({
+    this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
+    this.userService.getUser(that.idAcharger).subscribe({
       next(ret) {
-        console.log(ret);
-        let data="";
-        let that=this;
-        for(let use of Object.keys(ret)){
-          data = ret[use];
-        }
-        // that.user = data;
-        // that.updateAccount.setValue({
-        //   nom:that.user.nom,
-        //   prenom:that.user.prenom,
-        //   email:that.user.email,
-        //   motPasse:that.user.motPasse,
-        //   photo:that.user.photo
-        // })
+        console.log("RETOUR ngOninit : " , ret);
+        that.data = ret.message.user;
+        that.updateAccount.setValue({
+          userName:that.data.userName,
+          lastName:that.data.lastName,
+          firstName:that.data.firstName,
+          phoneNumber:that.data.phoneNumber,
+          email:that.data.email,
+          photo:that.data.photo,
+          searchingZone:that.data.searchingZone,
+          number:that.data.address.number,
+          lineA:that.data.address.lineA,
+          zipCode:that.data.address.zipCode,
+          city:that.data.address.city,
+        })
       },
       error(err){
-        console.log(err);
+        console.log("ici", err);
       }
     });
+
   }
 
-  retourCompte(){
-    let that = this;
-    let idPage = 0;
-    this.route.params.subscribe({
-      next(val) {
-        that.idAcharger = parseInt(val["id"])
-        idPage = that.idAcharger;
-      }
-    });
-    this.router.navigate([`/user/${idPage}`])
-  }
 
 goToProfil(){
-  this.nav = this.router.navigate([`/user/${this.idAcharger}`]);
+  this.router.navigate([`/user/${this.idAcharger}`]);
 }
 }

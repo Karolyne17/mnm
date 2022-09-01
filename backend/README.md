@@ -96,11 +96,13 @@ Renvoie:
         ],
         myBookings: [
             {
+                "cityStart": 'Metz'
                 "latStart": 25.222,
                 "longStart": 30.4512,
                 "dateStart": "2022-08-30T15:53:29.000Z",
                 "latArrival": 10.2564,
                 "longArrival": 9.855,
+                "cityArrival": "MNS"
                 "smoker": false,
                 "airconditionning": false,
                 "driver": {
@@ -119,11 +121,13 @@ Renvoie:
                 ]
             },
             {
+                "cityStart": 'Metz'
                 "latStart": 25.222,
                 "longStart": 30.4512,
                 "dateStart": "2022-08-30T15:53:29.000Z",
                 "latArrival": 10.2564,
                 "longArrival": 9.855,
+                "cityArrival": 'IFA'
                 "smoker": false,
                 "airconditionning": false,
                 "driver": {
@@ -144,11 +148,13 @@ Renvoie:
         ],
         myTravels: [
             {
+                "cityStart": 'Metz',
                 "latStart": 25.222,
                 "longStart": 30.4512,
                 "dateStart": "2022-08-30T15:53:29.000Z",
                 "latArrival": 10.2564,
                 "longArrival": 9.855,
+                "cityArrival": 'IFA',
                 "smoker": false,
                 "airconditionning": false,
                 "driver": {
@@ -195,11 +201,13 @@ Renvoie:
     travels: [
         {
             id: 69,
+            cityStart: 'Metz',
             latStart: 49.75,
             longStart: 9.28,
             dateStart: "2022-08-31T15:53:29.000Z",
             latArrival: 24.58955,
             longArrival: 14.2666,
+            cityArrival: Lyon
             smoker: true,
             airconditionning: false,
             user: {
@@ -228,9 +236,11 @@ Reçoit:
     {
         "latStart" : 7.222,
         "longStart" : 69.69,
+        "cityStart": "Metz",
         "dateStart" : "2022-08-30 15:53:29",
         "latArrival" : 42.12,
         "longArrival" : 45.25,
+        "cityArrival": "MNS",
         "smoker" : false,
         "airconditionning" : true,
         "carId":1
@@ -244,11 +254,13 @@ Renvoie:
 
     travel: {
         id: 69,
+        cityStart: "Metz",
         latStart: 49.75,
         longStart: 9.28,
         dateStart: "2022-08-31T15:53:29.000Z",
         latArrival: 24.58955,
         longArrival: 14.2666,
+        cityArrival: "MNS",
         smoker: true,
         airconditionning: false,
         user: {

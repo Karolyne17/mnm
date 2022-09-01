@@ -2,18 +2,29 @@
 
 <div class="section">
   <form [formGroup]="updateAccount" (ngSubmit)="validForm()">
-    <div><input type="text" placeholder="Pseudo" formControlName="userName"></div>
-    <div><input type="text" placeholder="Nom" formControlName="lastName"></div>
-    <div><input type="text" placeholder="Prénom" formControlName="firstName"></div>
-    <div><input type="number" placeholder="Téléphone" formControlName="phoneNumber"></div>
-    <div><input type="text" placeholder="Email" formControlName="email"></div>
-    <div><input type="text" placeholder="Photo" formControlName="photo"></div>
-    <div><input type="text" placeholder="Zone de recherche" formControlName="searchingZone"></div>
-    <div>Adresse</div>
-    <div><input type="text" placeholder="N°" formControlName="number"></div>
-    <div><input type="text" placeholder="Rue" formControlName="lineA"></div>
-    <div><input type="text" placeholder="Code Postale" formControlName="zipCode"></div>
-    <div><input type="text" placeholder="Code Postale" formControlName="city"></div>
+    <div>Pseudo :</div>
+    <div><input type="text" value="{{user.userName}}" placeholder="Kikoulol" formControlName="userName"></div>
+    <div>Nom :</div>
+    <div><input type="text" value="{{user.lastName}}" placeholder="Lacombe" formControlName="lastName"></div>
+    <div>Prénom :</div>
+    <div><input type="text" value="{{user.firstName}}" placeholder="Ginette" formControlName="firstName"></div>
+    <div>Téléphone :</div>
+    <div><input type="number" value="{{user.phoneNumber}}" placeholder="0631373751" formControlName="phoneNumber"></div>
+    <div>Email :</div>
+    <div><input type="text" value="{{user.email}}" placeholder="" formControlName="ginette@gmail.com"></div>
+    <div>Photo :</div>
+    <div><input type="text" value="{{user.photo}}" placeholder="" formControlName="Lien"></div>
+    <div>Zone de recherche :</div>
+    <div><input type="number" value="{{user.searchingZone}}" placeholder="200" formControlName="searchingZone"></div>
+    <div class="bold">Adresse</div>
+    <div>N° :</div>
+    <div><input type="text" value="{{address.number}}" placeholder="20" formControlName="number"></div>
+    <div>Rue :</div>
+    <div><input type="text" value="{{address.lineA}}" placeholder="Rue de la tourette" formControlName="lineA"></div>
+    <div>Code Postale :</div>
+    <div><input type="text" value="{{address.zipCode}}" placeholder="51000" formControlName="zipCode"></div>
+    <div>Ville :</div>
+    <div><input type="text" value="{{address.city}}" placeholder="Moncuq" formControlName="city"></div>
 
     <div><input class="submit" type="submit" value="Enregistrer"></div>
   </form>
