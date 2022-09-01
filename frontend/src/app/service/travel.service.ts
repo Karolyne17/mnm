@@ -29,12 +29,27 @@ export class TravelService {
   return this.http.get(this.urlBase + "/travels", {headers:headers});
   }
 
-  // getTravel(id:number):Observable<any>{
-  //   const headers = new HttpHeaders({
-  //   'Content-Type': 'application/json',
-  //   'Authorization': `Bearer ${this.token}`
-  // })
-  // return this.http.get(this.urlBase + "travel/" + id, {headers:headers});
-  // }
+  getTravel(id:number):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.get(this.urlBase + "/travel/"+id, {headers:headers});
+  }
+
+  addBooking(NewBooking:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.post(this.urlBase + "/book/"+NewBooking.travelId, NewBooking, {headers:headers});
+  }
+  deleteBooking(travelId:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.delete(this.urlBase + "/book/"+travelId, {headers:headers});
+  }
 
 }
