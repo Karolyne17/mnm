@@ -14,6 +14,7 @@ import { LocalizedDatePipe } from 'src/app/pipe/localized-date.pipe';
 export class AccueilComponent implements OnInit {
 
   travels: Array<Travel> = [];
+  place: string = '';
 
 
   constructor(private router: Router, private travelService: TravelService) {
@@ -21,7 +22,6 @@ export class AccueilComponent implements OnInit {
 
     this.travelService.getTravels().subscribe({
       next(trav) {
-        console.log(trav);
         that.travels = trav.message.travels;
       },
       error(err){
@@ -30,6 +30,15 @@ export class AccueilComponent implements OnInit {
     });
   }
 
+  fullBook(place:any): boolean {
+    if (place <= 0){
+      return (true);
+    }
+    else{
+      return (false);
+    }
+
+  }
 
   ngOnInit(): void {
   }

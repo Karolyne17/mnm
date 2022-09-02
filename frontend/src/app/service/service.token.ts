@@ -12,7 +12,7 @@ export class ServiceToken {
   }
 
   public idValue() {
-    return localStorage.getItem('ID');
+    return localStorage.getItem('id');
   }
 
   public estConnecter() {

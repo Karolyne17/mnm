@@ -51,5 +51,12 @@ export class TravelService {
     })
     return this.http.delete(this.urlBase + "/book/"+travelId, {headers:headers});
   }
-
+  addTravel(newTravel:any):Observable<any>{{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.post(this.urlBase + "/travel", newTravel, {headers:headers});
+  }
+  }
 }

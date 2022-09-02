@@ -32,19 +32,17 @@
 .menu-bar-container{
     width:20%;
     text-align: right;
-    padding-right: 10px;
+    padding:8px 8px;
 }
 .menu-bar-img{
     width:40px;
     margin:auto;
     cursor:pointer;
-    margin-top: 5%;
 }
 .menu-down-container{
     background-color: #006413;
     width:60%;
     margin-left: 40%;
-    z-index: 2;
     border-bottom:2px solid #00440d;
 }
 .menu-down-container div{

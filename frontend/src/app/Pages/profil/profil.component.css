@@ -16,10 +16,15 @@
     padding-left: 50px;
     padding-top: 120px;
   }
-  .divBtn{
-    position: absolute;
-    right: 150px;
+  /* début modificacions */
+  .divBtn div{
+    text-align: center;
+    padding:8px;
   }
+  .divBtn{
+    margin-left: 80%;
+  }
+  /* fin modificacions */
   .divRow div{
     width : 150px;
    }
@@ -41,13 +46,13 @@
   img{
     width: 100%;
   }
-  .divBtn{
-    position: absolute;
-    right: 70px;
+  .divBtn div{
+    text-align: center;
+    padding:8px;
   }
   .divRow div{
     width : 25%;
-   }
+  }
 }
 
 @media screen and (max-width: 600px){
@@ -55,8 +60,6 @@
     flex-direction: column;
   }
 }
-
-
 
 .imgProfil
 {
@@ -96,7 +99,11 @@
   padding: 5px 5px;
   cursor: pointer;
 }
-
+  /* début modificacions */
+.divBtn a{
+  text-decoration: none;
+}
+  /* fin modificacions */
 .orange{
   background: orange;
   color: white;

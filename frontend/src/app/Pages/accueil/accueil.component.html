@@ -1,7 +1,7 @@
 <div class="accueil-container">
     <div id="btn-container">
         <a href="#"><div class="orange-btn">Chercher un trajet</div></a>
-        <a href="#"><div class="orange-btn">Proposer un trajet</div></a>
+        <a routerLink="/addTravel"><div class="orange-btn">Proposer un trajet</div></a>
     </div>
     <div id="travel-list">
         <div>
@@ -15,10 +15,11 @@
                         <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
                     </div>
                     <div class="travel-infos">
-                        <p class="start-arrival">{{travel.latStart}}  - MNS</p>
+                        <p class="start-arrival">{{travel.cityStart}} ➡ {{travel.cityArrival}}</p>
                         <p class="datetime-start">A {{ travel.dateStart | date:'H:mm' :'fr-FR' }} le {{ travel.dateStart | date:'EEEE d MMMM  y':'+0200' :'fr-FR' }}</p>
                         <p class="user-name">Proposé par {{travel.user?.userName}}</p>
-                        <p class="more-info">Il reste {{travel.car?.placeQuantity}} place(s)</p>
+                        <p *ngIf="!fullBook(travel.car?.placeQuantity)" class="more-info">Il reste {{travel.car?.placeQuantity}} place(s)</p>
+                        <p *ngIf="fullBook(travel.car?.placeQuantity)" class="more-info">Trajet complet</p>
                     </div>
                     <div class="price">3 €</div>
                 </div>

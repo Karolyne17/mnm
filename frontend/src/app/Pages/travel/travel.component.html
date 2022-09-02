@@ -4,9 +4,9 @@
         <p class="info-title">Date</p>
         <p class="info">{{ travel.dateStart | date:'EEEE d MMMM  y':'+0200' :'fr-FR' }}</p>
         <p class="info-title">Départ</p>
-        <p class="info">{{ travel.dateStart | date:'H:mm' :'fr-FR' }} à {{travel.latStart}}</p>
+        <p class="info">{{ travel.dateStart | date:'H:mm' :'fr-FR' }} à {{travel.cityStart}}</p>
         <p class="info-title">Arrivé</p>
-        <p class="info">A {{travel.latArrival}}</p>
+        <p class="info">A {{travel.cityArrival}}</p>
         <p class="info-title">Conducteur</p>
         <p class="info">{{travel.user?.userName}}</p>
         <p class="info-title">Véhicule</p>

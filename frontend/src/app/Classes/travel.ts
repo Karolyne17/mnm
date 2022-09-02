@@ -8,13 +8,13 @@ export class Travel {
     public longArrival?: number,
     public cityStart?: string,
     public cityArrival?: string,
-    public smoker?: number,
-    public airConditionning?: number,
+    public smoker?: boolean,
+    public airconditionning?: boolean,
     public createdAt?: Date,
     public updatedAt?: Date,
     public deletedAt?: Date,
     public driver_id?: number,
-    public car_id?: number,
+    public carId?: number,
     ){}
 }
 

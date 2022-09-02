@@ -14,6 +14,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LocalizedDatePipe } from './pipe/localized-date.pipe';
 import { TravelComponent } from './Pages/travel/travel.component';
+<<<<<<< Updated upstream
 import { AdminComponent } from './Pages/admin/admin.component';
 import { AdminCarComponent } from './Pages/admin-car/admin-car.component';
 import { AdminTravelComponent } from './Pages/admin-travel/admin-travel.component';
@@ -22,6 +23,9 @@ import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { UserService } from './service/user.service';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 
+=======
+import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
+>>>>>>> Stashed changes
 
 registerLocaleData(localeFr, 'fr');
 
@@ -37,12 +41,16 @@ registerLocaleData(localeFr, 'fr');
     HeaderComponent,
     LocalizedDatePipe,
     TravelComponent,
+<<<<<<< Updated upstream
     AdminComponent,
     AdminCarComponent,
     AdminTravelComponent,
     AdminMenuComponent,
     AddCarComponent,
     AdminLoginComponent
+=======
+    AddTravelComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

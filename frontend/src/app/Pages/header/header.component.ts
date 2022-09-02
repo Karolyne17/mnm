@@ -17,6 +17,12 @@ export class HeaderComponent implements OnInit {
 
   name = "Angular " + VERSION.major;
 
+  getId(): string {
+  let profileLink:string = this.auth.idValue() || "";
+
+  return profileLink;
+  }
+
   getVisibility(): boolean {
     let currentTitle:string = this.titleService.getTitle();
     return !(currentTitle == 'Inscription' || currentTitle == 'Connection')
