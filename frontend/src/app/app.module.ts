@@ -22,6 +22,7 @@ import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { UserService } from './service/user.service';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
+import { MessageComponent } from './Pages/message/message.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -44,6 +45,7 @@ registerLocaleData(localeFr, 'fr');
     AddCarComponent,
     AdminLoginComponent,
     AddTravelComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
