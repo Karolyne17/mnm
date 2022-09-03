@@ -1,39 +1,50 @@
-<form [formGroup]="addTravelForm" (ngSubmit)="validForm()">
-    <div>Proposer un trajet</div>
-    <label for="cityStart">Départ</label><br>
-    <div><input type="text" placeholder="" formControlName="cityStart"></div>
-    <label for="cityArrival">Arrivée</label><br>
-    <div><input type="text" placeholder="" formControlName="cityArrival"></div>
-    <label for="dateStart">Date et heure du départ</label><br>
-    <div><input type="datetime-local" placeholder="" formControlName="dateStart"></div>
-<!-- 
-    <label for="car">Choisissez une voiture</label>
-    <select formControlName="car">
-        <option value="">Selectionnez votre véhicule</option>
-        <option value="2">Dog</option>
-        <option value="1">Cat</option>
-    </select> -->
-
-    <label>Véhicule climatisé</label><br>
-    <div>
-        <input type="radio" id="climYes" value="oui" formControlName="airConditionning">
-        <label for="climYes">Oui</label>
+<div class="add-travel-container">
+    <div class="form-container">
+        <form [formGroup]="addTravelForm" (ngSubmit)="validForm()">
+            <h1>Proposer un trajet</h1>
+            <div class="input-container">
+                <label for="cityStart">Départ</label><br>
+                <div><input type="text" placeholder="" formControlName="cityStart"></div>
+            </div>
+            <div class="input-container">
+                <label for="cityArrival">Arrivée</label><br>
+                <div><input type="text" placeholder="" formControlName="cityArrival"></div>
+            </div>
+            <div class="input-container">
+                <label for="dateStart">Date et heure du départ</label><br>
+                <div><input type="datetime-local" placeholder="" formControlName="dateStart"></div>
+            </div>
+            <div class="input-container">
+                <label for="car">Choisissez une voiture</label><br>
+                <select formControlName="car">
+                    <option value="">Selectionnez votre véhicule</option>
+                    <option value="2">Dog</option>
+                    <option value="1">Cat</option>
+                </select><br>
+            </div>
+            <div class="input-container">
+                <label>Véhicule climatisé</label><br>
+                <div>
+                    <input type="radio" id="climYes" value="oui" formControlName="airConditionning">
+                    <label for="climYes">Oui</label>
+                    <input type="radio" id="climNo" value="non" formControlName="airConditionning">
+                    <label for="climNo">Non</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <label>Véhicule fumeur</label><br>
+                <div>
+                    <input type="radio" id="smokeYes" value="oui" formControlName="smoker">
+                    <label for="smokeYes">Oui</label>
+                </div>
+                <div>
+                    <input type="radio" id="smokeNo" value="non" formControlName="smoker">
+                    <label for="smokeNo">Non</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <div><input class="submit" type="submit" value="Ajouter le trajet"></div>
+            </div>
+        </form>
     </div>
-    <div>
-        <input type="radio" id="climNo" value="non" formControlName="airConditionning">
-        <label for="climNo">Non</label>
-    </div>
-
-    <label>Véhicule fumeur</label><br>
-    <div>
-        <input type="radio" id="smokeYes" value="oui" formControlName="smoker">
-        <label for="smokeYes">Oui</label>
-    </div>
-    <div>
-        <input type="radio" id="smokeNo" value="non" formControlName="smoker">
-        <label for="smokeNo">Non</label>
-    </div>
-
-
-    <div><input class="submit" type="submit" value="Ajouter le trajet"></div>
-  </form>
+</div>

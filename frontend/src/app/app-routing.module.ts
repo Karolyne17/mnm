@@ -8,16 +8,12 @@ import { ProfilComponent } from './Pages/profil/profil.component';
 import { UpdateAccountComponent } from './Pages/update-account/update-account.component';
 import { HeaderComponent } from './Pages/header/header.component';
 import { TravelComponent } from './Pages/travel/travel.component';
-<<<<<<< Updated upstream
 import { AdminComponent } from './Pages/admin/admin.component';
 import { AdminCarComponent } from './Pages/admin-car/admin-car.component';
 import { AdminTravelComponent } from './Pages/admin-travel/admin-travel.component';
-
 import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
-=======
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
->>>>>>> Stashed changes
 
 const routes: Routes = [
   { path: '', component: InscriptionComponent, data: { title: 'Inscription' } },
@@ -52,7 +48,6 @@ const routes: Routes = [
   },
   // { path: "user/addPost/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'Ajouter Trajet'}},
   // { path: "user/:id/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'About'}},
-<<<<<<< Updated upstream
   { path: 'accueil', component: AccueilComponent, data: { title: 'Accueil' } },
   {
     path: 'travel/:id',
@@ -80,13 +75,11 @@ const routes: Routes = [
     data: { title: 'Admin : connexion' },
   },
   { path: '', redirectTo: '/', pathMatch: 'full' },
-=======
   { path: "accueil", component: AccueilComponent, data: {title: 'Accueil'} },
   { path: "travel/:id", component: TravelComponent, data: {title: 'Réservation'}},
   { path: "addTravel", component: AddTravelComponent, data: {title: 'Ajout Trajet'}},
   { path: '', redirectTo:'/', pathMatch: 'full'}
 
->>>>>>> Stashed changes
 ];
 
 @NgModule({

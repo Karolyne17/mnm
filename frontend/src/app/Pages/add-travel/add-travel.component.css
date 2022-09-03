@@ -1,0 +1,22 @@
+.add-travel-container{
+    width:80%;
+    margin:auto;
+}
+/* .form-container{
+    margin:auto;
+    width:50%;
+} */
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.input-container{
+    margin:30px auto;
+}
+label{
+    padding-bottom: 40px;
+}
+input{
+    line-height: 2em;
+    width:100%;
+}
