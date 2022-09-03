@@ -14,6 +14,7 @@ import { AdminTravelComponent } from './Pages/admin-travel/admin-travel.componen
 import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
+import { MessageComponent } from './Pages/message/message.component';
 
 const routes: Routes = [
   { path: '', component: InscriptionComponent, data: { title: 'Inscription' } },
@@ -78,6 +79,7 @@ const routes: Routes = [
   { path: "accueil", component: AccueilComponent, data: {title: 'Accueil'} },
   { path: "travel/:id", component: TravelComponent, data: {title: 'Réservation'}},
   { path: "addTravel", component: AddTravelComponent, data: {title: 'Ajout Trajet'}},
+  { path: "Message", component: MessageComponent, data: {title: 'Message'}},
   { path: '', redirectTo:'/', pathMatch: 'full'}
 
 ];
