@@ -11,6 +11,7 @@ router.post("/signin", userCtrl.signin);
 router.get("/profile/:id", [authVerif], userCtrl.profile);
 router.get("/profile", [authVerif], userCtrl.profile);
 router.post("/profile", [authVerif], userCtrl.updateProfile);
+router.delete("/membreDelete/:id", [authVerif], userCtrl.deleteAccount);
 
 router.post("/car", [authVerif], userCtrl.addCar);
 router.delete("/car/:id", [authVerif], userCtrl.removeCar);
