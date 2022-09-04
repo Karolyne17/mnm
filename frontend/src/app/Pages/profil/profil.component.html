@@ -3,12 +3,20 @@
     <div class="photoProfil">
       <img class="imgProfil" src="../../assets/profil_vide.jpg">
     </div>
-    <div class="identite">
-      <div class="bold capitalize"><span class="capitalize">{{user.firstName}}</span> <span class="capitalize">
-          {{user.lastName}}</span></div>
-      <div class="bold capitalize">{{user.userName}}</div>
-      <div>{{address.number}} <span class="lowercase">{{address.lineA}}</span></div>
-      <div>{{address.zipCode}} <span class="capitalize">{{address.city}}</span></div>
+    <div>
+      <div class="flex">
+        <div class="identite">
+          <div class="bold capitalize"><span class="capitalize">{{user.firstName}}</span> <span class="capitalize">
+              {{user.lastName}}</span></div>
+          <div class="bold capitalize">{{user.userName}}</div>
+          <div>{{address.number}} <span class="lowercase">{{address.lineA}}</span></div>
+          <div>{{address.zipCode}} <span class="capitalize">{{address.city}}</span></div>
+        </div>
+        <div class="mt2">
+          <div class="ml1"><img class="imgTroisPoint" (click)="goToMyMessage()" src="../../assets/message.png"></div>
+          <div class="ml1 mt2"><img class="imgTroisPoint" src="../../assets/notif.png"></div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="note mt1">
@@ -78,7 +86,7 @@
           <div class="width100">
             <div class="flex">
               <div class="width50">{{myBooking.driver.userName}}</div>
-              <div class="width50 text-right"><img class="imgTroisPoint" src="../../assets/message.png"></div>
+              <div class="width50 text-right" (click)="goToAddMessage(myBooking.driver.id, myBooking.driver.userName)"><img class="imgTroisPoint" src="../../assets/message.png"></div>
             </div>
           </div>
         </div>
@@ -89,7 +97,7 @@
           <div class="width100">
             <div class="flex" *ngFor="let passenger of myBooking.passengers">
               <div class="width50">{{passenger.userName}}</div>
-              <div class="width50 text-right"><img class="imgTroisPoint" src="../../assets/message.png"></div>
+              <div class="width50 text-right" (click)="goToAddMessage(passenger.id, passenger.userName)"><img class="imgTroisPoint" src="../../assets/message.png"></div>
             </div>
           </div>
         </div>
@@ -131,7 +139,7 @@
           <div class="width100">
             <div class="flex" *ngFor="let passenger of myTravel.passengers">
               <div class="width50">{{passenger.userName}}</div>
-              <div class="width50 text-right"><img class="imgTroisPoint" src="../../assets/message.png"></div>
+              <div class="width50 text-right" (click)="goToAddMessage(passenger.id, passenger.userName)"><img class="imgTroisPoint" src="../../assets/message.png"></div>
             </div>
           </div>
         </div>

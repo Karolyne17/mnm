@@ -21,13 +21,17 @@
   }
 
   .identite {
-    padding-left: 50px;
+    padding-left: 30px;
     padding-top: 20px;
   }
 
   .divBtn div {
     text-align: center;
     width: 170px;
+  }
+
+  .ml1 {
+    margin-left: 50px;
   }
 }
 
@@ -46,15 +50,25 @@
     width: 200px;
   }
 
+  .imgProfil {
+    height: 200px;
+      width: 200px;
+  }
+
   .identite {
     padding-left: 50px;
-    padding-top: 120px;
+    padding-top: 100px;
+    width: 200px;
   }
 
   .divBtn div {
     text-align: center;
     width: 170px;
     margin-left: 72%;
+  }
+
+  .ml1 {
+    margin-left: 250px;
   }
 }
 
@@ -81,10 +95,10 @@
 .troisPoint {
   text-align: right;
 }
-
+/*
 .imgProfil {
   width: 100%;
-}
+} */
 
 .imgTroisPoint {
   width: 25px;
@@ -137,6 +151,7 @@
   padding: 4px 6px;
   border-radius: 25px;
   border: 1px solid rgb(241, 58, 2);
+  cursor: pointer;
 }
 
 .mt1 {

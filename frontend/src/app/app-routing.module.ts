@@ -15,6 +15,7 @@ import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
+import { AddMessageComponent } from './Pages/add-message/add-message.component';
 
 const routes: Routes = [
   { path: '', component: InscriptionComponent, data: { title: 'Inscription' } },
@@ -36,7 +37,7 @@ const routes: Routes = [
     data: { title: 'Profil' },
   },
   {
-    path: 'user/updateAccount/:id',
+    path: 'updateAccount/:id',
     component: UpdateAccountComponent,
     canActivate: [AuthGuard],
     data: { title: 'Modifier Compte' },
@@ -79,7 +80,8 @@ const routes: Routes = [
   { path: "accueil", component: AccueilComponent, data: {title: 'Accueil'} },
   { path: "travel/:id", component: TravelComponent, data: {title: 'Réservation'}},
   { path: "addTravel", component: AddTravelComponent, data: {title: 'Ajout Trajet'}},
-  { path: "Message", component: MessageComponent, data: {title: 'Message'}},
+  { path: "message/:id", component: MessageComponent, data: {title: 'Mes messages'}},
+  { path: "message/:id/:user", component: AddMessageComponent, data: {title: 'Ajout message'}},
   { path: '', redirectTo:'/', pathMatch: 'full'}
 
 ];

@@ -1,18 +1,15 @@
 .section {
   text-align: center;
-  margin: 50px;
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
   min-height: 100vh;
   width: 100%;
 }
 
-.img {
-  width: 250px;
-  padding: 70px 0;
-}
-
 form {
   text-align: center;
+  padding-top: 30px;
 }
 
 input {
@@ -20,7 +17,7 @@ input {
   width: 180px;
   height: 30px;
   border-radius: 20px;
-  border-color: rgb(252, 252, 253);
+  border-color: white;
   padding-left: 10px;
 }
 
@@ -28,7 +25,11 @@ input {
   background: #3d8cff;
   height: 35px;
   width: 180px;
-  color: white;
+  color: white !important;
   text-align: center;
+  cursor: pointer;
+}
+
+.cursor{
   cursor: pointer;
 }
