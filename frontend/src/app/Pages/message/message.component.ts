@@ -30,7 +30,7 @@ export class MessageComponent implements OnInit {
   }
 
   goToMessage(id:string){
-    // this.router.navigate([`/msg/${id}`]);
+     this.router.navigate([`/msg/${id}`]);
   }
 
   deleteMessage(id: string): void {

@@ -23,6 +23,7 @@ import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
 import { AddMessageComponent } from './Pages/add-message/add-message.component';
+import { ReadMessageComponent } from './Pages/read-message/read-message.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -46,6 +47,7 @@ registerLocaleData(localeFr, 'fr');
     AddTravelComponent,
     MessageComponent,
     AddMessageComponent,
+    ReadMessageComponent,
   ],
   imports: [
     BrowserModule,
