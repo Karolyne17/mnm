@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cars } from 'src/app/Classes/cars';
 import { Users } from 'src/app/Classes/user';
@@ -17,7 +17,7 @@ export class AddCarComponent implements OnInit {
     matriculation: '',
     color: ''
   });
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private formBuilder: UntypedFormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) { }
   ret?: any;
   idAcharger: number = 0;
 

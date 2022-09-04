@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Travel } from 'src/app/Classes/travel';
 import { TravelService } from 'src/app/service/travel.service';
@@ -19,7 +19,7 @@ export class AddTravelComponent implements OnInit {
     carId: 2,
   });
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private travelService: TravelService) { }
+  constructor(private formBuilder: UntypedFormBuilder,private router: Router, private travelService: TravelService) { }
 
   ngOnInit(): void {
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Users } from 'src/app/Classes/user';
 import { UserService } from 'src/app/service/user.service';
 
@@ -16,7 +16,7 @@ export class InscriptionComponent implements OnInit {
     password: ''
   });
 
-  constructor(private formBuilder: FormBuilder,  private router: Router, private userService: UserService) { }
+  constructor(private formBuilder: UntypedFormBuilder,  private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/Classes/user';
 import { UserService } from 'src/app/service/user.service';
@@ -16,7 +16,7 @@ export class ConnectionComponent implements OnInit {
     password: ''
   });
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private formBuilder: UntypedFormBuilder, private userService: UserService, private router: Router) { }
   ret?: any;
 
   ngOnInit(): void {

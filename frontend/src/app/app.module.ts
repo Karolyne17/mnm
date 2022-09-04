@@ -23,6 +23,8 @@ import { UserService } from './service/user.service';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
+import { ToastrModule} from 'ngx-toastr';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -52,7 +54,15 @@ registerLocaleData(localeFr, 'fr');
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      preventDuplicates: false,
+      progressBar: true,
+      countDuplicates: true,
+      extendedTimeOut: 3000,
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [Title],
   bootstrap: [AppComponent],
