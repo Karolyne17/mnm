@@ -273,6 +273,35 @@ exports.getUsers = async (req, res) => {
   return res.status(200).json({ message: { users: users } });
 };
 
+exports.deleteAccount = async (req, res) => {
+  const userId = req.userId;
+  const id = req.params.id;
+
+  if (userId != id) {
+    return res.status(200).json({ message: { txt: "Impossible de supprimer un compte qui n'est pas le vôtre" } });
+  }
+
+  await db.USER.destroy({where: {id: userId}});
+
+  return res.status(200).json({ message: { txt: "Utilisateur supprimé" } });
+
+  /*
+  const userFound = await db.USER.findOne({
+    where: { id: userId }
+  });
+
+  if (userFound) {
+    userFound.destroy();
+  }
+  else {
+    return res.status(200).json({ message: { txt: "Utilisateur pas trouvé" } });
+  }
+*/
+
+
+
+}
+
 exports.getCars = async (req, res) => {
   const cars = await db.CAR.findAll({});
 

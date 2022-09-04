@@ -49,9 +49,9 @@ export class UserService {
     console.log('deleteCompte id : ' + id);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
     })
-    return this.http.delete(this.urlBase + "/membreDelete" + id, {headers:headers});
+    return this.http.delete(this.urlBase + "/membreDelete/" + id, {headers:headers});
   }
 
   updateAccount(id:any, data:any):Observable<any>{
