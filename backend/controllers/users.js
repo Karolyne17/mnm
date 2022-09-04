@@ -323,6 +323,8 @@ exports.getMessages = async (req, res) => {
       id: message.id,
       message: message.message,
       senderName: message.sender.userName,
+      isNew: message.readAt == null,
+      date: message.createdAt,
     })
   }
 
