@@ -2,26 +2,16 @@
   <!--
    (click)="goToMessage(id)"
   -->
-  <div class="flex padding w100 line">
-    <div class="message">
-      De : Début du message
+  <div class="flex padding w100 line" *ngFor="let msg of messages">
+    <div class="message" (click)="goToMessage(msg.id)">
+      De : {{msg.senderName}} Objet : {{(msg.message.length>truncateLimit)? (msg.message | slice:0:truncateLimit)+'...':(msg.message)}}
     </div>
     <div class="w5">
       <div class="rond"></div>
     </div>
     <div class="w5">
-      <img src="../../assets/poubelle.jpg" alt="">
+      <img src="../../assets/poubelle.jpg" alt="" (click)="deleteMessage(msg.id)">
     </div>
   </div>
-  <div class="flex padding w100 line">
-    <div class="message">
-      De : Début du message
-    </div>
-    <div class="w5">
-      <div class="rond"></div>
-    </div>
-    <div class="w5">
-      <img src="../../assets/poubelle.jpg" alt="">
-    </div>
-  </div>
+
 </section>

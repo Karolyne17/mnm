@@ -90,12 +90,17 @@ mysql
       // un message concerne l'utilisateur émetteur et l'utilisateur destinataire
       db.USER.hasMany(db.MESSAGE, {
         foreignKey: "sender_id",
+        as: "sender",
+        onDelete: 'CASCADE' 
       });
       db.MESSAGE.belongsTo(db.USER, {
         foreignKey: { name: "sender_id", allowNull: false },
+        as: "sender"
       });
       db.USER.hasMany(db.MESSAGE, {
         foreignKey: "receiver_id",
+        as: "receiver",
+        onDelete: 'CASCADE' 
       });
       db.MESSAGE.belongsTo(db.USER, {
         foreignKey: { name: "receiver_id", allowNull: false },

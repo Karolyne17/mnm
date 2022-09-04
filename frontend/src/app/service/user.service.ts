@@ -71,6 +71,40 @@ export class UserService {
     return this.http.post(this.urlBase + "/car", data, {headers:headers});
   }
 
+  sendMsg(data:any):Observable<any>{
+    console.log('USER-addMsg : ', data);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.post(this.urlBase + "/message", data, {headers:headers});
+  }
+
+  getMessages(): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.get(this.urlBase + "/messages", {headers:headers});
+  }
+
+  deleteMessage(id:string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.delete(this.urlBase + "/message/"+id, {headers:headers});
+  }
+
+  getMessage(idMessage: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.get(this.urlBase + "/message/"+idMessage, {headers:headers});
+  }
+
+
   // getUsers(): Observable<Array<Users>> {
   //   const headers = new HttpHeaders({
   //     'Content-Type': 'application/json',

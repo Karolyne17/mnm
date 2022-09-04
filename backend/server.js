@@ -46,5 +46,9 @@ app.get("/bdd", async (req, res) => {
     "INSERT INTO admins (id, userName, createdAt, updatedAt, deletedAt, password) VALUES (NULL, 'admin', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '$2b$08$DEkljiDZzvTBFW95HfYusu1F/y63QuShBa77OXnOneobFKDk1LUSO');"
   );
 
+  await db.sequelize.query(
+    "INSERT INTO messages (id, message, createdAt, updatedAt, deletedAt, readAt, sender_id, receiver_id) VALUES(NULL, 'Salut moi c roger ma voiture est super', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', NULL, 1, 2),(NULL, 'Avec la vega myssil vous serez SATELLISÉS!!!', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', NULL, 1, 2),(NULL, 'Amène un sandwich pour le trajet', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', NULL, 1, 3), (NULL, 'Serait-il possible de faire un détour par la Russie ?', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', NULL, 2, 1), (NULL, 'possible de décaler le trajet de 20 min ?', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', NULL, 2, 1),(NULL, 'Ma voiture a pas le controle technique', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', NULL, 3, 1),(NULL, 'Bjr...', '2022-08-29 13:54:47', '2022-08-29 13:54:47', '2022-08-29 13:54:47', NULL, 3, 2);"
+  );
+
   res.status(200).send("bdd remplie");
 });

@@ -284,23 +284,86 @@ exports.deleteAccount = async (req, res) => {
   await db.USER.destroy({where: {id: userId}});
 
   return res.status(200).json({ message: { txt: "Utilisateur supprimé" } });
+}
 
-  /*
-  const userFound = await db.USER.findOne({
-    where: { id: userId }
+exports.addMessage = async (req, res) => {
+  const userId = req.userId;
+  const recipientId = req.body.id;
+  const message = req.body.message;
+
+  const recipientFound = await db.USER.findOne({
+    where: { id: recipientId },
   });
 
-  if (userFound) {
-    userFound.destroy();
+  if (!recipientFound) {
+    return res.status(200).json({ message: { txt: "Destinataire pas trouvé" } });
   }
-  else {
-    return res.status(200).json({ message: { txt: "Utilisateur pas trouvé" } });
-  }
-*/
 
+  let msg = db.MESSAGE.build({
+    message: message,
+    sender_id: userId,
+    receiver_id: recipientId,
+  });
 
+  await msg.save();
+
+  return res.status(200).json({ message: { txt: "Message envoyé" } });
 
 }
+
+exports.getMessages = async (req, res) => {
+  const userId = req.userId;
+
+  const messages = await db.MESSAGE.findAll({where: {receiver_id: userId}, include: 'sender'});
+
+  let msgs = [];
+
+  for (let message of messages) {
+    msgs.push({
+      id: message.id,
+      message: message.message,
+      senderName: message.sender.userName,
+    })
+  }
+
+  return res.status(200).json({ message: { messages: msgs } });
+};
+
+exports.getMessage = async (req, res) => {
+  const userId = req.userId;
+  const msgId = req.params.id;
+
+  const message = await db.MESSAGE.findOne({where: {id: msgId}, include: 'sender'});
+
+  let msg = {
+      id: message.id,
+      message: message.message,
+      senderName: message.sender.userName,
+    };
+
+  return res.status(200).json({ message: { msg: msg } });
+};
+
+exports.deleteMessage = async (req, res) => {
+  const userId = req.userId;
+  const msgId = req.params.id;
+
+  const msgFound = await db.MESSAGE.findOne({
+    where: { id: msgId },
+  });
+
+  if (msgFound) {
+    if (msgFound.receiver_id != userId) {
+      return res.status(200).json({ message: { text: "Impossible de supprimer des messages pas pour vous" } });
+    }
+
+    await msgFound.destroy();
+
+    return res.status(200).json({ message: { text: "message supprimé" } });
+  } else {
+    return res.status(200).json({ message: { txt: "message pas trouvé" } });
+  }
+};
 
 exports.getCars = async (req, res) => {
   const cars = await db.CAR.findAll({});

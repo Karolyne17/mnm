@@ -22,4 +22,9 @@ router.get("/admin/travels", [adminVerif], userCtrl.getTravels);
 
 router.post("/admin/login", userCtrl.adminLogin);
 
+router.post("/message", [authVerif], userCtrl.addMessage);
+router.get("/messages", [authVerif], userCtrl.getMessages);
+router.get("/message/:id", [authVerif], userCtrl.getMessage);
+router.delete("/message/:id", [authVerif], userCtrl.deleteMessage)
+
 module.exports = router;
