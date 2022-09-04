@@ -15,30 +15,28 @@
                 <div><input type="datetime-local" placeholder="" formControlName="dateStart"></div>
             </div>
             <div class="input-container">
-                <label for="car">Choisissez une voiture</label><br>
-                <select formControlName="car">
-                    <option value="">Selectionnez votre véhicule</option>
-                    <option value="2">Dog</option>
-                    <option value="1">Cat</option>
+                <label for="carId">Choisissez une voiture</label><br>
+                <select formControlName="carId">
+                    <option *ngFor="let car of cars" [ngValue]="car">{{car.model}}</option>
                 </select><br>
             </div>
             <div class="input-container">
                 <label>Véhicule climatisé</label><br>
                 <div>
-                    <input type="radio" id="climYes" value="oui" formControlName="airConditionning">
+                    <input type="radio" id="climYes" value="true" formControlName="airconditionning">
                     <label for="climYes">Oui</label>
-                    <input type="radio" id="climNo" value="non" formControlName="airConditionning">
+                    <input type="radio" id="climNo" value="false" formControlName="airconditionning">
                     <label for="climNo">Non</label>
                 </div>
             </div>
             <div class="input-container">
                 <label>Véhicule fumeur</label><br>
                 <div>
-                    <input type="radio" id="smokeYes" value="oui" formControlName="smoker">
+                    <input type="radio" id="smokeYes" value="true" formControlName="smoker">
                     <label for="smokeYes">Oui</label>
                 </div>
                 <div>
-                    <input type="radio" id="smokeNo" value="non" formControlName="smoker">
+                    <input type="radio" id="smokeNo" value="false" formControlName="smoker">
                     <label for="smokeNo">Non</label>
                 </div>
             </div>
