@@ -324,6 +324,7 @@ exports.getMessages = async (req, res) => {
       id: message.id,
       message: message.message,
       senderName: message.sender.userName,
+      senderId: message.sender.id,
       isNew: message.readAt == null,
       date: message.createdAt,
     })
@@ -342,6 +343,7 @@ exports.getMessage = async (req, res) => {
       id: message.id,
       message: message.message,
       senderName: message.sender.userName,
+      senderId: message.sender.id
     };
 
   message.readAt = db.sequelize.literal('CURRENT_TIMESTAMP');

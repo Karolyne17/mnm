@@ -16,6 +16,7 @@ import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
 import { AddMessageComponent } from './Pages/add-message/add-message.component';
+import { ReadMessageComponent } from './Pages/read-message/read-message.component';
 
 const routes: Routes = [
   { path: '', component: InscriptionComponent, data: { title: 'Inscription' } },
@@ -82,6 +83,7 @@ const routes: Routes = [
   { path: "addTravel", component: AddTravelComponent, data: {title: 'Ajout Trajet'}},
   { path: "message/:id", component: MessageComponent, data: {title: 'Mes messages'}},
   { path: "message/:id/:user", component: AddMessageComponent, data: {title: 'Ajout message'}},
+  { path: "msg/:idmsg", component: ReadMessageComponent, data: {title: 'Message'}},
   { path: '', redirectTo:'/', pathMatch: 'full'}
 
 ];
