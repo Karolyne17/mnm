@@ -1,15 +1,9 @@
 .section {
   text-align: center;
-  margin: 0;
+  margin: 30;
   padding: 0;
-  background: rgb(48, 124, 3);
   min-height: 100vh;
   width: 100%;
-}
-
-.img {
-  width: 250px;
-  padding: 70px 0;
 }
 
 form {

@@ -1,0 +1,38 @@
+.flex{
+  display: flex;
+}
+section{
+  background: rgb(1, 192, 1);
+}
+.message{
+  width: 90%;
+}
+
+.padding{
+  padding: 10px 10px;
+}
+
+.line{
+  border-bottom:3px solid rgb(255, 102, 0)
+}
+.w100{
+  width: 100%;
+}
+
+.w5{
+  width: 5%;
+}
+
+.rond{
+  width: 15px;
+  height: 15px;
+  border: 1px solid orange;
+  border-radius: 25px;
+  background-color: rgb(255, 94, 0);
+}
+
+img{
+  margin-left: 10px;
+  width: 16px;
+  height: auto;
+}

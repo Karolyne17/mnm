@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Adress } from 'src/app/Classes/adress';
-import { Bookings } from 'src/app/Classes/bookings';
 import { Cars } from 'src/app/Classes/cars';
-import { Travel } from 'src/app/Classes/travel';
 import { Users } from 'src/app/Classes/user';
 import { User } from 'src/app/Interfaces/user';
 import { ServiceToken } from 'src/app/service/service.token';
-import { TravelService } from 'src/app/service/travel.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -24,10 +21,10 @@ export class ProfilComponent implements OnInit {
   myBookings: Array<any> = [];
   passenger: Array<Users> = [];
   driver: User = {} as User;
-  nav:any;
+  idMessage: any;
 
-  constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken, private travelService: TravelService) {
-    // @Input() idTrajet: string ='-1';
+
+  constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken) {
     let that = this;
     this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
     this.userService.getUser().subscribe({
@@ -61,13 +58,20 @@ export class ProfilComponent implements OnInit {
   }
 
   goToUpdate(){
-      this.nav = this.router.navigate([`/user/updateAccount/${this.idAcharger}`]);
+      this.router.navigate([`/updateAccount/${this.idAcharger}`]);
   }
 
   goToAddCar(){
-      this.nav = this.router.navigate([`/addCar`]);
+      this.router.navigate([`/addCar`]);
   }
 
+  goToAddMessage(id:number, user:string){
+      this.router.navigate([`/message/${id}/${user}`]);
+  }
+
+  goToMyMessage(){
+      this.router.navigate([`/message/${this.idAcharger}`]);
+  }
   // onDelete(){
   //   let that = this;
   //   that.travelService.deleteBooking(this.idTrajet).subscribe({
