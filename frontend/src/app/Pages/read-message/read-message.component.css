@@ -3,3 +3,36 @@ img{
     width: 16px;
     height: auto;
   }
+
+  .m4{
+    margin: 40px;
+  }
+
+  .bold{
+    font-weight: bold;
+  }
+
+ .flex{
+    display: flex;
+ }
+
+ .mt5{
+    margin-top: 50px;
+ }
+
+ .font{
+    font-size: 14px;
+ }
+
+ .pl1{
+  padding-left: 10px;
+ }
+
+ .red{
+  color: rgba(255, 136, 0, 0.918);
+ }
+
+ .cursor{
+   cursor: pointer;
+ }
+
