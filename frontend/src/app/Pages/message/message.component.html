@@ -7,7 +7,7 @@
       De : {{msg.senderName}} Objet : {{(msg.message.length>truncateLimit)? (msg.message | slice:0:truncateLimit)+'...':(msg.message)}}
     </div>
     <div class="w5">
-      <div class="rond"></div>
+      <div class="rond" *ngIf="msg.isNew"></div>
     </div>
     <div class="w5">
       <img src="../../assets/poubelle.jpg" alt="" (click)="deleteMessage(msg.id)">
