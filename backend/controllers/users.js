@@ -113,6 +113,7 @@ exports.profile = async (req, res) => {
           placeQuantity: car.placeQuantity,
           matriculation: car.matriculation,
           color: car.color,
+          id: car.id,
         };
         user.cars.push(usercar);
       }
@@ -342,6 +343,9 @@ exports.getMessage = async (req, res) => {
       message: message.message,
       senderName: message.sender.userName,
     };
+
+  message.readAt = db.sequelize.literal('CURRENT_TIMESTAMP');
+  await message.save();
 
   return res.status(200).json({ message: { msg: msg } });
 };
