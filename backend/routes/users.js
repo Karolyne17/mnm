@@ -25,6 +25,10 @@ router.post("/admin/login", userCtrl.adminLogin);
 router.post("/message", [authVerif], userCtrl.addMessage);
 router.get("/messages", [authVerif], userCtrl.getMessages);
 router.get("/message/:id", [authVerif], userCtrl.getMessage);
-router.delete("/message/:id", [authVerif], userCtrl.deleteMessage)
+router.delete("/message/:id", [authVerif], userCtrl.deleteMessage);
+
+router.post("/notif", [authVerif], userCtrl.addNotif);
+router.get("/notifs", [authVerif], userCtrl.getNotifs);
+router.get("/notif/:id", [authVerif], userCtrl.getNotif);
 
 module.exports = router;

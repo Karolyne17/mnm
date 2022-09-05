@@ -28,6 +28,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DataTypes.DATE,
       allowNull: true,
     },
+    readAt: {
+      type: Sequelize.DataTypes.DATE,
+      allowNull: true,
+    },
   });
   return Notification;
 };
