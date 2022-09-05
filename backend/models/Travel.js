@@ -53,6 +53,9 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DataTypes.DATE,
       allowNull: true,
     },
+    price: {
+      type: Sequelize.DataTypes.FLOAT,
+    },
   });
   return Travel;
 };

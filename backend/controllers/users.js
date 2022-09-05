@@ -135,6 +135,7 @@ exports.profile = async (req, res) => {
           cityArrival: travel.cityArrival,
           smoker: travel.smoker,
           airconditionning: travel.airconditionning,
+          price: travel.price,
         };
 
         let pass = await travel.getUsers();
@@ -162,6 +163,7 @@ exports.profile = async (req, res) => {
           cityArrival: travel.cityArrival,
           smoker: travel.smoker,
           airconditionning: travel.airconditionning,
+          price: travel.price,
         };
 
         let pass = await travel.getUsers();
@@ -279,13 +281,17 @@ exports.deleteAccount = async (req, res) => {
   const id = req.params.id;
 
   if (userId != id) {
-    return res.status(200).json({ message: { txt: "Impossible de supprimer un compte qui n'est pas le vôtre" } });
+    return res.status(200).json({
+      message: {
+        txt: "Impossible de supprimer un compte qui n'est pas le vôtre",
+      },
+    });
   }
 
-  await db.USER.destroy({where: {id: userId}});
+  await db.USER.destroy({ where: { id: userId } });
 
   return res.status(200).json({ message: { txt: "Utilisateur supprimé" } });
-}
+};
 
 exports.addMessage = async (req, res) => {
   const userId = req.userId;
@@ -297,7 +303,9 @@ exports.addMessage = async (req, res) => {
   });
 
   if (!recipientFound) {
-    return res.status(200).json({ message: { txt: "Destinataire pas trouvé" } });
+    return res
+      .status(200)
+      .json({ message: { txt: "Destinataire pas trouvé" } });
   }
 
   let msg = db.MESSAGE.build({
@@ -309,13 +317,15 @@ exports.addMessage = async (req, res) => {
   await msg.save();
 
   return res.status(200).json({ message: { txt: "Message envoyé" } });
-
-}
+};
 
 exports.getMessages = async (req, res) => {
   const userId = req.userId;
 
-  const messages = await db.MESSAGE.findAll({where: {receiver_id: userId}, include: 'sender'});
+  const messages = await db.MESSAGE.findAll({
+    where: { receiver_id: userId },
+    include: "sender",
+  });
 
   let msgs = [];
 
@@ -327,7 +337,7 @@ exports.getMessages = async (req, res) => {
       senderId: message.sender.id,
       isNew: message.readAt == null,
       date: message.createdAt,
-    })
+    });
   }
 
   return res.status(200).json({ message: { messages: msgs } });
@@ -337,16 +347,19 @@ exports.getMessage = async (req, res) => {
   const userId = req.userId;
   const msgId = req.params.id;
 
-  const message = await db.MESSAGE.findOne({where: {id: msgId}, include: 'sender'});
+  const message = await db.MESSAGE.findOne({
+    where: { id: msgId },
+    include: "sender",
+  });
 
   let msg = {
-      id: message.id,
-      message: message.message,
-      senderName: message.sender.userName,
-      senderId: message.sender.id
-    };
+    id: message.id,
+    message: message.message,
+    senderName: message.sender.userName,
+    senderId: message.sender.id,
+  };
 
-  message.readAt = db.sequelize.literal('CURRENT_TIMESTAMP');
+  message.readAt = db.sequelize.literal("CURRENT_TIMESTAMP");
   await message.save();
 
   return res.status(200).json({ message: { msg: msg } });
@@ -362,7 +375,11 @@ exports.deleteMessage = async (req, res) => {
 
   if (msgFound) {
     if (msgFound.receiver_id != userId) {
-      return res.status(200).json({ message: { text: "Impossible de supprimer des messages pas pour vous" } });
+      return res.status(200).json({
+        message: {
+          text: "Impossible de supprimer des messages pas pour vous",
+        },
+      });
     }
 
     await msgFound.destroy();
