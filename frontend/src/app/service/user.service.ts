@@ -14,11 +14,7 @@ import { Adress } from '../Classes/adress';
 })
 
 export class UserService {
-  // users: Users[];
-  // posts: Posts[];
-  // comments: Comment[];
   token:string ="";
-  // currentUserId:number = -1;
 
   urlBase = "http://localhost:3000/api"
   httpOptions = {
