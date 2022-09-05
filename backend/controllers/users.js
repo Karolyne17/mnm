@@ -74,6 +74,7 @@ exports.profile = async (req, res) => {
   const userFound = await db.USER.findOne({
     where: { id: id },
     include: [db.ADDRESS, db.CAR, db.TRAVEL],
+    // order: [[{ model: db.TRAVEL }, "dateStart", "DESC"]],
   });
 
   if (userFound) {
@@ -432,4 +433,68 @@ exports.adminLogin = async (req, res) => {
       .status(200)
       .json({ message: { txt: "mauvais username", pass: false } });
   }
+};
+
+exports.addNotif = async (req, res) => {
+  const userId = req.userId;
+  const message = req.body.message;
+
+  const recipientFound = await db.USER.findOne({
+    where: { id: userId },
+  });
+
+  if (!recipientFound) {
+    return res
+      .status(200)
+      .json({ message: { txt: "Destinataire pas trouvé" } });
+  }
+
+  let notif = db.NOTIFICATION.build({
+    message: message,
+    user_id: userId,
+  });
+
+  await notif.save();
+
+  return res.status(200).json({ message: { txt: "notif envoyée" } });
+};
+
+exports.getNotifs = async (req, res) => {
+  const userId = req.userId;
+
+  const notifs = await db.NOTIFICATION.findAll({
+    where: { user_id: userId },
+  });
+
+  let ntfs = [];
+
+  for (let n of notifs) {
+    ntfs.push({
+      id: n.id,
+      message: n.message,
+      date: n.createdAt,
+      isNew: n.readAt == null,
+    });
+  }
+
+  return res.status(200).json({ message: { notifs: ntfs } });
+};
+
+exports.getNotif = async (req, res) => {
+  const userId = req.userId;
+  const notifId = req.params.id;
+
+  const notification = await db.NOTIFICATION.findOne({
+    where: { id: notifId },
+  });
+
+  let notif = {
+    id: notification.id,
+    message: notification.message,
+  };
+
+  notification.readAt = db.sequelize.literal("CURRENT_TIMESTAMP");
+  await notification.save();
+
+  return res.status(200).json({ message: { notif: notif } });
 };

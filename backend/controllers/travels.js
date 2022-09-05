@@ -7,6 +7,9 @@ const tokenService = require("../services/token");
 
 exports.getAll = async (req, res) => {
   const travelsFound = await db.TRAVEL.findAll({
+    where: {
+      dateStart: { [Op.gte]: db.sequelize.literal("NOW()") },
+    },
     include: [db.USER, db.CAR],
   });
 
