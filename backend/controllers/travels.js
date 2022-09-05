@@ -166,6 +166,10 @@ exports.cancelBooking = async (req, res) => {
 };
 
 exports.addTravel = async (req, res) => {
+  if (req.body.carId === undefined) {
+    return res.status(200).json({ message: { txt: "Il manque des champs" } });
+  }
+
   const userId = req.userId;
   const latStart = req.body.latStart;
   const longStart = req.body.longStart;
