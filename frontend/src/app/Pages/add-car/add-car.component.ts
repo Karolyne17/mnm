@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cars } from 'src/app/Classes/cars';
@@ -13,7 +13,7 @@ import { UserService } from 'src/app/service/user.service';
 export class AddCarComponent implements OnInit {
   logForm = this.formBuilder.group({
     model: '',
-    placeQuantity: '',
+    placeQuantity: 0,
     matriculation: '',
     color: ''
   });
@@ -24,6 +24,9 @@ export class AddCarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @ViewChild("alertDiv")
+  alertDiv!: ElementRef;
+
   validForm() {
     let data: Cars = {
       model: this.logForm.value.model,
@@ -31,6 +34,13 @@ export class AddCarComponent implements OnInit {
       matriculation: this.logForm.value.matriculation,
       color: this.logForm.value.color,
     }
+    console.log(data);
+
+    if(data.model == "" || data.placeQuantity == 0 || data.matriculation == "" || data.color == ""){
+      this.alertDiv.nativeElement.style.display = "block";
+    }
+    else{
+
 
     let that = this;
     this.route.params.subscribe({
@@ -51,6 +61,7 @@ export class AddCarComponent implements OnInit {
         alert(err);
       }
     })
+    }
   }
   goToProfil(){
     let that = this;

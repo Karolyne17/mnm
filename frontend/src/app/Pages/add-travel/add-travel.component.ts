@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cars } from 'src/app/Classes/cars';
@@ -20,6 +20,7 @@ export class AddTravelComponent implements OnInit {
     smoker: false,
     airconditionning: true,
     carId: 2,
+    price: 0,
   });
   cars: Array<Cars> = [];
   idAcharger: any;
@@ -42,6 +43,9 @@ export class AddTravelComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
+  @ViewChild("alertDiv")
+  alertDiv!: ElementRef;
+
   validForm() {
     let data: Travel = {
       latStart: 0,
@@ -54,9 +58,14 @@ export class AddTravelComponent implements OnInit {
       smoker: this.addTravelForm.value.smoker,
       airconditionning: this.addTravelForm.value.airconditionning,
       carId: this.addTravelForm.value.carId.id,
+      price: this.addTravelForm.value.price
     }
     console.log("form data", data);
 
+    if(data.dateStart == undefined || data.cityStart == "" || data.cityArrival == "" || data.carId == undefined || data.price == undefined){
+      this.alertDiv.nativeElement.style.display = "block";
+    }
+    else{
     let that = this
     this.travelService.addTravel(data).subscribe({
       next(ret) {
@@ -66,6 +75,6 @@ export class AddTravelComponent implements OnInit {
         alert(err);
       }
     })
-
+    }
   }
 }

@@ -11,7 +11,14 @@ form {
   text-align: center;
   padding-top: 30px;
 }
-
+.alertDiv{
+  background-color: rgb(251, 125, 146);
+  display: none;
+  padding: 20px;
+  text-align: center;
+  width : 50%;
+  margin: 20px auto;
+}
 input {
   margin: 10px;
   width: 180px;
@@ -32,4 +39,8 @@ input {
 
 .cursor{
   cursor: pointer;
+}
+
+textarea{
+  margin-top: 50px;
 }

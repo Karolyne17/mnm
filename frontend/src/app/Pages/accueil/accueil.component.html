@@ -21,7 +21,7 @@
                         <p *ngIf="!fullBook(travel.car?.placeQuantity)" class="more-info">Il reste {{travel.car?.placeQuantity}} place(s)</p>
                         <p *ngIf="fullBook(travel.car?.placeQuantity)" class="more-info">Trajet complet</p>
                     </div>
-                    <div class="price">3 €</div>
+                    <div class="price">{{travel.price}}</div>
                 </div>
             </a>
         </div>

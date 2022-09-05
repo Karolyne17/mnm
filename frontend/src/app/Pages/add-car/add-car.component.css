@@ -18,7 +18,12 @@ input {
   border-color: rgb(252, 252, 253);
   padding-left: 10px;
 }
-
+.alertDiv{
+  background-color: rgb(251, 125, 146);
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
 .submit {
   background: #3d8cff;
   height: 35px;

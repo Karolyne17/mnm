@@ -4,19 +4,19 @@
             <h1>Proposer un trajet</h1>
             <div class="input-container">
                 <label for="cityStart">Départ</label><br>
-                <div><input type="text" placeholder="" formControlName="cityStart"></div>
+                <div><input required type="text" placeholder="" formControlName="cityStart"></div>
             </div>
             <div class="input-container">
                 <label for="cityArrival">Arrivée</label><br>
-                <div><input type="text" placeholder="" formControlName="cityArrival"></div>
+                <div><input required type="text" placeholder="" formControlName="cityArrival"></div>
             </div>
             <div class="input-container">
                 <label for="dateStart">Date et heure du départ</label><br>
-                <div><input type="datetime-local" placeholder="" formControlName="dateStart"></div>
+                <div><input required type="datetime-local" placeholder="" formControlName="dateStart"></div>
             </div>
             <div class="input-container">
                 <label for="carId">Choisissez une voiture</label><br>
-                <select formControlName="carId">
+                <select formControlName="carId" required>
                     <option *ngFor="let car of cars" [ngValue]="car">{{car.model}}</option>
                 </select><br>
             </div>
@@ -41,7 +41,12 @@
                 </div>
             </div>
             <div class="input-container">
-                <div><input class="submit" type="submit" value="Ajouter le trajet"></div>
+                <label for="price">Prix</label><br>
+                <div><input required type="number" placeholder="" formControlName="price"></div>
+            </div>
+            <div #alertDiv class="alertDiv">Merci de remplir tous les champs du formulaire</div>
+            <div class="input-container">
+                <div class="submit-btn"><input class="submit" type="submit" value="Ajouter le trajet"></div>
             </div>
         </form>
     </div>

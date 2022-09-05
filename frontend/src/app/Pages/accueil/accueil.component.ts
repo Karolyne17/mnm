@@ -5,6 +5,7 @@ import { User } from 'src/app/Interfaces/user';
 import { TravelService } from 'src/app/service/travel.service';
 import { DatePipe } from '@angular/common';
 import { LocalizedDatePipe } from 'src/app/pipe/localized-date.pipe';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-accueil',
@@ -17,8 +18,14 @@ export class AccueilComponent implements OnInit {
   place: string = '';
 
 
-  constructor(private router: Router, private travelService: TravelService) {
+  constructor(private router: Router, private travelService: TravelService, private userService: UserService) {
     let that = this;
+
+    console.log("getUser testing", userService.getUser());
+
+    if(!userService.getUser()) {
+    that.router.navigate([`/`]);
+    }
 
     this.travelService.getTravels().subscribe({
       next(trav) {

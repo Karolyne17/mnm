@@ -18,4 +18,5 @@ export interface Travel {
     deletedAt?: Date,
     user?: User,
     car?: Car,
+    price?: number,
 }

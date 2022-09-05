@@ -9,7 +9,8 @@
   <div>
     <form [formGroup]="logForm" (ngSubmit)="validForm()">
       <div>Envoyer un message :</div>
-      <div><textarea rows="7" cols="30" type="text" placeholder="Message" formControlName="message"></textarea></div>
+      <div><textarea rows="10" cols="100" type="text" placeholder="Message" formControlName="message"></textarea></div>
+      <div #alertDiv class="alertDiv">Merci de saisir un du texte</div>
       <div><input class="submit" type="submit" value="Envoyer"></div>
     </form>
   </div>

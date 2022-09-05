@@ -20,3 +20,26 @@ input{
     line-height: 2em;
     width:100%;
 }
+.alertDiv{
+    background-color: rgb(251, 125, 146);
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+.submit-btn{
+    text-align: center;
+    cursor: pointer;
+}
+.submit{
+    background-color: #FF6C07;
+    padding:10px;
+    border-radius: 30px;
+    color:white;
+    width: 80%;
+    margin:30px auto;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}

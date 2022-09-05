@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'src/app/Classes/message';
@@ -22,6 +22,9 @@ export class AddMessageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @ViewChild("alertDiv")
+  alertDiv!: ElementRef;
+
   validForm() {
     let that = this;
     this.route.params.subscribe({
@@ -34,7 +37,12 @@ export class AddMessageComponent implements OnInit {
       message: this.logForm.value.message,
       id: this.idAcharger,
     }
+    console.log("form data", data);
 
+    if(data.message == ""){
+      this.alertDiv.nativeElement.style.display = "block";
+    }
+    else{
     this.userService.sendMsg(data).subscribe({
       next(ret: any) {
         that.route.params.subscribe({
@@ -49,6 +57,7 @@ export class AddMessageComponent implements OnInit {
       }
     })
   }
+}
 
   goToProfil(){
     //il faut l'id de celui qui envoie le mess en param
