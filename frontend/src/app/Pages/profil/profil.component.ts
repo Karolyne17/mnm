@@ -5,7 +5,6 @@ import { Cars } from 'src/app/Classes/cars';
 import { Users } from 'src/app/Classes/user';
 import { User } from 'src/app/Interfaces/user';
 import { ServiceToken } from 'src/app/service/service.token';
-import { TravelService } from 'src/app/service/travel.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -25,17 +24,15 @@ export class ProfilComponent implements OnInit {
   idMessage: any;
 
 
-  constructor(private router: Router, private userService: UserService, private travelService: TravelService, private route: ActivatedRoute, public auth: ServiceToken) {
+  constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken) {
     let that = this;
     this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
     this.userService.getUser().subscribe({
       next(ret) {
-        console.log(ret);
         that.user = ret.message.user;
         that.address = ret.message.user.address;
         that.cars = ret.message.user.cars;
         that.myTravels = ret.message.user.myTravels;
-        console.log(that.myTravels)
         that.myBookings = ret.message.user.myBookings;
       },
 
@@ -53,9 +50,9 @@ export class ProfilComponent implements OnInit {
     this.route.params.subscribe({
       next(val) {
         that.idAcharger = parseInt(val["id"])
-        console.log(that.idAcharger);
-
-        that.userService.deleteCompte(that.idAcharger).subscribe(retour => {that.router.navigate(["/inscription"]);});
+        that.userService.deleteCompte(that.idAcharger).subscribe(retour => {
+          that.router.navigate(["/inscription"]);
+        });
       }
     });
   }
@@ -75,11 +72,6 @@ export class ProfilComponent implements OnInit {
   goToMyMessage(){
       this.router.navigate([`/message/${this.idAcharger}`]);
   }
-
-  goToAddRetard(){
-      this.router.navigate([`/retard`]);
-  }
-
 
   onDelete(){
     // let that = this;

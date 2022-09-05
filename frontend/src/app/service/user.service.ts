@@ -3,11 +3,6 @@ import { catchError, Observable, tap, map, throwError, of, Subject } from 'rxjs'
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { ServiceToken } from './service.token';
 import { Users } from '../Classes/user';
-import { Adress } from '../Classes/adress';
-//import { User } from './Interfaces/user';
-// import { Post } from './post';
-// import { Posts } from './classes/post';
-// import { Comments } from './classes/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +28,7 @@ export class UserService {
       )
   }
 
+
   inscriptionUser(data: Users) {
     return this.http.post(this.urlBase + '/signup', data, this.httpOptions)
       .pipe(
@@ -50,6 +46,7 @@ export class UserService {
     return this.http.delete(this.urlBase + "/membreDelete/" + id, {headers:headers});
   }
 
+
   updateAccount(id:any, data:any):Observable<any>{
     console.log('USER-SERVICE updateAccount : ', data);
     const headers = new HttpHeaders({
@@ -58,6 +55,8 @@ export class UserService {
     })
     return this.http.post(this.urlBase + "/profile", data, {headers:headers});
   }
+
+
   addCar(data:any):Observable<any>{
     console.log('USER-addCar : ', data);
     const headers = new HttpHeaders({
@@ -66,6 +65,7 @@ export class UserService {
     })
     return this.http.post(this.urlBase + "/car", data, {headers:headers});
   }
+
 
   sendMsg(data:any):Observable<any>{
     console.log('USER-addMsg : ', data);
@@ -76,6 +76,7 @@ export class UserService {
     return this.http.post(this.urlBase + "/message", data, {headers:headers});
   }
 
+
   getMessages(): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -83,6 +84,7 @@ export class UserService {
     })
     return this.http.get(this.urlBase + "/messages", {headers:headers});
   }
+
 
   deleteMessage(id:string): Observable<any> {
     const headers = new HttpHeaders({
@@ -92,6 +94,7 @@ export class UserService {
     return this.http.delete(this.urlBase + "/message/"+id, {headers:headers});
   }
 
+
   getMessage(idMessage: string): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -100,14 +103,6 @@ export class UserService {
     return this.http.get(this.urlBase + "/message/"+idMessage, {headers:headers});
   }
 
-
-  // getUsers(): Observable<Array<Users>> {
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
-  //   })
-  //   return this.http.get<Array<Users>>(this.urlBase + '/profile', {headers:headers});
-  // }
 
   getUser():Observable<any>{
     console.log('FONCTION GETUSER : ' );

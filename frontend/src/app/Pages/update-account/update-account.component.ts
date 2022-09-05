@@ -50,7 +50,6 @@ export class UpdateAccountComponent implements OnInit {
 
   validForm() {
     let dataUpdate:any = {
-
       id: this.idAcharger,
       userName: this.updateAccount.value.userName,
       lastName: this.updateAccount.value.lastName,
@@ -111,8 +110,7 @@ export class UpdateAccountComponent implements OnInit {
 
   }
 
-
-goToProfil(){
-  this.router.navigate([`/user/${this.idAcharger}`]);
-}
+  goToProfil(){
+    this.router.navigate([`/user/${this.idAcharger}`]);
+  }
 }

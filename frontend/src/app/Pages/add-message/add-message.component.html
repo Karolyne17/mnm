@@ -1,22 +1,8 @@
-<div class="section">
-  <div>
-    <ul>
-      <li *ngFor="let message of ret">
-        <div class="mess">{{message.message.message}}</div>
-      </li>
-    </ul>
-  </div>
-  <div>
+<section>
     <form [formGroup]="logForm" (ngSubmit)="validForm()">
-      <div>Envoyer un message :</div>
+      <div class="bold">Envoyer un message :</div>
       <div><textarea rows="10" cols="100" type="text" placeholder="Message" formControlName="message"></textarea></div>
-      <div #alertDiv class="alertDiv">Merci de saisir un du texte</div>
+      <div #alertDiv class="alertDiv">Merci de saisir du texte</div>
       <div><input class="submit" type="submit" value="Envoyer"></div>
     </form>
-  </div>
-  <div>
-    <!-- il faut récupérer l'id de l'user qui envoie le message
-      <div class="cursor" (click)="goToProfil()">Retourner sur mon profil</div>
-    -->
-  </div>
-</div>
+</section>

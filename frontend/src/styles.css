@@ -5,3 +5,17 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.bold{
+  font-weight: bold;
+}
+
+.ret{
+  padding-top: 20px;
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.ret:hover {
+  color: blue;
+}

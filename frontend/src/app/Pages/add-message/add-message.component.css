@@ -1,6 +1,6 @@
-.section {
+section {
   text-align: center;
-  margin: 0;
+  margin-top: 60px;
   padding: 0;
   box-sizing: border-box;
   min-height: 100vh;
@@ -9,8 +9,8 @@
 
 form {
   text-align: center;
-  padding-top: 30px;
 }
+
 .alertDiv{
   background-color: rgb(251, 125, 146);
   display: none;
@@ -19,13 +19,13 @@ form {
   width : 50%;
   margin: 20px auto;
 }
+
 input {
-  margin: 10px;
+  margin: 20px;
   width: 180px;
   height: 30px;
   border-radius: 20px;
   border-color: white;
-  padding-left: 10px;
 }
 
 .submit {

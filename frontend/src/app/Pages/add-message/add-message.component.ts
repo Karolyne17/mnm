@@ -13,9 +13,11 @@ import { UserService } from 'src/app/service/user.service';
 export class AddMessageComponent implements OnInit {
   idAcharger: number = 0;
   ret?: any;
+
   logForm = this.formBuilder.group({
     message: '',
   });
+
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute, private tokenService: ServiceToken) { }
 
 
@@ -37,30 +39,23 @@ export class AddMessageComponent implements OnInit {
       message: this.logForm.value.message,
       id: this.idAcharger,
     }
-    console.log("form data", data);
 
     if(data.message == ""){
       this.alertDiv.nativeElement.style.display = "block";
-    }
-    else{
-    this.userService.sendMsg(data).subscribe({
-      next(ret: any) {
-        that.route.params.subscribe({
-        next(val) {
-          let myId = that.tokenService.idValue();
-          that.router.navigate([`/user/${myId}`]);
+    }else{
+      this.userService.sendMsg(data).subscribe({
+        next(ret: any) {
+          that.route.params.subscribe({
+          next(val) {
+            let myId = that.tokenService.idValue();
+            that.router.navigate([`/user/${myId}`]);
+          }
+          });
+        },
+        error(err) {
+          alert(err);
         }
-        });
-      },
-      error(err) {
-        alert(err);
-      }
-    })
-  }
-}
-
-  goToProfil(){
-    //il faut l'id de celui qui envoie le mess en param
-    //this.router.navigate([`/user/${this.idAcharger}`]);
+      })
+    }
   }
 }
