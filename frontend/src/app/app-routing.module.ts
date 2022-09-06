@@ -84,7 +84,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/inscription', pathMatch: 'full' },
   { path: "travel/:id", canActivate: [AuthGuard], component: TravelComponent, data: {title: 'Réservation'}},
   { path: "addTravel", canActivate: [AuthGuard], component: AddTravelComponent, data: {title: 'Ajout Trajet'}},
-  { path: "message/:id", canActivate: [AuthGuard], component: MessageComponent, data: {title: 'Mes messages'}},
+  { path: "message/:id", canActivate: [AuthGuard], component: MessageComponent, data: {title: 'Messages'}},
   { path: "message/:id/:user", canActivate: [AuthGuard], component: AddMessageComponent, data: {title: 'Ajout message'}},
   { path: "msg/:idmsg", canActivate: [AuthGuard], component: ReadMessageComponent, data: {title: 'Message'}},
 

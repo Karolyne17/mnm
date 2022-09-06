@@ -12,7 +12,8 @@
             <a routerLink="/travel/{{travel.id}}">
                 <div class="one-travel-container">
                     <div class="profil-pic-container">
-                        <img class="profil-pic" src="./assets/profil_vide.jpg" alt="profil-pic">
+                        <div *ngIf="travel.user?.photo; else elseBlock"><img class="profil-pic" src="{{travel.user?.photo}}" alt="profil-pic"></div>
+                        <ng-template #elseBlock><img class="profil-pic" src="./../assets/profil_vide.jpg"></ng-template>
                     </div>
                     <div class="travel-infos">
                         <p class="start-arrival">{{travel.cityStart}} ➡ {{travel.cityArrival}}</p>
@@ -21,7 +22,7 @@
                         <p *ngIf="!fullBook(travel.car?.placeQuantity)" class="more-info">Il reste {{travel.car?.placeQuantity}} place(s)</p>
                         <p *ngIf="fullBook(travel.car?.placeQuantity)" class="more-info">Trajet complet</p>
                     </div>
-                    <div class="price">{{travel.price}}</div>
+                    <div class="price">{{travel.price}} €</div>
                 </div>
             </a>
         </div>

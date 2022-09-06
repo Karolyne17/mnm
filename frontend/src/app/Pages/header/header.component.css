@@ -12,7 +12,7 @@
 .header-up-container{
     height: 50px;
     display: flex;
-    background-color: #006413;
+    background-color: #355922;
 }
 .mnm-logo-container{
     margin:auto;
@@ -40,10 +40,10 @@
     cursor:pointer;
 }
 .menu-down-container{
-    background-color: #006413;
+    background-color: #355922;
     width:60%;
     margin-left: 40%;
-    border-bottom:2px solid #00440d;
+    border-bottom:2px solid #355922;
 }
 .menu-down-container div{
     color:#FF6C07;

@@ -104,14 +104,15 @@
 }
  */
 .btn {
-  color: orange;
+  color: #FF6C07;
   border-radius: 15px;
+  border: 1px solid #FF6C07;
   padding: 5px 5px;
   cursor: pointer;
 }
 
 .orange {
-  background: orange;
+  background: #FF6C07;
   color: rgb(24, 0, 0);
 }
 
@@ -128,7 +129,7 @@
   text-align: center;
   padding: 4px 6px;
   border-radius: 25px;
-  border: 2px solid rgb(241, 58, 2);
+  border: 2px solid #FF6C07;
   cursor: pointer;
 }
 

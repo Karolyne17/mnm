@@ -1,11 +1,15 @@
 img{
-    margin-left: 10px;
-    width: 16px;
-    height: auto;
+    width: 20px;
   }
-
+.message-infos-container{
+  border: 3px solid #FF6C07;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 50px 20px;
+  font-size: 1.2rem;
+}
   .m4{
-    margin: 40px;
+    margin: 15px;
   }
 
   .bold{
@@ -25,7 +29,7 @@ img{
  }
 
  .font{
-    font-size: 14px;
+    font-size: 20px;
  }
 
  .pl1{
@@ -33,10 +37,24 @@ img{
  }
 
  .red{
-  color: rgba(255, 136, 0, 0.918);
+  color: #FF6C07;
  }
 
  .cursor{
    cursor: pointer;
+   margin: 25px auto;
+   border:1px solid #FF6C07;
+   border-radius: 20px;
+   padding:15px;
+   font-weight: bold;
+   font-size: 1.1rem;
  }
-
+.rep{
+  color:white;
+  background-color: #FF6C07;
+}
+.return{
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: bold;
+}

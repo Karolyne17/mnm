@@ -30,6 +30,7 @@ export class AccueilComponent implements OnInit {
     this.travelService.getTravels().subscribe({
       next(trav) {
         that.travels = trav.message.travels;
+        console.log("blabla", trav);
       },
       error(err){
         console.log("ERREUR ICI :" +err);
