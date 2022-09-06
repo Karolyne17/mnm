@@ -464,6 +464,7 @@ exports.getNotifs = async (req, res) => {
 
   const notifs = await db.NOTIFICATION.findAll({
     where: { user_id: userId },
+    order: [["createdAt", "DESC"]],
   });
 
   let ntfs = [];
@@ -491,6 +492,7 @@ exports.getNotif = async (req, res) => {
   let notif = {
     id: notification.id,
     message: notification.message,
+    date: n.createdAt,
   };
 
   notification.readAt = db.sequelize.literal("CURRENT_TIMESTAMP");
