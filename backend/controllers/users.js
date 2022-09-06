@@ -438,9 +438,10 @@ exports.adminLogin = async (req, res) => {
 exports.addNotif = async (req, res) => {
   const userId = req.userId;
   const message = req.body.message;
+  const recipientId = req.body.id;
 
   const recipientFound = await db.USER.findOne({
-    where: { id: userId },
+    where: { id: recipientId },
   });
 
   if (!recipientFound) {
@@ -451,7 +452,7 @@ exports.addNotif = async (req, res) => {
 
   let notif = db.NOTIFICATION.build({
     message: message,
-    user_id: userId,
+    user_id: recipientId,
   });
 
   await notif.save();
