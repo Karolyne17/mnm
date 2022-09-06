@@ -10,7 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class MessageComponent implements OnInit {
   messages: Array<any>;
-  truncateLimit:number = 20;
+  truncateLimit:number = 40;
 
   constructor(private router: Router, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken, private tokenService: ServiceToken) {
     this.messages = [];

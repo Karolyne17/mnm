@@ -1,11 +1,18 @@
 <div class="section">
-  <form [formGroup]="logForm" (ngSubmit)="validForm()">
-    <div>CONNEXION</div>
-    <div><input type="text" placeholder="Email" formControlName="email"></div>
-    <div><input type="text" placeholder="Password" formControlName="password"></div>
-    <div><input class="submit" type="submit" value="Se connecter"></div>
-  </form>
-</div>
 <div>
-    <a routerLink="/inscription">Inscription</a>
+  <img class="mnm-logo-connexion" src="./assets/mnm-logo.png" alt="mnm-logo"/>
+</div>
+  <div>
+    <form [formGroup]="logForm" (ngSubmit)="validForm()">
+      <div><input class="info-input" type="text" placeholder="Email" formControlName="email"></div>
+      <div><input class="info-input" type="password" placeholder="Mot De Passe" formControlName="password"></div>
+      <div><input class="submit" type="submit" value="Se connecter"></div>
+    </form>
+  </div>
+  <div class="link">
+    <a routerLink="/inscription">Créer un compte ➡</a>
+  </div>
+  <div>
+    <img class="car-connexion" src="./assets/car.png" alt="car"/>
+  </div>
 </div>
