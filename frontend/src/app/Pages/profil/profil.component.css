@@ -104,15 +104,14 @@
 }
  */
 .btn {
-  color: #FF6C07;
+  color: orange;
   border-radius: 15px;
-  border: 1px solid #FF6C07;
   padding: 5px 5px;
   cursor: pointer;
 }
 
 .orange {
-  background: #FF6C07;
+  background: orange;
   color: rgb(24, 0, 0);
 }
 
@@ -129,11 +128,11 @@
   text-align: center;
   padding: 4px 6px;
   border-radius: 25px;
-  border: 2px solid #FF6C07;
+  border: 2px solid rgb(241, 58, 2);
   cursor: pointer;
 }
 
-.btnProfil{
+.btnProfil {
   border: 1px solid orange;
 }
 
@@ -221,7 +220,7 @@
   text-align: right;
 }
 
-.sup{
+.sup {
   font-size: 15px;
 }
 
@@ -229,5 +228,3 @@
   color: red;
   text-decoration: underline;
 }
-
-
