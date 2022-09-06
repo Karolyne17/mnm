@@ -1,0 +1,20 @@
+<section class="">
+
+    <div *ngIf="notifs.length >=1; else elseBlock">
+        <div class="flex padding w100 line" *ngFor="let notif of notifs">
+            <div class="message">
+                <span style="font-weight: bold;">{{notif.date | date:'H:mm - d MMMM  y':'+0200' :'fr-FR'}}</span> <br>{{notif.message}}
+            </div>
+            <div class="w5">
+                <div class="rond" *ngIf="notif.isNew"></div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #elseBlock>
+        <div class="message no-notification">
+            <div>Vous n'avez pas de notification</div>
+        </div>
+    </ng-template>
+
+</section>

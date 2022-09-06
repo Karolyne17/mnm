@@ -38,3 +38,8 @@ img{
   width: 16px;
   height: auto;
 }
+.no-notification{
+  text-align: center;
+  padding: 30px;
+  font-weight: bold;
+}

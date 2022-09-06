@@ -17,6 +17,7 @@ import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
 import { AddMessageComponent } from './Pages/add-message/add-message.component';
 import { ReadMessageComponent } from './Pages/read-message/read-message.component';
+import { NotificationComponent } from './Pages/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,7 @@ const routes: Routes = [
   { path: "message/:id", canActivate: [AuthGuard], component: MessageComponent, data: {title: 'Messages'}},
   { path: "message/:id/:user", canActivate: [AuthGuard], component: AddMessageComponent, data: {title: 'Ajout message'}},
   { path: "msg/:idmsg", canActivate: [AuthGuard], component: ReadMessageComponent, data: {title: 'Message'}},
+  { path: "notifications", canActivate: [AuthGuard], component: NotificationComponent, data: {title: 'Notifications'}},
 
 ];
 

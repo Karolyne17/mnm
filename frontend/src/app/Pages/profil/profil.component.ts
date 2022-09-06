@@ -73,6 +73,10 @@ export class ProfilComponent implements OnInit {
       this.router.navigate([`/message/${this.idAcharger}`]);
   }
 
+  goToMyNotification(){
+    this.router.navigate([`/notifications`]);
+}
+
   onDelete(){
     // let that = this;
     // that.travelService.deleteBooking(this.idTrajet).subscribe({

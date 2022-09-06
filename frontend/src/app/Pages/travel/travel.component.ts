@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/Interfaces/booking';
 import { Travel } from 'src/app/Interfaces/travel';
+import { User } from 'src/app/Interfaces/user';
 import { TravelService } from 'src/app/service/travel.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-travel',
@@ -18,11 +20,21 @@ export class TravelComponent implements OnInit {
   clim: string ='';
   place: string = '';
   reservationForm: FormGroup;
+  passager: User = {} as User;
 
   @Input() idTrajet: string ='-1';
 
-  constructor(private router: Router, private travelService: TravelService, private route: ActivatedRoute, private formBuilder:FormBuilder) {
+  constructor(private router: Router, private travelService: TravelService, private route: ActivatedRoute, private formBuilder:FormBuilder, private userService: UserService) {
+    
     let that = this;
+    this.userService.getUser().subscribe({
+      next(ret) {
+        that.passager = ret.message.user;
+      },
+      error(err){
+        console.log(err);
+      }
+    });
     this.route.params.subscribe({
       next(val) {
         that.idTrajet = (val["id"])
@@ -75,7 +87,6 @@ export class TravelComponent implements OnInit {
   }
 
   validForm() {
-    console.log(this.reservationForm.value);
     let bookingInfo: Booking = {
       comment: this.reservationForm.value.comment,
       travelId: parseInt(this.idTrajet)
@@ -83,9 +94,13 @@ export class TravelComponent implements OnInit {
     let that = this;
     this.travelService.addBooking(bookingInfo).subscribe({
       next(res) {
-        that.router.navigate(['/']).then(() => {
-          that.router.navigate(['/accueil']);
-        });
+        that.userService.sendNotification({message: `${that.passager.userName} participe à votre voyage : ${bookingInfo.comment}`, id:that.travel.user?.id}).subscribe({
+          next(ret) {
+            that.router.navigate(['/']).then(() => {
+              that.router.navigate(['/accueil']);
+            });
+          }
+        })
       }
     });
   }

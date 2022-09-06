@@ -24,6 +24,7 @@ import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
 import { AddMessageComponent } from './Pages/add-message/add-message.component';
 import { ReadMessageComponent } from './Pages/read-message/read-message.component';
+import { NotificationComponent } from './Pages/notification/notification.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -48,6 +49,7 @@ registerLocaleData(localeFr, 'fr');
     MessageComponent,
     AddMessageComponent,
     ReadMessageComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,22 @@
 <section class="">
-  <!--
-   (click)="goToMessage(id)"
-  -->
-  <div class="flex padding w100 line" *ngFor="let msg of messages">
-    <div class="message" (click)="goToMessage(msg.id)">
-      <span style="font-weight: bold;">{{msg.senderName}}</span> <br>{{(msg.message.length>truncateLimit)? (msg.message | slice:0:truncateLimit)+'...':(msg.message)}}
-    </div>
-    <div class="w5">
-      <div class="rond" *ngIf="msg.isNew"></div>
-    </div>
-    <div class="w5">
-      <img src="../../assets/poubelle.jpg" alt="" (click)="deleteMessage(msg.id)">
+  <div *ngIf="messages.length >=1; else elseBlock">
+    <div class="flex padding w100 line" *ngFor="let msg of messages">
+      <div class="message" (click)="goToMessage(msg.id)">
+        <span style="font-weight: bold;">{{msg.senderName}}</span> <br>{{(msg.message.length>truncateLimit)? (msg.message | slice:0:truncateLimit)+'...':(msg.message)}}
+      </div>
+      <div class="w5">
+        <div class="rond" *ngIf="msg.isNew"></div>
+      </div>
+      <div class="w5">
+        <img src="../../assets/poubelle.jpg" alt="" (click)="deleteMessage(msg.id)">
+      </div>
     </div>
   </div>
+
+  <ng-template #elseBlock>
+    <div class="message no-notification">
+        <div>Vous n'avez pas de message</div>
+    </div>
+</ng-template>
 
 </section>

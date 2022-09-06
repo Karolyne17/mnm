@@ -439,7 +439,6 @@ exports.addNotif = async (req, res) => {
   const userId = req.userId;
   const message = req.body.message;
   const recipientId = req.body.id;
-
   const recipientFound = await db.USER.findOne({
     where: { id: recipientId },
   });

@@ -94,7 +94,6 @@ export class UserService {
     return this.http.delete(this.urlBase + "/message/"+id, {headers:headers});
   }
 
-
   getMessage(idMessage: string): Observable<any>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -103,9 +102,32 @@ export class UserService {
     return this.http.get(this.urlBase + "/message/"+idMessage, {headers:headers});
   }
 
+  getNotifications(): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.get(this.urlBase + "/notifs", {headers:headers});
+  }
+
+  sendNotification(data:any):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.post(this.urlBase + "/notif", data, {headers:headers});
+  }
+
+  getNotification(idNotif: string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
+    })
+    return this.http.get(this.urlBase + "/notif/"+idNotif, {headers:headers});
+  }
+
 
   getUser():Observable<any>{
-    console.log('FONCTION GETUSER : ' );
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.serviceToken.tokenValue()}`
