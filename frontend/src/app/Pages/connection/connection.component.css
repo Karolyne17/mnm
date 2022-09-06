@@ -1,61 +1,4 @@
-@media screen and (max-width: 600px) {
-  section {
-    text-align: center;
-    padding: 0 50px;
-    background-color: #589537;
-    max-width: 100vh;
-    height: 100vh;
-  }
-  .mnm-logo-connexion{
-    width:80%;
-    margin-top: 50px;
-  }
-  .img {
-    width: 250px;
-    padding: 70px 0;
-  }
-  form {
-    text-align: center;
-    margin-top: 50px;
-  }
-  input{
-    margin: 15px;
-    width: 85%;
-    height: 45px;
-    border-radius: 10px;
-    border: none;
-    padding-left: 10px;
-  }
-  .submit {
-    background: #ff6c07;
-    text-align: center;
-    padding: 15px;
-    color: white !important;
-    cursor: pointer;
-    font-size: 1.6em;
-    font-weight: bold;
-    border-radius: 15px;
-    border: none;
-    margin-top: 40px;
-  }
-  .link{
-    margin:30px;
-  }
-  .link a, a:visited{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2em;
-  }
-  .car-connexion{
-    margin-top: 70px;
-    width: 100%;
-  }
-
-}
-
-
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 750px) {
 section {
     text-align: center;
     background-color: #589537;
@@ -63,40 +6,31 @@ section {
   }
 
   .mnm-logo-connexion {
-    width: 15%;
-    margin-top: 80px;
+    width: 45%;
+    margin-top: 50px;
   }
 
   form {
     text-align: center;
-    margin-top: 50px;
   }
 
   input {
-    margin: 15px;
-    width: 35%;
-    height: 45px;
+    width: 80%;
+    height: 40px;
     border-radius: 10px;
     border: none;
     padding-left: 10px;
   }
 
   .submit {
-    align-items: center;
     background: #ff6c07;
-    padding: 15px;
-    color: white !important;
     text-align: center;
+    color: white !important;
     cursor: pointer;
-    font-size: 1.6em;
+    font-size: 1.5em;
     font-weight: bold;
     border-radius: 15px;
     border: none;
-    margin-top: 40px;
-  }
-
-  .link {
-    margin: 30px;
   }
 
   .link a,
@@ -108,7 +42,76 @@ section {
   }
 
   .car-connexion {
-    margin-top: 10px;
-    width: 20%;
+    width: 40%;
+    height: auto;
   }
+
+}
+
+
+@media screen and (min-width: 750px) {
+section {
+    text-align: center;
+    background-color: #589537;
+    height: 100vh;
+  }
+
+  .mnm-logo-connexion {
+    width: 20%;
+    margin-top: 40px;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  input {
+    width: 35%;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+  }
+
+  .submit {
+    background: #ff6c07;
+    color: white !important;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.6em;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+  }
+
+
+  .link a,
+  a:visited {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .car-connexion {
+    width: 25%;
+    height: auto;
+  }
+}
+
+form{
+  height: 30vh;
+}
+.height25vh{
+  height: 25vh;
+}
+.height30vh {
+  height: 30vh;
+}
+
+.m3{
+  margin: 30px;
+}
+.m4 {
+  margin: 40px;
 }

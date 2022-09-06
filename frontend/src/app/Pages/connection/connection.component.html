@@ -1,16 +1,16 @@
 <section>
-  <div>
+  <div class="height25vh">
     <img class="mnm-logo-connexion" src="./assets/mnm-logo.png" alt="mnm-logo"/>
   </div>
   <form [formGroup]="logForm" (ngSubmit)="validForm()">
     <div><input type="text" placeholder="Email" formControlName="email"></div>
-    <div><input type="password" placeholder="Mot De Passe" formControlName="password"></div>
+    <div><input class="m3" type="password" placeholder="Mot De Passe" formControlName="password"></div>
     <div><input class="submit" type="submit" value="Se connecter"></div>
   </form>
-  <div class="link">
+  <div class="link m3">
     <a routerLink="/inscription">Créer un compte ➡</a>
   </div>
   <div>
-    <img class="car-connexion" src="./assets/car.png" alt="car"/>
+    <img class="car-connexion height30vh" src="./assets/car.png" alt="car"/>
   </div>
 </section>
