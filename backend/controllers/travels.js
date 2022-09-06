@@ -32,6 +32,7 @@ exports.getAll = async (req, res) => {
         user: {
           id: travel.user.id,
           userName: travel.user.userName,
+          photo: travel.user.photo,
         },
         car: {
           model: travel.car.model,
@@ -101,6 +102,7 @@ exports.getTravel = async (req, res) => {
       user: {
         id: travelFound.user.id,
         userName: travelFound.user.userName,
+        photo: travel.user.photo,
       },
       car: {
         model: travelFound.car.model,
