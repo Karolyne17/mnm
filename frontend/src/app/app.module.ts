@@ -22,9 +22,12 @@ import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
+import { ToastrModule} from 'ngx-toastr';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { AddMessageComponent } from './Pages/add-message/add-message.component';
 import { ReadMessageComponent } from './Pages/read-message/read-message.component';
 import { NotificationComponent } from './Pages/notification/notification.component';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -56,7 +59,15 @@ registerLocaleData(localeFr, 'fr');
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      preventDuplicates: false,
+      progressBar: true,
+      countDuplicates: true,
+      extendedTimeOut: 3000,
+      positionClass: 'toast-bottom-right',
+    }),
   ],
   providers: [Title],
   bootstrap: [AppComponent],

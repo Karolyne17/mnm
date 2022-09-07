@@ -1,5 +1,12 @@
 <div class="trajet-container">
     <h1>Détails du trajet</h1>
+    <google-map height="400px"
+            width="750px"
+            [center]="center"
+            [zoom]="zoom">
+        <map-directions-renderer *ngIf="(directionsResults$ | async) as directionsResults"
+                           [directions]="directionsResults"></map-directions-renderer>
+    </google-map>
     <div class="info-container">
         <p class="info-title">Date</p>
         <p class="info">{{ travel.dateStart | date:'EEEE d MMMM  y':'+0200' :'fr-FR' }}</p>
