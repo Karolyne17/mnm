@@ -1,7 +1,6 @@
-<div class="section">
-
-<div class="section">
+<section>
   <form [formGroup]="updateAccount" (ngSubmit)="validForm()">
+    <div class="bold pt5">Modifier mon profil</div>
     <div>Pseudo :</div>
     <div><input type="text" value="{{user.userName}}" placeholder="Kikoulol" formControlName="userName"></div>
     <div>Nom :</div>
@@ -30,7 +29,7 @@
   </form>
 
 
-  <div class="btn" (click)="goToProfil()">Retourner sur mon profile</div><br>
+  <div class="ret" (click)="goToProfil()">Retourner sur mon profil</div><br>
 
 
-</div>
+</section>

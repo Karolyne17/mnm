@@ -15,6 +15,7 @@ export class Travel {
     public deletedAt?: Date,
     public driver_id?: number,
     public carId?: number,
+    public price?: number,
     ){}
 }
 

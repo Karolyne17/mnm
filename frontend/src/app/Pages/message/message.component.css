@@ -1,0 +1,45 @@
+.flex{
+  display: flex;
+}
+section{
+  background: #589537;
+}
+.message{
+  width: 90%;
+  line-height: 1.5rem;
+}
+
+.padding{
+  padding: 10px 10px;
+}
+
+.line{
+  border-bottom:1px solid #FF6C07;
+}
+.w100{
+  max-width: 100%;
+}
+
+.w5{
+  width: 5%;
+  margin-top: 10px;
+}
+
+.rond{
+  width: 15px;
+  height: 15px;
+  border: 1px solid #FF8533;
+  border-radius: 25px;
+  background-color: #FF6C07;
+}
+
+img{
+  margin-left: 10px;
+  width: 16px;
+  height: auto;
+}
+.no-notification{
+  text-align: center;
+  padding: 30px;
+  font-weight: bold;
+}

@@ -1,0 +1,8 @@
+<section>
+    <form [formGroup]="logForm" (ngSubmit)="validForm()">
+      <div class="bold">Envoyer un message :</div>
+      <div><textarea rows="10" cols="100" type="text" placeholder="Message" formControlName="message"></textarea></div>
+      <div #alertDiv class="alertDiv">Merci de saisir du texte</div>
+      <div><input class="submit" type="submit" value="Envoyer"></div>
+    </form>
+</section>

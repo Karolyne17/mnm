@@ -44,7 +44,7 @@ mysql
       // un utilisateur possède potentiellement plusieurs véhicules
       // un véhicule a un seul propriétaire
       db.USER.hasMany(db.CAR, {
-        foreignKey: "owner_id",
+        foreignKey: "owner_id", onDelete: 'CASCADE' 
       });
       db.CAR.belongsTo(db.USER, {
         foreignKey: { name: "owner_id", allowNull: false },
@@ -55,6 +55,7 @@ mysql
       db.USER.hasMany(db.TRAVEL, {
         foreignKey: "driver_id",
         as: "drived",
+        onDelete: 'CASCADE' 
       });
       db.TRAVEL.belongsTo(db.USER, {
         foreignKey: { name: "driver_id", allowNull: false },
@@ -70,6 +71,7 @@ mysql
       db.USER.belongsToMany(db.TRAVEL, {
         through: db.BOOKING,
         foreignKey: "passenger_id",
+        onDelete: 'CASCADE' 
       });
       db.TRAVEL.belongsToMany(db.USER, {
         through: db.BOOKING,
@@ -88,12 +90,17 @@ mysql
       // un message concerne l'utilisateur émetteur et l'utilisateur destinataire
       db.USER.hasMany(db.MESSAGE, {
         foreignKey: "sender_id",
+        as: "sender",
+        onDelete: 'CASCADE' 
       });
       db.MESSAGE.belongsTo(db.USER, {
         foreignKey: { name: "sender_id", allowNull: false },
+        as: "sender"
       });
       db.USER.hasMany(db.MESSAGE, {
         foreignKey: "receiver_id",
+        as: "receiver",
+        onDelete: 'CASCADE' 
       });
       db.MESSAGE.belongsTo(db.USER, {
         foreignKey: { name: "receiver_id", allowNull: false },

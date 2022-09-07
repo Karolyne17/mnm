@@ -74,6 +74,7 @@ exports.profile = async (req, res) => {
   const userFound = await db.USER.findOne({
     where: { id: id },
     include: [db.ADDRESS, db.CAR, db.TRAVEL],
+    // order: [[{ model: db.TRAVEL }, "dateStart", "DESC"]],
   });
 
   if (userFound) {
@@ -113,6 +114,7 @@ exports.profile = async (req, res) => {
           placeQuantity: car.placeQuantity,
           matriculation: car.matriculation,
           color: car.color,
+          id: car.id,
         };
         user.cars.push(usercar);
       }
@@ -134,6 +136,7 @@ exports.profile = async (req, res) => {
           cityArrival: travel.cityArrival,
           smoker: travel.smoker,
           airconditionning: travel.airconditionning,
+          price: travel.price,
         };
 
         let pass = await travel.getUsers();
@@ -161,6 +164,7 @@ exports.profile = async (req, res) => {
           cityArrival: travel.cityArrival,
           smoker: travel.smoker,
           airconditionning: travel.airconditionning,
+          price: travel.price,
         };
 
         let pass = await travel.getUsers();
@@ -273,6 +277,120 @@ exports.getUsers = async (req, res) => {
   return res.status(200).json({ message: { users: users } });
 };
 
+exports.deleteAccount = async (req, res) => {
+  const userId = req.userId;
+  const id = req.params.id;
+
+  if (userId != id) {
+    return res.status(200).json({
+      message: {
+        txt: "Impossible de supprimer un compte qui n'est pas le vôtre",
+      },
+    });
+  }
+
+  await db.USER.destroy({ where: { id: userId } });
+
+  return res.status(200).json({ message: { txt: "Utilisateur supprimé" } });
+};
+
+exports.addMessage = async (req, res) => {
+  const userId = req.userId;
+  const recipientId = req.body.id;
+  const message = req.body.message;
+
+  const recipientFound = await db.USER.findOne({
+    where: { id: recipientId },
+  });
+
+  if (!recipientFound) {
+    return res
+      .status(200)
+      .json({ message: { txt: "Destinataire pas trouvé" } });
+  }
+
+  let msg = db.MESSAGE.build({
+    message: message,
+    sender_id: userId,
+    receiver_id: recipientId,
+  });
+
+  await msg.save();
+
+  return res.status(200).json({ message: { txt: "Message envoyé" } });
+};
+
+exports.getMessages = async (req, res) => {
+  const userId = req.userId;
+
+  const messages = await db.MESSAGE.findAll({
+    where: { receiver_id: userId },
+    include: "sender",
+  });
+
+  let msgs = [];
+
+  for (let message of messages) {
+    msgs.push({
+      id: message.id,
+      message: message.message,
+      senderName: message.sender.userName,
+      senderId: message.sender.id,
+      isNew: message.readAt == null,
+      date: message.createdAt,
+    });
+  }
+
+  return res.status(200).json({ message: { messages: msgs } });
+};
+
+exports.getMessage = async (req, res) => {
+  const userId = req.userId;
+  const msgId = req.params.id;
+
+  const message = await db.MESSAGE.findOne({
+    where: { id: msgId },
+    include: "sender",
+  });
+
+  let msg = {
+    id: message.id,
+    message: message.message,
+    senderName: message.sender.userName,
+    senderId: message.sender.id,
+  };
+
+  message.readAt = db.sequelize.literal("CURRENT_TIMESTAMP");
+  await message.save();
+
+  return res.status(200).json({ message: { msg: msg } });
+};
+
+exports.deleteMessage = async (req, res) => {
+  const userId = req.userId;
+  const msgId = req.params.id;
+
+  const msgFound = await db.MESSAGE.findOne({
+    where: { id: msgId },
+  });
+
+  if (msgFound) {
+    if (msgFound.receiver_id != userId) {
+      return res.status(200).json({
+        message: {
+          text: "Impossible de supprimer des messages pas pour vous",
+        },
+      });
+    }
+
+    await msgFound.destroy();
+
+    return res.status(200).json({ message: { text: "message supprimé" } });
+  } else {
+    return res.status(200).json({ message: { txt: "message pas trouvé" } });
+  }
+};
+
 exports.getCars = async (req, res) => {
   const cars = await db.CAR.findAll({});
 
@@ -315,4 +433,70 @@ exports.adminLogin = async (req, res) => {
       .status(200)
       .json({ message: { txt: "mauvais username", pass: false } });
   }
+};
+
+exports.addNotif = async (req, res) => {
+  const userId = req.userId;
+  const message = req.body.message;
+  const recipientId = req.body.id;
+  const recipientFound = await db.USER.findOne({
+    where: { id: recipientId },
+  });
+
+  if (!recipientFound) {
+    return res
+      .status(200)
+      .json({ message: { txt: "Destinataire pas trouvé" } });
+  }
+
+  let notif = db.NOTIFICATION.build({
+    message: message,
+    user_id: recipientId,
+  });
+
+  await notif.save();
+
+  return res.status(200).json({ message: { txt: "notif envoyée" } });
+};
+
+exports.getNotifs = async (req, res) => {
+  const userId = req.userId;
+
+  const notifs = await db.NOTIFICATION.findAll({
+    where: { user_id: userId },
+    order: [["createdAt", "DESC"]],
+  });
+
+  let ntfs = [];
+
+  for (let n of notifs) {
+    ntfs.push({
+      id: n.id,
+      message: n.message,
+      date: n.createdAt,
+      isNew: n.readAt == null,
+    });
+  }
+
+  return res.status(200).json({ message: { notifs: ntfs } });
+};
+
+exports.getNotif = async (req, res) => {
+  const userId = req.userId;
+  const notifId = req.params.id;
+
+  const notification = await db.NOTIFICATION.findOne({
+    where: { id: notifId },
+  });
+
+  let notif = {
+    id: notification.id,
+    message: notification.message,
+    date: n.createdAt,
+  };
+
+  notification.readAt = db.sequelize.literal("CURRENT_TIMESTAMP");
+  await notification.save();
+
+  return res.status(200).json({ message: { notif: notif } });
 };

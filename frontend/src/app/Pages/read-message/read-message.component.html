@@ -1,0 +1,12 @@
+<div class="m4">
+  <div class="message-infos-container">
+    <div class="bold">De {{message.senderName}}</div>
+    <div class="m4">{{message.message}}</div>
+  </div>
+    <div class="flex">
+      <div class="cursor rep" (click)="reply()"><img src="../../assets/message.jpg" alt=""><span class="pl1">Répondre</span></div>
+      <div class="cursor suppr" (click)="delete()"><img src="../../assets/poubelle.jpg" alt=""><span class="pl1 red">Supprimer</span></div>
+    </div>
+
+    <div class="return" (click)="back()">◀ Retourner à la liste des messages</div>
+</div>

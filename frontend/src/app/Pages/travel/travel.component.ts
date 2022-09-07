@@ -3,9 +3,11 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/Interfaces/booking';
 import { Travel } from 'src/app/Interfaces/travel';
+import { User } from 'src/app/Interfaces/user';
 import { TravelService } from 'src/app/service/travel.service';
 import { MapDirectionsService } from '@angular/google-maps';
 import { map, Observable } from 'rxjs';
+import { UserService } from 'src/app/service/user.service';
 
 
 @Component({
@@ -20,6 +22,7 @@ export class TravelComponent implements OnInit {
   smoker: string ='';
   clim: string ='';
   place: string = '';
+
   reservationForm: UntypedFormGroup;
 
   center: google.maps.LatLngLiteral = {
@@ -32,15 +35,27 @@ export class TravelComponent implements OnInit {
   directionRender: google.maps.DirectionsRenderer;
   map: google.maps.Map | null;
 
-  @Input() idTrajet: string ='-1';
+ passager: User = {} as User;
+
+ @Input() idTrajet: string ='-1';
 
   
-  constructor(private router: Router, private travelService: TravelService, private route: ActivatedRoute, private formBuilder: UntypedFormBuilder, mapDirectionsService: MapDirectionsService) {
+  constructor(private router: Router, private travelService: TravelService, private route: ActivatedRoute, private formBuilder: UntypedFormBuilder,private userService: UserService, mapDirectionsService: MapDirectionsService) {
     let that = this;
     this.directionsResults$ = new Observable;
     this.directionRender = new google.maps.DirectionsRenderer;
     this.directionsService = new google.maps.DirectionsService;
     this.map = null;
+
+    this.userService.getUser().subscribe({
+      next(ret) {
+        that.passager = ret.message.user;
+      },
+      error(err){
+        console.log(err);
+      }
+    });
+
     this.route.params.subscribe({
       next(val) {
         that.idTrajet = (val["id"])
@@ -117,7 +132,6 @@ export class TravelComponent implements OnInit {
   }
 
   validForm() {
-    console.log(this.reservationForm.value);
     let bookingInfo: Booking = {
       comment: this.reservationForm.value.comment,
       travelId: parseInt(this.idTrajet)
@@ -125,9 +139,13 @@ export class TravelComponent implements OnInit {
     let that = this;
     this.travelService.addBooking(bookingInfo).subscribe({
       next(res) {
-        that.router.navigate(['/']).then(() => {
-          that.router.navigate(['/accueil']);
-        });
+        that.userService.sendNotification({message: `${that.passager.userName} participe à votre voyage : ${bookingInfo.comment}`, id:that.travel.user?.id}).subscribe({
+          next(ret) {
+            that.router.navigate(['/']).then(() => {
+              that.router.navigate(['/accueil']);
+            });
+          }
+        })
       }
     });
   }

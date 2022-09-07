@@ -1,44 +1,35 @@
 /* TELEPHONE */
 @media screen and (max-width: 1100px) {
-  .box {
+  section {
     margin: 20px 10%;
-    width: 75%;
+    width: 80%;
     font-size: 12px;
   }
 
-  .box-entete {
-    display: flex;
-  }
-
-  .photoProfil {
-    width: 100px;
-    height: auto;
-    margin-bottom: 15px;
+  .identite {
+    padding-left: 30px;
+    padding-top: 20px;
   }
 
   img {
-    width: 100%;
-  }
-
-  .identite {
-    padding-left: 50px;
-    padding-top: 20px;
+    width: 80px;
+    height: auto;
   }
 
   .divBtn div {
     text-align: center;
     width: 170px;
   }
+
+  .ml1 {
+    margin-left: 50px;
+  }
 }
 
 /* DESKTOP */
 @media screen and (min-width: 1100px) {
-  .box {
-    margin: 50px 270px;
-  }
-
-  .box-entete {
-    display: flex;
+  section {
+    margin: 50px 150px;
   }
 
   .photoProfil {
@@ -48,13 +39,24 @@
 
   .identite {
     padding-left: 50px;
-    padding-top: 120px;
+    padding-top: 100px;
+    width: 200px;
   }
+
+  .imgProfil {
+    height: 200px;
+    width: 200px;
+  }
+
 
   .divBtn div {
     text-align: center;
     width: 170px;
-    margin-left: 72%;
+    margin-left: 80%;
+  }
+
+  .ml1 {
+    margin-left: 250px;
   }
 }
 
@@ -77,16 +79,7 @@
   border-top: 1px solid rgb(202, 202, 202);
 }
 
-/* .sous-container {background: #f8f8f8;} */
-.troisPoint {
-  text-align: right;
-}
-
-.imgProfil {
-  width: 100%;
-}
-
-.imgTroisPoint {
+.imgWidth {
   width: 25px;
   height: 20px;
   cursor: pointer;
@@ -113,14 +106,13 @@
 .btn {
   color: orange;
   border-radius: 15px;
-  border: 1px solid orange;
   padding: 5px 5px;
   cursor: pointer;
 }
 
 .orange {
   background: orange;
-  color: white;
+  color: rgb(24, 0, 0);
 }
 
 .en-tete {
@@ -132,11 +124,16 @@
 }
 
 .btnDelete {
-  height: 17px;
+  height: 16px;
   text-align: center;
   padding: 4px 6px;
   border-radius: 25px;
-  border: 1px solid rgb(241, 58, 2);
+  border: 2px solid rgb(241, 58, 2);
+  cursor: pointer;
+}
+
+.btnProfil {
+  border: 1px solid orange;
 }
 
 .mt1 {
@@ -171,8 +168,24 @@
   display: flex;
 }
 
+.width5 {
+  width: 5%;
+}
+
+.width10 {
+  width: 10%;
+}
+
 .width12 {
   width: 12%;
+}
+
+.width15 {
+  width: 15%;
+}
+
+.width20 {
+  width: 20%;
 }
 
 .width22 {
@@ -187,8 +200,16 @@
   width: 50%;
 }
 
-.width75 {
-  width: 75%;
+.width80 {
+  width: 80%;
+}
+
+.width85 {
+  width: 85%;
+}
+
+.width90 {
+  width: 90%;
 }
 
 .width100 {
@@ -199,6 +220,11 @@
   text-align: right;
 }
 
+.sup {
+  font-size: 15px;
+}
 
-
-
+.sup:hover {
+  color: red;
+  text-decoration: underline;
+}

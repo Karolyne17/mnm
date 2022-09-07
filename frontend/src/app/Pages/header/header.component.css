@@ -12,27 +12,29 @@
 .header-up-container{
     height: 50px;
     display: flex;
-    background-color: #006413;
+    background-color: #355922;
 }
 .mnm-logo-container{
     margin:auto;
     width:20%;
 }
 .mnm-logo-img{
-    width:70px;
+    width:67px;
+    padding-left: 25px;
 }
 .menu-title{
-    width:45%;
+    width:60%;
     color:#FF6C07;
     margin:auto;
     text-align: center;
-    font-size: 1.9rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 .menu-bar-container{
     width:20%;
     text-align: right;
-    padding:8px 8px;
+    padding-right:17px;
+    padding-top: 5px;
 }
 .menu-bar-img{
     width:40px;
@@ -40,16 +42,16 @@
     cursor:pointer;
 }
 .menu-down-container{
-    background-color: #006413;
+    background-color: #355922;
     width:60%;
     margin-left: 40%;
-    border-bottom:2px solid #00440d;
+    border-bottom:2px solid #355922;
 }
 .menu-down-container div{
     color:#FF6C07;
     font-weight: bold;
     text-align: right;
-    padding:13px;
+    padding:10px 25px;
 }
 .menu-down-container hr{
     width:90%;

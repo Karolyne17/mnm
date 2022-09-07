@@ -1,14 +1,21 @@
-<div class="box">
-  <div class="box-entete">
-    <div class="photoProfil">
-      <img class="imgProfil" src="../../assets/profil_vide.jpg">
+<section>
+  <div class="flex width100">
+    <div class="photoProfil width20">
+      <div *ngIf="user.photo; else elseBlock"><img class="imgProfil" src="{{user.photo}}"></div>
+      <ng-template #elseBlock><img class="imgProfil" src="./../assets/profil_vide.jpg"></ng-template>
     </div>
-    <div class="identite">
-      <div class="bold capitalize"><span class="capitalize">{{user.firstName}}</span> <span class="capitalize">
-          {{user.lastName}}</span></div>
-      <div class="bold capitalize">{{user.userName}}</div>
-      <div>{{address.number}} <span class="lowercase">{{address.lineA}}</span></div>
-      <div>{{address.zipCode}} <span class="capitalize">{{address.city}}</span></div>
+
+    <div class="flex width100">
+      <div class="identite width80">
+        <div class="bold capitalize">{{user.firstName}} {{user.lastName}}</div>
+        <div class="bold capitalize">{{user.userName}}</div>
+        <div class="lowercase">{{address.number}} {{address.lineA}}</div>
+        <div>{{address.zipCode}} <span class="capitalize">{{address.city}}</span></div>
+      </div>
+      <div class="mt2 width1">
+        <div class="ml1"><img class="imgWidth" (click)="goToMyMessage()" src="../../assets/message.jpg"></div>
+        <div class="ml1 mt2"><img class="imgWidth" src="../../assets/notif.png"></div>
+      </div>
     </div>
   </div>
   <div class="note mt1">
@@ -30,9 +37,9 @@
     </div>
   </div>
   <div class="divBtn mt2">
-    <div class="btn" (click)="goToUpdate()">Modifier mon profile</div>
+    <div class="btn btnProfil" (click)="goToUpdate()">Modifier mon profil</div>
     <div class="btn mt1 orange" (click)="goToAddCar()">Ajouter un véhicule</div>
-    <div class="cursor mt1" (click)="delete()">Supprimer mon compte</div>
+    <div class="cursor mt1 sup" (click)="delete()">Supprimer mon compte</div>
   </div>
 
   <!-- if vehicules -->
@@ -48,7 +55,7 @@
       <div class="width25">{{car.model}}</div>
       <div class="width25">{{car.color}}</div>
       <div class="width25">{{car.placeQuantity}}</div>
-      <div class="width25 troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>
+      <div class="width25 text-right"><img class="imgWidth" src="../../assets/troisPoint.png"></div>
     </div>
   </div>
 
@@ -68,7 +75,7 @@
         <div class="width22">{{myBooking.dateStart | date: 'H:mm a' }}</div>
         <div class="width22">{{myBooking.cityStart}}</div>
         <div class="width22">{{myBooking.cityArrival}}</div>
-        <div class="width12 troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>
+        <div class="width12 text-right"><img class="imgWidth" src="../../assets/troisPoint.png"></div>
       </div>
       <div class="sous-container border">
         <div class="flex">
@@ -78,7 +85,7 @@
           <div class="width100">
             <div class="flex">
               <div class="width50">{{myBooking.driver.userName}}</div>
-              <div class="width50 text-right"><img class="imgTroisPoint" src="../../assets/message.png"></div>
+              <div class="width50 text-right" (click)="goToAddMessage(myBooking.driver.id, myBooking.driver.userName)"><img class="imgWidth" src="../../assets/message.jpg"></div>
             </div>
           </div>
         </div>
@@ -89,15 +96,15 @@
           <div class="width100">
             <div class="flex" *ngFor="let passenger of myBooking.passengers">
               <div class="width50">{{passenger.userName}}</div>
-              <div class="width50 text-right"><img class="imgTroisPoint" src="../../assets/message.png"></div>
+              <div class="width50 text-right" (click)="goToAddMessage(passenger.id, passenger.userName)"><img class="imgWidth" src="../../assets/message.jpg"></div>
             </div>
           </div>
         </div>
         <div class="flex">
           <div class="width50"></div>
           <div class="width100 flex">
-            <div class="width75">Vous : </div>
-            <div class="width25 btnDelete orange">Annuler</div>
+            <div class="width85">Vous : </div>
+            <div class="width15 btnDelete orange">Annuler</div>
           </div>
         </div>
       </div>
@@ -121,7 +128,7 @@
         <div class="width22">{{myTravel.dateStart | date: 'H:mm a' }}</div>
         <div class="width22">{{myTravel.cityStart}}</div>
         <div class="width22">{{myTravel.cityArrival}}</div>
-        <div class="width12 troisPoint"><img class="imgTroisPoint" src="../../assets/troisPoint.png"></div>
+        <div class="width12 text-right"><img class="imgWidth" src="../../assets/troisPoint.png"></div>
       </div>
       <div class="sous-container border">
         <div class="flex">
@@ -131,16 +138,15 @@
           <div class="width100">
             <div class="flex" *ngFor="let passenger of myTravel.passengers">
               <div class="width50">{{passenger.userName}}</div>
-              <div class="width50 text-right"><img class="imgTroisPoint" src="../../assets/message.png"></div>
+              <div class="width50 text-right" (click)="goToAddMessage(passenger.id, passenger.userName)"><img class="imgWidth" src="../../assets/message.jpg"></div>
             </div>
           </div>
         </div>
-        <div class="flex text-right">
-          <div class="width50"></div>
-          <div class="width100 flex">
-            <div class="width75"></div>
-            <div class="width25 btnDelete orange">Annuler</div>
-          </div>
+        <div class="flex width100">
+          <div class="width90"></div>
+          <div class="width10 btnDelete orange">Annuler</div>
         </div>
       </div>
     </div>
+  </div>
+</section>

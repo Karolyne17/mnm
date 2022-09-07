@@ -13,11 +13,11 @@
             <hr class="first-hr">
             <a routerLink="/accueil" (click)="myFunction()"><div>Accueil</div></a>
             <hr>
-            <a routerLink='/user/{{getId()}}'   (click)="myFunction()"><div>Mon Profil</div></a>
+            <a routerLink='/user/{{getId()}}' (click)="myFunction()"><div>Mon Profil</div></a>
             <hr>
-            <a href="#" (click)="myFunction()"><div>Mes Trajets</div></a>
+            <a routerLink='/message/{{getId()}}' (click)="myFunction()"><div>Mes Messages</div></a>
             <hr>
-            <a href="#" (click)="myFunction()"><div>Mes Messages</div></a>
+            <a routerLink='/notifications' (click)="myFunction()"><div>Mes Notifications</div></a>
             <hr>
             <a routerLink="/connection" (click)="logout()"><div>Déconnexion</div></a>
         </div>

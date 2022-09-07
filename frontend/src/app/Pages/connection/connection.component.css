@@ -1,35 +1,117 @@
-.section {
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background: rgb(48, 124, 3);
-  min-height: 100vh;
-  width: 100%;
+@media screen and (max-width: 750px) {
+section {
+    text-align: center;
+    background-color: #589537;
+    height: 100vh;
+  }
+
+  .mnm-logo-connexion {
+    width: 45%;
+    margin-top: 50px;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  input {
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+  }
+
+  .submit {
+    background: #ff6c07;
+    text-align: center;
+    color: white !important;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+  }
+
+  .link a,
+  a:visited {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .car-connexion {
+    width: 40%;
+    height: auto;
+  }
+
 }
 
-.img {
-  width: 250px;
-  padding: 70px 0;
+
+@media screen and (min-width: 750px) {
+section {
+    text-align: center;
+    background-color: #589537;
+    height: 100vh;
+  }
+
+  .mnm-logo-connexion {
+    width: 20%;
+    margin-top: 40px;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  input {
+    width: 35%;
+    height: 45px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+  }
+
+  .submit {
+    background: #ff6c07;
+    color: white !important;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.6em;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+  }
+
+
+  .link a,
+  a:visited {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .car-connexion {
+    width: 25%;
+    height: auto;
+  }
 }
 
-form {
-  text-align: center;
+form{
+  height: 30vh;
+}
+.height25vh{
+  height: 25vh;
+}
+.height30vh {
+  height: 30vh;
 }
 
-input {
-  margin: 10px;
-  width: 180px;
-  height: 30px;
-  border-radius: 20px;
-  border-color: white;
-  padding-left: 10px;
+.m3{
+  margin: 30px;
 }
-
-.submit {
-  background: #3d8cff;
-  height: 35px;
-  width: 180px;
-  color: white !important;
-  text-align: center;
-  cursor: pointer;
+.m4 {
+  margin: 40px;
 }

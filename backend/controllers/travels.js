@@ -7,6 +7,9 @@ const tokenService = require("../services/token");
 
 exports.getAll = async (req, res) => {
   const travelsFound = await db.TRAVEL.findAll({
+    where: {
+      dateStart: { [Op.gte]: db.sequelize.literal("NOW()") },
+    },
     include: [db.USER, db.CAR],
   });
 
@@ -25,9 +28,11 @@ exports.getAll = async (req, res) => {
         cityArrival: travel.cityArrival,
         smoker: travel.smoker,
         airconditionning: travel.airconditionning,
+        price: travel.price,
         user: {
           id: travel.user.id,
           userName: travel.user.userName,
+          photo: travel.user.photo,
         },
         car: {
           model: travel.car.model,
@@ -93,9 +98,11 @@ exports.getTravel = async (req, res) => {
       cityArrival: travelFound.cityArrival,
       smoker: travelFound.smoker,
       airconditionning: travelFound.airconditionning,
+      price: travelFound.price,
       user: {
         id: travelFound.user.id,
         userName: travelFound.user.userName,
+        photo: travelFound.user.photo,
       },
       car: {
         model: travelFound.car.model,
@@ -164,6 +171,10 @@ exports.cancelBooking = async (req, res) => {
 };
 
 exports.addTravel = async (req, res) => {
+  if (req.body.carId === undefined) {
+    return res.status(200).json({ message: { txt: "Il manque des champs" } });
+  }
+
   const userId = req.userId;
   const latStart = req.body.latStart;
   const longStart = req.body.longStart;
@@ -175,6 +186,7 @@ exports.addTravel = async (req, res) => {
   const smoker = req.body.smoker;
   const airconditionning = req.body.airconditionning;
   const carId = req.body.carId;
+  const price = req.body.price;
 
   let travel = db.TRAVEL.build({
     latStart: latStart,
@@ -188,6 +200,7 @@ exports.addTravel = async (req, res) => {
     airconditionning: airconditionning,
     car_id: carId,
     driver_id: userId,
+    price: price,
   });
   travel.save();
 

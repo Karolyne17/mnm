@@ -315,6 +315,96 @@ Reçoit:
 
 _L'utilisateur connecté annule sa réservation sur le trajet correspondant à l'id_
 
+## POST `/api/message`
+
+_Envoie d'un message à un utilisateur correspondant à l'id envoyée_
+
+    {
+        "id": 3
+        "message": "Salut"
+    }
+
+## GET `/api/messages`
+
+_Récupère les messages de l'utilisateur connecté_
+
+    "messages": [
+        {
+            "id": 4,
+            "message": "Serait-il possible de faire un détour par la Russie ?",
+            "senderName": "Mamy",
+            "senderId": 2,
+            "isNew": true,
+            "date": "2022-08-29T13:54:47.000Z"
+        },
+        {
+            "id": 5,
+            "message": "possible de décaler le trajet de 20 min ?",
+            "senderName": "Mamy",
+            "senderId": 2,
+            "isNew": true,
+            "date": "2022-08-29T13:54:47.000Z"
+        },
+        {
+            "id": 6,
+            "message": "Ma voiture a pas le controle technique",
+            "senderName": "Soph",
+            "senderId": 3,
+            "isNew": true,
+            "date": "2022-08-29T13:54:47.000Z"
+        }
+    ]
+
+## GET `/api/message/:id`
+
+_Récupère le message correspondant à l'id donné_
+
+    {
+        "id": 6,
+        "message": "Ma voiture a pas le controle technique",
+        "senderName": "Soph",
+        "senderId": 3,
+        "isNew": true,
+        "date": "2022-08-29T13:54:47.000Z"
+    }
+
+## POST `/api/notif`
+
+_Création d'une notification_
+
+    {
+        "message": "T'es notifié monsieur"
+    }
+
+## GET `/api/notifs`
+
+_Récupère les notifications de l'utilisateur connecté_
+
+    {
+    "notifs": [
+        {
+            "id": 1,
+            "message": "Tu as une réservation",
+            "date": "2022-09-02T12:22:12.000Z",
+            "isNew": true
+        },
+        {
+            "id": 2,
+            "message": "T'es notifié",
+            "date": "2022-09-02T12:22:13.000Z",
+            "isNew": false
+        }
+    }
+
+## GET `/api/notif/:id`
+
+_Récupère la notification correspondant à l'id donné_
+
+    {
+        "id": 2,
+        "message": "T'es notifié"
+    }
+
 # /backend/.env
 
 ```PORT=3000

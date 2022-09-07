@@ -15,9 +15,11 @@ import { AddCarComponent } from './Pages/add-car/add-car.component';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
+import { AddMessageComponent } from './Pages/add-message/add-message.component';
+import { ReadMessageComponent } from './Pages/read-message/read-message.component';
+import { NotificationComponent } from './Pages/notification/notification.component';
 
 const routes: Routes = [
-  { path: '', component: InscriptionComponent, data: { title: 'Inscription' } },
   {
     path: 'inscription',
     component: InscriptionComponent,
@@ -36,7 +38,7 @@ const routes: Routes = [
     data: { title: 'Profil' },
   },
   {
-    path: 'user/updateAccount/:id',
+    path: 'updateAccount/:id',
     component: UpdateAccountComponent,
     canActivate: [AuthGuard],
     data: { title: 'Modifier Compte' },
@@ -49,38 +51,44 @@ const routes: Routes = [
   },
   // { path: "user/addPost/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'Ajouter Trajet'}},
   // { path: "user/:id/:id", component: AddPostComponent, canActivate:[AuthentificationGuard], data: {title: 'About'}},
-  { path: 'accueil', component: AccueilComponent, data: { title: 'Accueil' } },
+  { path: 'accueil', component: AccueilComponent, canActivate: [AuthGuard], data: { title: 'Accueil' } },
   {
     path: 'travel/:id',
     component: TravelComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Réservation' },
   },
   {
     path: 'admin/users',
     component: AdminComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Admin : utilisateurs' },
   },
   {
     path: 'admin/cars',
     component: AdminCarComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Admin : véhicules' },
   },
   {
     path: 'admin/travels',
     component: AdminTravelComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Admin : trajets' },
   },
   {
     path: 'admin',
     component: AdminLoginComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Admin : connexion' },
   },
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: "accueil", component: AccueilComponent, data: {title: 'Accueil'} },
-  { path: "travel/:id", component: TravelComponent, data: {title: 'Réservation'}},
-  { path: "addTravel", component: AddTravelComponent, data: {title: 'Ajout Trajet'}},
-  { path: "Message", component: MessageComponent, data: {title: 'Message'}},
-  { path: '', redirectTo:'/', pathMatch: 'full'}
+  { path: '', redirectTo: '/inscription', pathMatch: 'full' },
+  { path: "travel/:id", canActivate: [AuthGuard], component: TravelComponent, data: {title: 'Réservation'}},
+  { path: "addTravel", canActivate: [AuthGuard], component: AddTravelComponent, data: {title: 'Ajout Trajet'}},
+  { path: "message/:id", canActivate: [AuthGuard], component: MessageComponent, data: {title: 'Messages'}},
+  { path: "message/:id/:user", canActivate: [AuthGuard], component: AddMessageComponent, data: {title: 'Ajout message'}},
+  { path: "msg/:idmsg", canActivate: [AuthGuard], component: ReadMessageComponent, data: {title: 'Message'}},
+  { path: "notifications", canActivate: [AuthGuard], component: NotificationComponent, data: {title: 'Notifications'}},
 
 ];
 

@@ -19,12 +19,15 @@ import { AdminCarComponent } from './Pages/admin-car/admin-car.component';
 import { AdminTravelComponent } from './Pages/admin-travel/admin-travel.component';
 import { AdminMenuComponent } from './Pages/admin-menu/admin-menu.component';
 import { AddCarComponent } from './Pages/add-car/add-car.component';
-import { UserService } from './service/user.service';
 import { AdminLoginComponent } from './Pages/admin-login/admin-login.component';
 import { AddTravelComponent } from './Pages/add-travel/add-travel.component';
 import { MessageComponent } from './Pages/message/message.component';
 import { ToastrModule} from 'ngx-toastr';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { AddMessageComponent } from './Pages/add-message/add-message.component';
+import { ReadMessageComponent } from './Pages/read-message/read-message.component';
+import { NotificationComponent } from './Pages/notification/notification.component';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -35,7 +38,6 @@ registerLocaleData(localeFr, 'fr');
     InscriptionComponent,
     ConnectionComponent,
     AccueilComponent,
-
     UpdateAccountComponent,
     HeaderComponent,
     LocalizedDatePipe,
@@ -48,6 +50,9 @@ registerLocaleData(localeFr, 'fr');
     AdminLoginComponent,
     AddTravelComponent,
     MessageComponent,
+    AddMessageComponent,
+    ReadMessageComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

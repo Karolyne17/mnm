@@ -9,11 +9,6 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DataTypes.STRING,
       allowNull: false,
     },
-    checkedAt: {
-      type: Sequelize.DataTypes.DATE,
-      defaultValue: Sequelize.DataTypes.NOW,
-      allowNull: false,
-    },
     createdAt: {
       type: Sequelize.DataTypes.DATE,
       defaultValue: Sequelize.DataTypes.NOW,
@@ -25,6 +20,10 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
     },
     deletedAt: {
+      type: Sequelize.DataTypes.DATE,
+      allowNull: true,
+    },
+    readAt: {
       type: Sequelize.DataTypes.DATE,
       allowNull: true,
     },

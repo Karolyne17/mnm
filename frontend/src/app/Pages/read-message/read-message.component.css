@@ -1,0 +1,60 @@
+img{
+    width: 20px;
+  }
+.message-infos-container{
+  border: 3px solid #FF6C07;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 50px 20px;
+  font-size: 1.2rem;
+}
+  .m4{
+    margin: 15px;
+  }
+
+  .bold{
+    font-weight: bold;
+  }
+
+ .flex{
+    display: flex;
+ }
+
+ .mt5{
+    margin-top: 50px;
+ }
+
+.mt3{
+  margin-top: 30px;
+ }
+
+ .font{
+    font-size: 20px;
+ }
+
+ .pl1{
+  padding-left: 10px;
+ }
+
+ .red{
+  color: #FF6C07;
+ }
+
+ .cursor{
+   cursor: pointer;
+   margin: 25px auto;
+   border:1px solid #FF6C07;
+   border-radius: 20px;
+   padding:15px;
+   font-weight: bold;
+   font-size: 1.1rem;
+ }
+.rep{
+  color:white;
+  background-color: #FF6C07;
+}
+.return{
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: bold;
+}
