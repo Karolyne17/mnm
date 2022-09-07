@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Booking } from 'src/app/Interfaces/booking';
 import { Travel } from 'src/app/Interfaces/travel';
@@ -19,12 +19,12 @@ export class TravelComponent implements OnInit {
   smoker: string ='';
   clim: string ='';
   place: string = '';
-  reservationForm: FormGroup;
+  reservationForm: UntypedFormGroup;
   passager: User = {} as User;
 
   @Input() idTrajet: string ='-1';
 
-  constructor(private router: Router, private travelService: TravelService, private route: ActivatedRoute, private formBuilder:FormBuilder, private userService: UserService) {
+  constructor(private router: Router, private travelService: TravelService, private route: ActivatedRoute, private formBuilder:UntypedFormBuilder, private userService: UserService) {
     
     let that = this;
     this.userService.getUser().subscribe({
