@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from 'src/app/Classes/message';
 import { ServiceToken } from 'src/app/service/service.token';
@@ -18,7 +18,7 @@ export class AddMessageComponent implements OnInit {
     message: '',
   });
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute, private tokenService: ServiceToken) { }
+  constructor(private formBuilder: UntypedFormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute, private tokenService: ServiceToken) { }
 
 
   ngOnInit(): void {

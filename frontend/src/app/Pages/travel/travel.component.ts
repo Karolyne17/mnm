@@ -23,6 +23,7 @@ export class TravelComponent implements OnInit {
   clim: string ='';
   place: string = '';
 
+
   reservationForm: UntypedFormGroup;
 
   center: google.maps.LatLngLiteral = {
@@ -41,6 +42,7 @@ export class TravelComponent implements OnInit {
 
   
   constructor(private router: Router, private travelService: TravelService, private route: ActivatedRoute, private formBuilder: UntypedFormBuilder,private userService: UserService, mapDirectionsService: MapDirectionsService) {
+
     let that = this;
     this.directionsResults$ = new Observable;
     this.directionRender = new google.maps.DirectionsRenderer;
