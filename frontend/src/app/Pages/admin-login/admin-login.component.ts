@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/service/admin.service';
 import { UserService } from 'src/app/service/user.service';
@@ -18,7 +18,7 @@ export class AdminLoginComponent implements OnInit {
   ret?: any;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private adminService: AdminService,
     private router: Router
   ) {}

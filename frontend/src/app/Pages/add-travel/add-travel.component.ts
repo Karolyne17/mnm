@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cars } from 'src/app/Classes/cars';
 import { Travel } from 'src/app/Classes/travel';
@@ -25,7 +25,7 @@ export class AddTravelComponent implements OnInit {
   cars: Array<Cars> = [];
   idAcharger: any;
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private travelService: TravelService, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken) { 
+  constructor(private formBuilder: UntypedFormBuilder,private router: Router, private travelService: TravelService, private userService: UserService, private route: ActivatedRoute, public auth: ServiceToken) { 
     let that = this;
     this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
     this.userService.getUser().subscribe({

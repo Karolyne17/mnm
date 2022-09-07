@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Adress } from 'src/app/Classes/adress';
 import { User } from 'src/app/Interfaces/user';
@@ -14,13 +14,13 @@ export class UpdateAccountComponent implements OnInit {
   nav:any;
   prenom="";
   idAcharger: number = 0;
-  updateAccount: FormGroup;
+  updateAccount: UntypedFormGroup;
   user: User = {} as User;
   address: Adress = {} as Adress;
   data:any;
 
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) {
+  constructor(private formBuilder: UntypedFormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) {
 
     let that = this;
     this.route.params.subscribe({next(val) {that.idAcharger = parseInt(val["id"])}});
